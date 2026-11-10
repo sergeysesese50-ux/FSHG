@@ -1,0 +1,9 @@
+# Контекст сборки — весь репозиторий; в Docker отправляем только нужное,
+# иначе туда уедет client/Library на гигабайты.
+*
+!server/modules/package.json
+!server/modules/package-lock.json
+!server/modules/tsconfig.json
+!server/modules/src
+!server/local.yml
+!shared/data

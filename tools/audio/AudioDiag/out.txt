@@ -1,0 +1,285 @@
+=== CLIPS (22050 Hz mono, values as generated, before source volume) ===
+crest = peak/RMS over the whole clip; stCrest = peak / loudest-20ms RMS; maxStep = largest 1-sample jump / peak;
+p999Step = 99.9th-pct 1-sample jump / RMS; imp = 2nd-difference outliers > 6 robust sigma; kurt = excess kurtosis
+clip               ms   peak    rms crest  stCr       DC   cent  centA   kurt maxStp  p999  imp
+Whir              500   -1.9  -11.2   9.3   7.2  0.00018   4736   4746    0.5   0.89   2.3    0
+Growl            1000   -1.9  -15.1  13.1   7.7  0.00024   2417   3109    0.6   0.18   0.7    0
+ClickLoop         500   -1.4  -25.6  24.2  21.1 -0.00000   6083   5712   93.6   1.22  16.1    0
+LineSing          500   -3.1   -7.5   4.4   3.8 -0.00000    738    774   -1.3   0.24   0.4    0
+DragClick0          6   -0.9  -15.9  14.9  14.9 -0.00000   6256   5879   11.9   1.75   9.8   22
+DragClick1          6   -0.9  -15.2  14.3  14.3  0.00001   6457   6098   10.2   1.86   9.7   24
+DragClick2          6   -0.9  -16.7  15.7  15.7  0.00000   6374   6021   14.4   1.77  10.9   18
+RodCreak0         300   -1.4  -10.4   9.0   4.6 -0.00187   1260   2179    0.2   0.99   2.1 2490
+RodCreak1         300   -1.4  -10.3   8.8   4.3  0.00120   1307   2184    0.1   0.97   2.0 2500
+RodCreak2         300   -1.4  -11.0   9.6   5.3 -0.00093   1276   2181    0.2   0.86   2.1 2495
+Splash            350   -0.9  -17.0  16.1   7.9 -0.00744   2469   2693    7.4   0.45   2.6  478
+SplashHeavy       500   -0.9  -18.2  17.2   6.4 -0.00181   1400   1977   11.3   0.12   0.8  676
+TelegraphSwirl    450   -1.9  -16.8  14.9   7.5 -0.00001   3091   2977    5.3   0.56   2.6  219
+JerkThunk          60   -0.4  -11.9  11.5   7.6  0.02152    632   1741    2.1   0.11   0.3  103
+JumpWhoosh        500   -1.9  -18.2  16.2   8.5  0.00000   4690   4411    5.5   1.21   6.4 1800
+Hookset           200   -0.4  -14.6  14.2   6.6  0.00168   2086   3550    5.3   0.25   1.2 1013
+LineSnap          200   -0.4  -16.6  16.1   8.5  0.00001   4315   3907    3.8   1.15   4.4  356
+RodCrack          400   -0.4  -19.1  18.6   8.3  0.00088   3568   4259   13.6   0.86   4.1 3531
+EscapePlip         40   -1.9  -11.8   9.9   7.2 -0.00043    904    921    0.8   0.24   0.7    0
+LandedChime      1200   -1.9  -15.2  13.3   6.9 -0.00001    931   1007    2.3   0.30   1.1  643
+
+Spectral energy share (%), bands <300 | 300-2k | 2k-5k | >5k. FLAT = raw; A = A-weighted (what the ear weighs);
+PHONE-A = A-weighted after a 2nd-order 700 Hz high-pass (rough phone loudspeaker).
+clip           FLAT                      A-WEIGHTED                PHONE-A                   
+Whir            44.2  49.5   3.3   3.0    11.3  72.1  10.6   6.0     0.2  66.8  21.1  11.9   
+Growl           71.3  24.1   3.1   1.5    11.0  65.8  17.6   5.6     0.2  62.2  28.6   9.1   
+ClickLoop        0.0   8.7  28.8  62.5     0.0  10.4  38.1  51.5     0.0   9.7  38.3  52.0   
+LineSing         0.0 100.0   0.0   0.0     0.0 100.0   0.0   0.0     0.0 100.0   0.0   0.0   
+DragClick0       0.0  14.2   9.3  76.5     0.0  19.7  13.3  67.0     0.0  18.9  13.4  67.7   
+DragClick1       0.0   1.9  33.2  64.9     0.0   2.2  43.4  54.4     0.0   1.9  43.5  54.6   
+DragClick2       0.0   1.1  29.1  69.8     0.0   1.2  40.4  58.4     0.0   1.0  40.5  58.6   
+RodCreak0       89.9   9.5   0.6   0.1    21.6  68.7   8.7   1.1     0.5  78.6  18.6   2.3   
+RodCreak1       89.3  10.0   0.6   0.1    21.6  68.7   8.7   1.1     0.5  78.6  18.6   2.3   
+RodCreak2       89.6   9.7   0.6   0.1    21.5  68.7   8.7   1.1     0.5  78.6  18.6   2.3   
+Splash          16.6  69.9  11.6   1.8     1.0  76.9  20.0   2.1     0.0  72.0  25.3   2.6   
+SplashHeavy     77.2  21.8   0.9   0.1    10.0  83.3   6.1   0.5     0.2  88.9  10.0   0.9   
+TelegraphSwirl   0.2  86.8   9.6   3.4     0.0  85.6  11.8   2.7     0.0  83.5  13.4   3.1   
+JerkThunk       98.6   1.4   0.0   0.0    83.1  15.7   0.9   0.4    15.0  56.5  19.5   9.0   
+JumpWhoosh       0.1  24.1  51.3  24.6     0.0  24.3  57.8  18.0     0.0  22.7  58.9  18.4   
+Hookset         92.8   6.6   0.2   0.5    64.9  27.0   3.3   4.8     6.4  24.6  28.0  41.0   
+LineSnap         0.0   1.3  97.0   1.7     0.0   1.3  97.8   0.9     0.0   1.2  97.8   0.9   
+RodCrack        86.0   6.1   4.0   3.9    16.6  29.4  33.4  20.6     0.1  29.0  43.8  27.1   
+EscapePlip       0.0 100.0   0.0   0.0     0.0 100.0   0.0   0.0     0.0 100.0   0.0   0.0   
+LandedChime      0.0  99.5   0.5   0.0     0.0  99.1   0.9   0.0     0.0  98.4   1.6   0.0   
+
+Loops: seam (wrap point) and periodicity
+  Whir       length 500 ms (repeats 2x/s at pitch 1); seam step 0.4487 = pct 99.2 of steps, curvature pct 99.2; harmonic(of 220 Hz) energy 93.4%, inharmonic 6.57%
+             AM (envelope) components 1-40 Hz: 4 Hz depth 19%, 12 Hz depth 2%, 6 Hz depth 1%, 14 Hz depth 1%
+  Growl      length 1000 ms (repeats 1x/s at pitch 1); seam step 0.0151 = pct 19.3 of steps, curvature pct 4.2;
+             AM (envelope) components 1-40 Hz: 11 Hz depth 33%, 6 Hz depth 10%, 3 Hz depth 8%, 17 Hz depth 7%
+  ClickLoop  length 500 ms (repeats 2x/s at pitch 1); seam step 0.7346 = pct 99.8 of steps, curvature pct 99.1; harmonic(of 40 Hz) energy 34.6%, inharmonic 65.44%
+             AM (envelope) components 1-40 Hz: 40 Hz depth 70%, 12 Hz depth 9%, 6 Hz depth 7%, 14 Hz depth 7%
+  LineSing   length 500 ms (repeats 2x/s at pitch 1); seam step 0.1544 = pct 96.3 of steps, curvature pct 48.4; harmonic(of 600 Hz) energy 99.7%, inharmonic 0.32%
+             AM (envelope) components 1-40 Hz: 6 Hz depth 8%, 18 Hz depth 0%, 12 Hz depth 0%, 30 Hz depth 0%
+
+=== WHIR ANATOMY (FightSynth.cs:23-43) ===
+Naive pulse train: period 100.227 samples -> periods 100 x84, 101 x25; widths 20 x104, 21 x6
+  raw pulses: aliasing/jitter (inharmonic) energy 1.27% ; strongest inharmonic line -30.1 dB re fundamental at 10610 Hz
+Whir() harmonic levels at pitch 1 (dB re 1st harmonic; nulls at every 5th harmonic from the 20% duty cycle):
+  h1..h25: 0 -2 -5 -12 -49 -16 -13 -15 -20 -48 -22 -20 -20 -26 -49 -27 -23 -25 -30 -48 -30 -26 -27 -31 -47
+  harmonic roll-off h1..h16 = -6.8 dB/octave (a soft, 'warm' tone would be -12 dB/oct or steeper)
+  whole clip: harmonic 93.4%, inharmonic (white noise 15% + aliasing) 6.6% of energy
+  of the inharmonic (noise) part, 38% lies above 5 kHz (unfiltered white noise, FightSynth.cs:39)
+Which harmonics the ear gets, by Whir pitch (0.6 = loaded slow crank, 1.4 = free spin). Columns: f0, A-weighted % in
+  <300|300-2k|2k-5k|>5k (headphones), same through phone speaker, loudest harmonic (phone+A):
+  pitch 0.6: f0  132 Hz  A:  23.3  54.6  16.8   5.3   phone+A:   0.7  56.5  32.6  10.2   loudest h7 = 924 Hz
+  pitch 0.8: f0  176 Hz  A:   8.3  71.1  14.5   6.1   phone+A:   0.1  58.2  29.3  12.5   loudest h7 = 1232 Hz
+  pitch 1.0: f0  220 Hz  A:  11.3  72.1  10.6   6.0   phone+A:   0.2  66.8  21.1  11.9   loudest h3 = 660 Hz
+  pitch 1.2: f0  264 Hz  A:  14.1  67.8  12.8   5.3   phone+A:   0.5  65.7  23.9   9.9   loudest h3 = 792 Hz
+  pitch 1.4: f0  308 Hz  A:   0.0  80.2  14.8   5.0   phone+A:   0.0  65.5  25.7   8.8   loudest h3 = 924 Hz
+1/3-octave profile of Whir (dB re loudest band), flat | phone+A:
+  Hz        63    79   100   126   159   200   252   318   400   504   635   800    1k  1.3k  1.6k    2k  2.5k  3.2k    4k  5.1k  6.4k  8.1k 10.2k
+  flat     -39   -40   -35   -35   -33     0   -32   -30    -2   -28    -5   -12   -27   -15   -11   -19   -16   -17   -17   -18   -17   -17   -17
+  ph+A     -95   -90   -77   -71   -61   -20   -48   -40    -5   -28    -1    -4   -18    -5     0    -8    -5    -5    -6    -7    -7    -8    -9
+
+=== GROWL (FightSynth.cs:46-57) 1/3-octave profile ===
+  Hz        63    79   100   126   159   200   252   318   400   504   635   800    1k  1.3k  1.6k    2k  2.5k  3.2k    4k  5.1k  6.4k  8.1k 10.2k
+  flat      -7    -3    -1    -2     0    -3    -2    -4    -4    -5    -6    -7    -8    -8    -9   -10   -11   -12   -13   -14   -14   -14   -15
+  ph+A     -67   -55   -46   -40   -31   -28   -20   -16   -11    -7    -4    -2    -1    -0     0    -1    -2    -3    -4    -5    -6    -8   -10
+=== LINE SING (FightSynth.cs:78-91): pitch 1+1.3x (FightCues.cs:497) -> fundamental/2nd harmonic ===
+  LoadShare 0.6: pitch 1.78 -> 1068 Hz + 2136 Hz, A-weight +0.2 dB
+  LoadShare 0.8: pitch 2.04 -> 1224 Hz + 2448 Hz, A-weight +0.5 dB
+  LoadShare 1.0: pitch 2.30 -> 1380 Hz + 2760 Hz, A-weight +0.8 dB
+  LoadShare 1.3: pitch 2.69 -> 1614 Hz + 3228 Hz, A-weight +1.0 dB
+=== CLICK LOOP (FightSynth.cs:60-75) ===
+  click spacing samples: 551,552 -> strictly periodic 40 Hz x pitch (0.25..3 -> 10..120 clicks/s)
+  Hz        63    79   100   126   159   200   252   318   400   504   635   800    1k  1.3k  1.6k    2k  2.5k  3.2k    4k  5.1k  6.4k  8.1k 10.2k
+  flat     -53   -46   -46   -42   -38   -35   -30   -29   -24   -22   -20   -16   -13   -11    -8    -6    -5    -5    -4    -3     0    -1    -0
+  ph+A    -121  -106   -97   -88   -77   -67   -55   -48   -39   -31   -25   -19   -13   -10    -7    -5    -3    -3    -3    -2     0    -2    -3
+=== DRAG CLICK (FightSynth.cs:96-111) 1/3-octave (single click, padded) ===
+  Hz        63    79   100   126   159   200   252   318   400   504   635   800    1k  1.3k  1.6k    2k  2.5k  3.2k    4k  5.1k  6.4k  8.1k 10.2k
+  flat     -70   -65   -60   -55   -49   -44   -38   -33   -30   -28   -29   -22   -20   -13    -8   -10   -14   -13   -16    -7    -9     0    -5
+  ph+A    -136  -123  -111   -98   -86   -74   -62   -52   -43   -37   -33   -23   -20   -11    -6    -8   -12   -11   -14    -5    -8     0    -6
+=== ROD CREAK (FightSynth.cs:114-137) 1/3-octave ===
+  Hz        63    79   100   126   159   200   252   318   400   504   635   800    1k  1.3k  1.6k    2k  2.5k  3.2k    4k  5.1k  6.4k  8.1k 10.2k
+  flat       0    -2   -21    -5   -11    -7   -10   -12   -13   -13   -15   -16   -16   -18   -19   -21   -23   -24   -27   -28   -30   -31   -33
+  ph+A     -48   -49   -58   -31   -36   -22   -17   -13   -11    -5    -3    -2     0    -1    -2    -3    -5    -6    -9   -11   -14   -16   -18
+
+=== DEMO perch300_HoldReel seed 3: outcome Landed after 18.7 s of fight; rendered 22.0 s @48k, master 0.8 ===
+  fight frames 1122 (18.7 s): cranking 100%  slipping 0%
+  whir      audible 100% of fight (100% of cranking), mean -14.3 dB src vol; starts 1 (3/min), loud hard cuts 0
+  growl     audible  23% of fight ( 23% of cranking), mean -21.3 dB src vol; starts 3 (10/min), loud hard cuts 0
+  sing      audible   0% of fight (  0% of cranking), mean -; starts 0 (0/min), loud hard cuts 0
+  clickloop audible   0% of fight (  0% of cranking), mean -; starts 0 (0/min), loud hard cuts 0
+  whir pitch while audible p5/p50/p95 = 0.95/1.15/1.23 -> pulse fundamental 209/252/270 Hz, loop repeats every 436 ms
+  whir pitch wobble (deviation from 0.5 s moving average): RMS 23 cents; target changes 15.8/s
+  whir target pitch per-change |step| p50/p90/max = 1/20/279 cents
+  growl volume wobble: RMS 1.0 dB around 0.5 s average; target changes 16.0/s; ReelLoad p50 0.53
+  growl source volume (pre-master) p50/p95 0.14/0.18 vs whir p50 0.24
+  one-shots played: Splash:5 TelegraphSwirl:1 JerkThunk:2 Hookset:1 LandedChime:1
+  MIX: peak -3.8 dBFS, RMS -25.0 dBFS, crest 21.2 dB, DC 0.00002, samples >1.0: 0
+       FLAT  43.2  52.0   3.5   1.4 | A  10.7  76.8  10.0   2.4 | PHONE-A   0.3  76.1  18.9   4.6 | centroid 3517 Hz (A 3477) | >11.025 kHz (resampler images) 0.22%
+  stem share of A-weighted energy (headphones / phone): whir 73/70%  growl 1/1%  clickloop 0/0%  sing 0/0%  ticks 0/0%  fx 26/29%
+  REEL BED while cranking (18.7 s): RMS -25.5 dBFS, peak -13.1, crest 12.4 dB, kurtosis 0.5
+       FLAT  45.8  48.4   4.1   1.8 | A  13.6  71.0  12.2   3.2 | PHONE-A   0.4  69.2  24.0   6.3 | centroid 3986 Hz (A 3827)
+       whir stem alone while cranking: RMS -25.6 dBFS | A  13.7  71.1  12.1   3.2 | PHONE-A   0.4  69.3  24.0   6.3 | centroid A 3866 Hz
+  timeline (1 s): t | phase | crank% | whir growl sing clkloop ticks fx  (stem RMS dBFS, '.' = silent) | mix
+    0 Bite      15 |   -36     .     .     .     .   -25 |   -25
+    1 Rest     100 |   -25     .     .     .     .   -29 |   -23
+    2 Run      100 |   -26   -33     .     .     .     . |   -26
+    3 Run      100 |   -26   -33     .     .     .     . |   -26
+    4 Rest     100 |   -26   -42     .     .     .   -29 |   -24
+    5 Rest     100 |   -26   -36     .     .     .   -41 |   -25
+    6 Rest     100 |   -26   -64     .     .     .     . |   -26
+    7 Rest     100 |   -25     .     .     .     .   -29 |   -24
+    8 Rest     100 |   -26   -41     .     .     .   -40 |   -26
+    9 Rest     100 |   -26     .     .     .     .     . |   -26
+   10 Rest     100 |   -26     .     .     .     .     . |   -26
+   11 Rest     100 |   -25     .     .     .     .     . |   -25
+   12 Rest     100 |   -26     .     .     .     .     . |   -26
+   13 Rest     100 |   -25     .     .     .     .     . |   -25
+   14 Rest     100 |   -26     .     .     .     .     . |   -26
+   15 Rest     100 |   -25     .     .     .     .     . |   -25
+   16 Rest     100 |   -25     .     .     .     .     . |   -25
+   17 Rest     100 |   -26     .     .     .     .     . |   -26
+   18 Rest     100 |   -25     .     .     .     .     . |   -25
+   19 Rest      50 |   -28     .     .     .     .   -21 |   -20
+   20 Caught     0 |   -48     .     .     .     .   -31 |   -31
+   21 Caught     0 |     .     .     .     .     .     . |  -240
+
+=== DEMO bream2kg_Technique seed 3: outcome InProgress after 29.2 s of fight; rendered 32.5 s @48k, master 0.8 ===
+  fight frames 1903 (31.7 s): cranking 20%  slipping 36%
+  whir      audible  31% of fight (100% of cranking), mean -20.0 dB src vol; starts 7 (13/min), loud hard cuts 0
+  growl     audible  34% of fight (100% of cranking), mean -11.9 dB src vol; starts 7 (13/min), loud hard cuts 0
+  sing      audible  11% of fight ( 17% of cranking), mean -34.4 dB src vol; starts 6 (11/min), loud hard cuts 0
+  clickloop audible  29% of fight (  0% of cranking), mean -12.6 dB src vol; starts 4 (8/min), loud hard cuts 0
+  whir pitch while audible p5/p50/p95 = 0.60/0.68/0.68 -> pulse fundamental 132/150/150 Hz, loop repeats every 735 ms
+  whir pitch wobble (deviation from 0.5 s moving average): RMS 28 cents; target changes 1.0/s
+  whir target pitch per-change |step| p50/p90/max = 217/275/275 cents
+  growl volume wobble: RMS 1.1 dB around 0.5 s average; target changes 1.4/s; ReelLoad p50 0.90
+  growl source volume (pre-master) p50/p95 0.47/0.50 vs whir p50 0.18
+  sing pitch p5/p50/p95 1.76/1.79/1.88 -> 1056/1074/1128 Hz; wobble 26 cents RMS
+  one-shots played: DragClick:70 Splash:1 SplashHeavy:7 TelegraphSwirl:7 Hookset:1
+  MIX: peak -3.8 dBFS, RMS -27.9 dBFS, crest 24.0 dB, DC -0.00003, samples >1.0: 0
+       FLAT  57.5  35.7   4.7   2.1 | A   7.5  72.5  15.6   4.3 | PHONE-A   0.2  72.5  21.4   6.0 | centroid 3429 Hz (A 3503) | >11.025 kHz (resampler images) 0.23%
+  stem share of A-weighted energy (headphones / phone): whir 12/7%  growl 33/27%  clickloop 6/8%  sing 2/2%  ticks 2/2%  fx 45/53%
+  REEL BED while cranking (6.4 s): RMS -22.3 dBFS, peak -8.6, crest 13.7 dB, kurtosis 0.5
+       FLAT  69.5  26.8   2.8   0.9 | A  14.8  67.2  15.0   3.1 | PHONE-A   0.4  67.8  26.4   5.4 | centroid 2785 Hz (A 3170)
+       whir stem alone while cranking: RMS -28.6 dBFS | A  24.3  62.1  11.1   2.5 | PHONE-A   1.2  68.8  24.5   5.5 | centroid A 3334 Hz
+  timeline (1 s): t | phase | crank% | whir growl sing clkloop ticks fx  (stem RMS dBFS, '.' = silent) | mix
+    0 Bite       0 |     .     .     .     .     .   -25 |   -25
+    1 Rest      25 |   -35   -30     .   -43   -50   -28 |   -26
+    2 Run        0 |   -47   -46   -39   -47   -54   -69 |   -37
+    3 Run        0 |     .     .   -38     .   -53     . |   -38
+    4 Rest       0 |     .     .   -55     .   -50   -39 |   -39
+    5 Dive      20 |   -36   -31   -44   -42   -48   -29 |   -27
+    6 Dive       0 |   -71   -67   -38   -70     .     . |   -38
+    7 Rest       0 |     .     .   -47     .   -50     . |   -45
+    8 Rest       0 |     .     .     .     .     .   -47 |   -47
+    9 Dive      20 |   -36   -31   -49   -43   -47   -29 |   -26
+   10 Dive       0 |   -68   -63   -38   -66     .     . |   -38
+   11 Dive       0 |     .     .   -38     .   -53     . |   -38
+   12 Rest       0 |     .     .   -61     .     .   -33 |   -33
+   13 Dive      30 |   -34   -29     .   -41   -45   -31 |   -26
+   14 Dive       0 |   -66   -64   -40   -65   -44     . |   -39
+   15 Dive       0 |     .     .   -39     .   -50     . |   -38
+   16 Rest       0 |     .     .   -64     .     .   -47 |   -47
+   17 Dive      55 |   -31   -27     .   -48     .   -29 |   -24
+   18 Dive       5 |   -39   -34     .   -40   -41     . |   -31
+   19 Dive       0 |     .     .     .     .   -41     . |   -41
+   20 Rest       0 |     .     .     .     .   -47     . |   -47
+   21 Rest       0 |     .     .     .     .     .   -33 |   -33
+   22 Run       65 |   -31   -26     .     .     .   -30 |   -23
+   23 Run      100 |   -28   -23     .     .     .     . |   -22
+   24 Run      100 |   -28   -23     .     .     .     . |   -22
+   25 Rest      15 |   -36   -30     .     .     .     . |   -29
+   26 Rest      15 |   -39   -36     .     .     .   -29 |   -28
+   27 Dive     100 |   -28   -23     .     .     .   -56 |   -22
+   28 Dive      90 |   -29   -23     .   -53     .     . |   -22
+   29 Rest       0 |   -46   -42     .     .     .     . |   -41
+   30 Rest       0 |     .     .     .     .     .     . |  -240
+   31 Rest       0 |     .     .     .     .     .     . |  -240
+
+=== DEMO pike4kg_Technique seed 3: outcome InProgress after 29.2 s of fight; rendered 32.5 s @48k, master 0.8 ===
+  fight frames 1903 (31.7 s): cranking 23%  slipping 40%
+  whir      audible  46% of fight (100% of cranking), mean -19.9 dB src vol; starts 7 (13/min), loud hard cuts 0
+  growl     audible  36% of fight ( 91% of cranking), mean -15.6 dB src vol; starts 10 (19/min), loud hard cuts 0
+  sing      audible  21% of fight ( 11% of cranking), mean -35.5 dB src vol; starts 6 (11/min), loud hard cuts 0
+  clickloop audible  41% of fight (  4% of cranking), mean -13.3 dB src vol; starts 6 (11/min), loud hard cuts 0
+  whir pitch while audible p5/p50/p95 = 0.60/0.68/1.04 -> pulse fundamental 132/150/229 Hz, loop repeats every 735 ms
+  whir pitch wobble (deviation from 0.5 s moving average): RMS 221 cents; target changes 7.1/s
+  whir target pitch per-change |step| p50/p90/max = 144/1467/1467 cents
+  growl volume wobble: RMS 2.0 dB around 0.5 s average; target changes 6.6/s; ReelLoad p50 0.46
+  growl source volume (pre-master) p50/p95 0.16/0.50 vs whir p50 0.15
+  sing pitch p5/p50/p95 1.78/1.78/1.90 -> 1069/1071/1142 Hz; wobble 15 cents RMS
+  one-shots played: DragClick:23 Splash:1 SplashHeavy:12 TelegraphSwirl:6 JumpWhoosh:3 Hookset:1
+  MIX: peak -3.8 dBFS, RMS -28.1 dBFS, crest 24.3 dB, DC -0.00013, samples >1.0: 0
+       FLAT  48.4  40.6   7.9   3.1 | A   5.9  67.3  21.4   5.4 | PHONE-A   0.1  64.2  28.4   7.3 | centroid 3704 Hz (A 3677) | >11.025 kHz (resampler images) 0.36%
+  stem share of A-weighted energy (headphones / phone): whir 21/13%  growl 17/13%  clickloop 6/8%  sing 4/4%  ticks 0/1%  fx 52/61%
+  REEL BED while cranking (7.3 s): RMS -24.1 dBFS, peak -9.1, crest 15.0 dB, kurtosis 1.2
+       FLAT  60.4  35.5   3.0   1.1 | A  13.0  71.0  13.0   3.0 | PHONE-A   0.4  70.0  24.1   5.6 | centroid 2887 Hz (A 3178)
+       whir stem alone while cranking: RMS -27.7 dBFS | A  14.4  71.7  11.0   2.9 | PHONE-A   0.5  70.3  23.0   6.2 | centroid A 3271 Hz
+  timeline (1 s): t | phase | crank% | whir growl sing clkloop ticks fx  (stem RMS dBFS, '.' = silent) | mix
+    0 Bite       0 |     .     .     .     .     .   -25 |   -25
+    1 Rest      20 |   -36   -32   -47   -42     .   -29 |   -26
+    2 Run        0 |   -50   -47   -38   -49     .   -72 |   -37
+    3 Run        0 |     .     .   -38   -76     .     . |   -38
+    4 Rest       0 |     .     .   -45     .   -53   -39 |   -38
+    5 Run       30 |   -34   -29   -44   -39   -52   -29 |   -25
+    6 Run        0 |   -63   -58   -39   -58   -54     . |   -39
+    7 Rest       0 |     .     .   -72     .     .     . |   -72
+    8 Rest       0 |     .     .     .     .     .   -29 |   -29
+    9 Run       15 |   -37   -33   -42   -39   -46   -38 |   -30
+   10 Run        0 |     .     .   -38   -66     .     . |   -38
+   11 Rest       0 |     .     .   -45   -72   -54     . |   -44
+   12 Rest      30 |   -35   -30   -59   -53     .   -29 |   -26
+   13 Run        0 |   -40   -37   -38   -41     .   -68 |   -33
+   14 Run        0 |     .     .   -38   -64   -53     . |   -38
+   15 Rest       5 |   -41   -70   -62     .     .   -39 |   -37
+   16 Run       40 |   -32   -28   -48   -36   -52   -29 |   -24
+   17 Run        0 |   -55   -50   -39   -50   -45     . |   -38
+   18 Run        0 |     .     .   -40   -62   -47     . |   -39
+   19 Rest       5 |   -44     .   -67     .     .     . |   -44
+   20 Rest      80 |   -29   -25     .     .     .   -30 |   -23
+   21 Jump      90 |   -26   -32     .     .     .   -32 |   -24
+   22 Rest      25 |   -32   -36     .     .     .   -54 |   -31
+   23 Jump     100 |   -27   -26     .     .     .   -29 |   -22
+   24 Rest      50 |   -28   -37     .     .     .   -35 |   -27
+   25 Rest      20 |   -33     .     .     .     .     . |   -33
+   26 Rest     100 |   -28   -25     .     .     .   -30 |   -22
+   27 Jump      70 |   -27   -35     .     .     .   -31 |   -25
+   28 Rest      20 |   -32   -78     .     .     .     . |   -32
+   29 Rest      25 |   -34   -30   -53   -39   -50   -29 |   -26
+   30 Run        0 |   -51   -49   -65   -47     .   -77 |   -44
+   31 Run        0 |     .     .     .   -61     .     . |   -61
+
+WAVS:
+  F:\fishing\.previews\audio\current\clip_Whir_loop.wav
+  F:\fishing\.previews\audio\current\clip_Growl_loop.wav
+  F:\fishing\.previews\audio\current\clip_ClickLoop_loop.wav
+  F:\fishing\.previews\audio\current\clip_LineSing_loop.wav
+  F:\fishing\.previews\audio\current\clip_DragClick0.wav
+  F:\fishing\.previews\audio\current\clip_DragClick1.wav
+  F:\fishing\.previews\audio\current\clip_DragClick2.wav
+  F:\fishing\.previews\audio\current\clip_RodCreak0.wav
+  F:\fishing\.previews\audio\current\clip_RodCreak1.wav
+  F:\fishing\.previews\audio\current\clip_RodCreak2.wav
+  F:\fishing\.previews\audio\current\clip_Splash.wav
+  F:\fishing\.previews\audio\current\clip_SplashHeavy.wav
+  F:\fishing\.previews\audio\current\clip_TelegraphSwirl.wav
+  F:\fishing\.previews\audio\current\clip_JerkThunk.wav
+  F:\fishing\.previews\audio\current\clip_JumpWhoosh.wav
+  F:\fishing\.previews\audio\current\clip_Hookset.wav
+  F:\fishing\.previews\audio\current\clip_LineSnap.wav
+  F:\fishing\.previews\audio\current\clip_RodCrack.wav
+  F:\fishing\.previews\audio\current\clip_EscapePlip.wav
+  F:\fishing\.previews\audio\current\clip_LandedChime.wav
+  F:\fishing\.previews\audio\current\clip_DragClick_rotation_12ps.wav
+  F:\fishing\.previews\audio\current\clip_RodCreak_rotation.wav
+  F:\fishing\.previews\audio\current\fightdemo_perch300_HoldReel.wav
+  F:\fishing\.previews\audio\current\fightdemo_perch300_HoldReel_reelbed.wav
+  F:\fishing\.previews\audio\current\fightdemo_perch300_HoldReel_whir.wav
+  F:\fishing\.previews\audio\current\fightdemo_perch300_HoldReel_growl.wav
+  F:\fishing\.previews\audio\current\fightdemo_bream2kg_Technique.wav
+  F:\fishing\.previews\audio\current\fightdemo_bream2kg_Technique_reelbed.wav
+  F:\fishing\.previews\audio\current\fightdemo_bream2kg_Technique_whir.wav
+  F:\fishing\.previews\audio\current\fightdemo_bream2kg_Technique_growl.wav
+  F:\fishing\.previews\audio\current\fightdemo_pike4kg_Technique.wav
+  F:\fishing\.previews\audio\current\fightdemo_pike4kg_Technique_reelbed.wav
+  F:\fishing\.previews\audio\current\fightdemo_pike4kg_Technique_whir.wav
+  F:\fishing\.previews\audio\current\fightdemo_pike4kg_Technique_growl.wav

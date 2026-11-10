@@ -1,0 +1,17 @@
+# Конфиг Nakama для локальной разработки.
+# Боевые конфиги ru-1 и us-1 будут в infra/ и не содержат паролей в git.
+
+name: nakama-local
+
+logger:
+  level: DEBUG
+
+runtime:
+  js_entrypoint: build/index.js
+  # Переменные окружения для серверной логики (ctx.env в TypeScript)
+  env:
+    - SERVER_ID=local
+    - SERVER_REGION=dev
+
+session:
+  token_expiry_sec: 7200

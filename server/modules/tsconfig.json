@@ -1,0 +1,17 @@
+{
+  // Nakama исполняет JS в goja: на выходе один ES5-файл без модулей.
+  // TypeScript закреплён на 5.9: в 6.x target es5 и outFile устарели, в 7.x удалены.
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5"],
+    "outFile": "./build/index.js",
+    "typeRoots": ["./node_modules"],
+    "types": ["nakama-runtime"],
+    "strict": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "servers": [
+    { "id": "ru-1", "name": "Россия", "region": "ru", "host": "ru1.example.com", "port": 7350, "ssl": true, "status": "online" },
+    { "id": "us-1", "name": "North America", "region": "us", "host": "us1.example.com", "port": 7350, "ssl": true, "status": "online" }
+  ]
+}

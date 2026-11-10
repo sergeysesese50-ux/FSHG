@@ -1,0 +1,131 @@
+AudioIngame 2026-11-10 13:09; out F:\fishing\.previews\audio\ingame; mixer makeup 3.15 (+10.0 dB), master 0.8
+
+=== BANK ===
+  build (desktop, Release, one thread): first 258 ms (incl. JIT), then 234 / 229 ms; bit-identical rebuild: True
+  2529181 samples = 9.6 MB as float; lake bed 64.0 s
+  of which the 64 s lake bed alone 126 ms
+
+=== CLIPS: variant distinctness (AudioCritic Variants: distinct = clusters at similarity 0.97) and loop seams ===
+  tock       ingame 8 distinct of 8 (nearest-sibling p50 0.87, pairwise mean 0.58)   natural preview 5 of 8 (nearest p50 0.98)
+  creak      ingame 12 distinct of 12 (nearest-sibling p50 0.15, pairwise mean 0.05)   natural preview 2 of 14 (nearest p50 0.98)
+  rotor      ingame 16 distinct of 16 (nearest-sibling p50 0.30, pairwise mean 0.16)   natural preview 16 of 16 (nearest p50 0.30)
+  drag       ingame 16 distinct of 16 (nearest-sibling p50 0.89, pairwise mean 0.68)   natural preview 16 of 16 (nearest p50 0.89)
+  strain S   ingame 6 distinct of 6 (nearest-sibling p50 0.77, pairwise mean 0.69)   natural preview -
+  strain B   ingame 6 distinct of 6 (nearest-sibling p50 0.64, pairwise mean 0.51)   natural preview -
+  crackle    ingame 8 distinct of 8 (nearest-sibling p50 0.71, pairwise mean 0.46)   natural preview -
+  creak quiet[i] vs loud[i]: max similarity 0.07; centroid quiet 538 Hz, loud 825 Hz
+  tock fundamentals: 404 447 374 425 393 436 385 415 Hz
+  loop seams (AudioCritic SeamAt at the wrap; flags: SEAM = audible discontinuity, soft = level step):
+    lake bed  @0.000s step 0.0009 (rank 4.4, 0.02x p99.9), curvature rank 99.1 (0.77x), HF-click rank 70.5 (0.30x), level jump +0.0 dB (rank 0.4)
+    lay bed   @0.000s step 0.0621 (rank 80.3, 0.29x p99.9), curvature rank 46.5 (0.08x), HF-click rank 39.7 (0.03x), level jump +1.7 dB (rank 91.0)
+    line hum  @0.000s step 0.0894 (rank 96.8, 0.66x p99.9), curvature rank 42.9 (0.18x), HF-click rank 61.5 (0.31x), level jump +0.1 dB (rank 7.1)
+    natural ambience (prototype, for reference) @0.000s step 0.0065 (rank 30.0, 0.10x p99.9), curvature rank 26.0 (0.07x), HF-click rank 59.5 (0.08x), level jump +5.0 dB (rank 99.7)  <-- soft level step
+  lake bed self-similarity (1 s features, circular): max r 0.21 at lag 1.0 s (1 = exact repeat)
+
+=== FIGHT perch300_holdreel (seed 3): Landed after 18.7 s; fight from 3.90 s; rendered 25.6 s @48k, buffers 1024 ===
+  fight span: integrated -16.5 LUFS (phone-speaker model -19.4 LUFS), short-term max -15.0, LRA 3.2 LU; sample peak -1.0 dBFS, true peak -1.0 dBTP, |x|>=1: 0
+  limiter: deepest -3.4 dB; gain reduction > 0.1 / 1 / 3 dB on 18.9 / 2.4 / 0.0% of samples
+  spectrum: centroid 755 Hz | FLAT   9.9  88.2   1.9   0.0 | A   1.6  94.6   3.8   0.0 | PHONE-A   0.0  94.0   5.9   0.1
+  reel while cranking -16.4 dBFS RMS / peak -1.0; drag while slipping -; ambience in fight -30.4 dBFS RMS / peak -13.6, while waiting -27.7 dBFS RMS / peak -15.2
+  ambience sits 14.0 dB under the reel while cranking (ducked 2.7 dB vs waiting)
+  Rotor       95 grains (5.1/s), variants used 16, same twice in a row 0, gain -9.7..-6.0 dB
+  Tock        15 grains (0.8/s), variants used 7, same twice in a row 0, gain -18.5..-15.6 dB
+  Strain      13 grains (0.7/s), variants used 5, same twice in a row 0, gain -24.0..-16.3 dB
+  voices: peak grain voices 3 of 24, stolen 0; one-shots played 11, stale 0; birds 3
+  reel bus ducked under one-shots (more than 1 dB) 30.6% of the render, 41.9% of the fight span length
+  rotor rhythm (grain log): consecutive-interval change median 5.1%, p90 13.2%
+  onsets (AudioCritic DetectTicks on reel-only fight span): 100 at 5.2/s, local IOI change median 5.2%, on 60 fps grid 3%, identical neighbours 0%
+
+=== FIGHT bream2kg_technique (seed 3): InProgress after 26.0 s; fight from 3.90 s; rendered 32.9 s @48k, buffers 1024 ===
+  fight span: integrated -17.4 LUFS (phone-speaker model -20.3 LUFS), short-term max -15.8, LRA 4.0 LU; sample peak -1.0 dBFS, true peak -0.9 dBTP, |x|>=1: 0
+  limiter: deepest -3.3 dB; gain reduction > 0.1 / 1 / 3 dB on 8.8 / 1.0 / 0.0% of samples
+  spectrum: centroid 738 Hz | FLAT  14.3  84.2   1.5   0.0 | A   2.3  94.5   3.2   0.0 | PHONE-A   0.1  95.1   4.8   0.0
+  reel while cranking -22.3 dBFS RMS / peak -1.7; drag while slipping -17.3 dBFS RMS / peak -1.0; ambience in fight -30.6 dBFS RMS / peak -13.6, while waiting -27.7 dBFS RMS / peak -15.2
+  ambience sits 8.3 dB under the reel while cranking (ducked 2.9 dB vs waiting)
+  drag peaks +0.7 dB over reel peaks
+  Rotor        3 grains (0.1/s), variants used 3, same twice in a row 0, gain -10.7..-9.6 dB
+  Strain      49 grains (1.9/s), variants used 12, same twice in a row 0, gain -20.4..-12.7 dB
+  Drag       364 grains (14.0/s), variants used 16, same twice in a row 0, gain -13.7..-2.9 dB
+  voices: peak grain voices 4 of 24, stolen 0; one-shots played 17, stale 0; birds 3
+  reel bus ducked under one-shots (more than 1 dB) 34.7% of the render, 44.0% of the fight span length
+  onsets (AudioCritic DetectTicks on reel-only fight span): 438 at 26.4/s, local IOI change median 6.4%, on 60 fps grid 4%, identical neighbours 0%
+
+=== LOUDNESS (rule 18: about -16 LUFS on the device, true peak <= -1 dBTP) ===
+  perch300_holdreel    master 0.8: -16.5 LUFS (phone model -19.4), LRA 3.2 LU, true peak -1.0 dBTP; at master 1.0 ≈ -14.6 LUFS before limiting
+  bream2kg_technique   master 0.8: -17.4 LUFS (phone model -20.3), LRA 4.0 LU, true peak -0.9 dBTP; at master 1.0 ≈ -15.5 LUFS before limiting
+
+=== SCENARIOS (in-game path, no ambience, no one-shots) ===
+  rotor @110 cm/s: mean IOI 127.3 ms (expected 127.3), IOI CV 3.5%
+  drag @14 cm/s: mean IOI 85.7 ms (expected 85.7), IOI CV 5.0%
+
+=== AMBIENCE (in-game mixer, Idle state, master 0.8) ===
+  day                    -26.6 LUFS, RMS -25.8 dBFS, peak -11.0; centroid 371 Hz | FLAT  50.4  49.1   0.4   0.0 | A  14.3  83.6   2.1   0.0; bird calls 6, cricket chirps 0
+  night                  -30.4 LUFS, RMS -29.6 dBFS, peak -15.1; centroid 332 Hz | FLAT  55.6  44.0   0.4   0.0 | A  18.6  79.1   2.2   0.1; bird calls 0, cricket chirps 97
+  dusk 0→1 over 10–50 s  -28.3 LUFS, RMS -27.4 dBFS, peak -11.6; centroid 350 Hz | FLAT  53.1  46.5   0.4   0.0 | A  16.3  81.7   2.0   0.0; bird calls 5, cricket chirps 129
+
+=== CPU per audio buffer (desktop .NET 8 Release; Unity calls Render once per buffer on its audio thread) ===
+  perch fight (full mix)                       1024 frames: mean 35 us, p99 49 us, max 524 us = 0.16% / 0.23% of the 21.3 ms buffer
+  bream fight (full mix)                       1024 frames: mean 38 us, p99 61 us, max 344 us = 0.18% / 0.29% of the 21.3 ms buffer
+  stress (drag 83/s, strain, crackle, creak, 20 one-shots/s, night) 1024 frames: mean 55 us, p99 71 us, max 77 us = 0.26% / 0.33% of the 21.3 ms buffer
+    stress output: peak -1.0 dBFS, |x|>=1: 0, peak grain voices 11, stolen 193, limiter deepest -8.0 dB
+  stress (drag 83/s, strain, crackle, creak, 20 one-shots/s, night)  256 frames: mean 15 us, p99 34 us, max 165 us = 0.29% / 0.64% of the 5.3 ms buffer
+
+=== COMPARISON with the natural previews (natural files brought back to game level: demos -3.4 dB, scenarios -1.4 dB) ===
+  LUFS/LRA/TP: loudness, range, true peak. Bands: share of energy in 2-5 kHz flat / A-weighted / phone-model; <300 Hz flat.
+  Jitter: AudioCritic DetectTicks local IOI change (median), onsets per second.
+  Dynamics: crest = sample peak over active RMS (dB); env = p10..p90 range of the 10 ms RMS envelope (dB); mod = AM index 2-8 Hz.
+  Defect metrics (AudioCritic): buzz = share of active energy with a harmonic comb >= 8 dB (defect > 20%); harsh = A(2-5k) x AM(20-150) (warn >= 0.05).
+  what                                 LUFS   LRA     TP   cent    2-5k F/A/Ph %  <300%   jit%   on/s  crest   env   mod  buzz%  harsh
+  ingame  perch fight (full)          -16.5   3.2   -1.0    755      1.9/3.8/5.9    9.9    NaN    NaN   15.4  11.2  0.44    1.3  0.016
+  natural perch fight (full)          -25.2   1.8   -6.4    736      1.8/3.7/5.9   10.5    NaN    NaN   18.6  10.8  0.50    0.6  0.015
+  ingame  bream fight (full)          -17.4   4.0   -0.9    738      1.5/3.2/4.8   14.3    NaN    NaN   17.3  18.2  0.21    0.9  0.029
+  natural bream fight (full)          -26.3   3.0   -7.4    733      1.5/3.0/4.6   14.0    NaN    NaN   19.6  19.0  0.27    2.2  0.031
+  ingame  perch reel only             -16.5   2.3   -0.9    836      2.4/4.2/6.2    6.3    5.2    5.2   15.6  10.3  0.49    0.7  0.018
+  natural perch reel only             -26.1   1.3   -7.3    835      2.3/4.1/6.0    6.4    5.0    5.7   18.9  10.2  0.53    0.2  0.017
+  ingame  bream reel+drag only        -18.0   7.4   -0.9   1016      2.8/4.3/5.3    5.1    6.4   26.4   17.7  21.9  0.13    3.5  0.041
+  natural bream reel+drag only        -27.3   4.9   -7.3    955      2.5/4.0/5.1    7.9    5.9   30.4   20.3  22.7  0.17    2.5  0.041
+  ingame  01_reel_noload              -15.2   1.6   -1.0    914      3.9/6.4/9.0    4.8    4.6    7.1   14.5  15.9  0.39    0.0  0.026
+  natural 01_reel_noload              -24.1   1.8   -7.1    912      3.6/6.0/8.3    4.5    4.2    6.7   17.2  14.6  0.45    2.3  0.024
+  ingame  02_reel_load                -18.5   2.3   -1.0    815      2.4/4.5/6.6    7.5    7.1    5.8   17.6   9.1  0.51    0.0  0.016
+  natural 02_reel_load                -27.9   1.8   -8.1    701      1.1/2.2/3.7   13.1   12.4   18.4   19.6  13.8  0.51    0.0  0.011
+  ingame  03_reel_fast                -12.5   1.0   -1.0    875      3.0/5.0/7.2    5.0    6.7   17.2   11.6  10.5  0.13    1.6  0.019
+  natural 03_reel_fast                -21.1   0.9   -6.5    880      2.9/4.9/6.9    4.8    8.1   17.0   14.8  10.0  0.16    1.4  0.020
+  ingame  04_drag_slow                -21.5   2.1   -0.9   1085      2.7/3.8/4.5    3.5    6.0    8.5   20.8  21.3  0.50    4.4  0.085
+  natural 04_drag_slow                -29.8   1.9   -5.9   1111      2.8/3.9/4.6    3.5    4.8    8.6   24.2  21.2  0.49    0.0  0.088
+  ingame  05_drag_fast                -15.9   2.5   -0.9   1091      5.0/7.2/8.8    2.9    5.7   24.9   15.4  12.3  0.07    3.2  0.030
+  natural 05_drag_fast                -25.9   2.8   -6.5   1101      5.2/7.5/9.0    3.0    4.8   27.1   19.8  11.8  0.07    4.8  0.031
+  ingame  06_line_tension             -15.5   7.1   -1.0    991     5.5/9.0/11.6    5.1    NaN    NaN   15.1  15.0  0.16   19.5  0.028
+  natural 06_line_tension             -28.2   1.0   -8.7    587      0.3/0.8/1.6   18.6    NaN    NaN   19.1  14.2  0.34    0.0  0.005
+  ingame  07_rod_creak                -15.4   2.0   -0.9    807      2.3/4.3/6.2   10.6   13.6   17.6   14.5   8.6  0.23    0.5  0.017
+  natural 07_rod_creak                -26.4   2.9   -4.4    654      0.5/1.1/1.9   18.0   12.8   36.3   21.7  13.2  0.40    5.2  0.008
+  ingame  27_crank_into_slip          -17.8   1.2   -0.9    900      2.0/3.4/4.6    5.4    NaN    NaN   16.9  12.4  0.45    3.6  0.037
+  natural 27_crank_into_slip          -26.3   0.9   -5.7    919      2.1/3.4/4.6    5.9    NaN    NaN   20.7  13.6  0.53    2.5  0.042
+  ingame  ambience day (64 s)         -26.6   1.9  -11.0    371      0.4/2.1/5.8   50.4    NaN    NaN   14.8   5.4  0.11    0.3  0.005
+  natural ambience day (64 s)         -41.5   2.3  -26.0    368      0.4/2.0/5.8   50.3    NaN    NaN   14.7   5.4  0.11    0.7  0.005
+  note: ingame levels include the master makeup and limiter; natural previews are the palette at game level (no makeup).
+
+FILES:
+  F:\fishing\.previews\audio\ingame\54_variants_tock_x8.wav
+  F:\fishing\.previews\audio\ingame\52_variants_creak_quiet6_loud6.wav
+  F:\fishing\.previews\audio\ingame\50_variants_rotor_x16.wav
+  F:\fishing\.previews\audio\ingame\51_variants_drag_bright8_dark8.wav
+  F:\fishing\.previews\audio\ingame\55_variants_strain_small6_big6.wav
+  F:\fishing\.previews\audio\ingame\56_variants_crackle_x8.wav
+  F:\fishing\.previews\audio\ingame\31_lakebed_seam_check.wav
+  F:\fishing\.previews\audio\ingame\40_fight_perch300_holdreel.wav
+  F:\fishing\.previews\audio\ingame\42_fight_perch300_reel_only.wav
+  F:\fishing\.previews\audio\ingame\44_fight_perch300_holdreel_ambience_only.wav
+  F:\fishing\.previews\audio\ingame\41_fight_bream2kg_technique.wav
+  F:\fishing\.previews\audio\ingame\43_fight_bream2kg_reel_drag_only.wav
+  F:\fishing\.previews\audio\ingame\45_fight_bream2kg_technique_ambience_only.wav
+  F:\fishing\.previews\audio\ingame\01_reel_noload.wav
+  F:\fishing\.previews\audio\ingame\02_reel_load.wav
+  F:\fishing\.previews\audio\ingame\03_reel_fast.wav
+  F:\fishing\.previews\audio\ingame\04_drag_slow.wav
+  F:\fishing\.previews\audio\ingame\05_drag_fast.wav
+  F:\fishing\.previews\audio\ingame\06_line_tension.wav
+  F:\fishing\.previews\audio\ingame\07_rod_creak.wav
+  F:\fishing\.previews\audio\ingame\27_crank_into_slip.wav
+  F:\fishing\.previews\audio\ingame\30_ambience_day_64s.wav
+  F:\fishing\.previews\audio\ingame\32_ambience_night_40s.wav
+  F:\fishing\.previews\audio\ingame\33_ambience_dusk_60s.wav
