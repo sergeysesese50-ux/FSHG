@@ -1,0 +1,14 @@
+{
+  "name": "fishing-server-modules",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Серверная логика Nakama для мобильной рыбалки",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "devDependencies": {
+    "nakama-runtime": "github:heroiclabs/nakama-common#v1.49.0",
+    "typescript": "5.9.3"
+  }
+}

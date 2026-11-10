@@ -1,0 +1,10 @@
+<Project>
+  <!-- Общие пути для звуковых харнессов в tools/audio: корень репозитория (от этой папки) и библиотеки Unity 6.6.
+       Unity в другом месте: dotnet build -p:UnityManaged="D:\Unity\6000.6.8f1\Editor\Data\Managed\UnityEngine" -->
+  <PropertyGroup>
+    <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\'))</RepoRoot>
+    <GameScripts>$(RepoRoot)client\Assets\_Game\Scripts\</GameScripts>
+    <GameTests>$(RepoRoot)client\Assets\_Game\Tests\EditMode\</GameTests>
+    <UnityManaged Condition="'$(UnityManaged)' == ''">C:\Program Files\Unity\Hub\Editor\6000.6.8f1\Editor\Data\Managed\UnityEngine</UnityManaged>
+  </PropertyGroup>
+</Project>

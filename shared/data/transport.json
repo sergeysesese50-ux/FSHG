@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "boats": [
+    { "id": "rowboat", "price": 600, "rentPrice": 40, "rentMinutes": 30 }
+  ]
+}

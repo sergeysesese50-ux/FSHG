@@ -1,0 +1,50 @@
+        /// <summary>
+        /// Натуга катушки (вместо «рычания»), 5 с: глухое мурчание тела катушки. Резонансный шум 240 Гц (Q 2,5), 360 Гц (Q 3, ×0,8),
+        /// 520 Гц (Q 3, ×0,5), 760 Гц (Q 3, ×0,25) под огибающей из нерегулярных «зёрен трения»: ~18 в секунду, интервалы ×0,6–1,6
+        /// (периода нет), окно — приподнятый косинус 30–45 мс, сила √(интервал/среднее) ±20%; пол огибающей 0,35. Плюс подушка 300 Гц
+        /// (Q 0,7) на −10 дБ и дрейф 1 период на петлю ±10%. НЧ 1,5 кГц, ВЧ 120 Гц. Всё по кругу.
+        /// </summary>
+        public static float[] StrainBed()
+        {
+            const double L = 5.0;
+            int n = Samples(L);
+            var r = new Rng(0x57A10002u);
+            double[] f = { 240, 360, 520, 760 };
+            double[] q = { 2.5, 3.0, 3.0, 3.0 };
+            double[] g = { 1.0, 0.8, 0.5, 0.25 };
+            var body = new float[n];
+            for (int k = 0; k < f.Length; k++)
+            {
+                var b = BandCircular(WhiteNoise(n, ref r), f[k], q[k]);
+                double rb = RmsOf(b);
+                for (int i = 0; i < n; i++) body[i] += (float)(g[k] * b[i] / rb);
+            }
+            var env = new double[n];
+            double t = 0, mean = 1.0 / 18;
+            while (t < L)
+            {
+                double interval = mean * (0.6 + 1.0 * r.U());
+                double amp = Math.Sqrt(interval / mean) * r.J(0.2);
+                int w = Samples(0.03 + 0.015 * r.U()), at = Samples(t);
+                for (int i = 0; i < w; i++)
+                    env[(at + i) % n] += amp * (0.5 - 0.5 * Math.Cos(TwoPi * (i + 0.5) / w));
+                t += interval;
+            }
+            double em = 0;
+            for (int i = 0; i < n; i++) em += env[i];
+            em /= n;
+            var cushion = BandCircular(WhiteNoise(n, ref r), 300, 0.7);
+            double rbody = RmsOf(body), rc = RmsOf(cushion);
+            double ph = TwoPi * r.U();
+            var s = new float[n];
+            for (int i = 0; i < n; i++)
+            {
+                double drift = 1 + 0.1 * Math.Sin(TwoPi * i / n + ph);
+                double e = 0.35 + 0.65 * env[i] / em;
+                s[i] = (float)((e * body[i] / rbody + 0.32 * cushion[i] / rc) * drift);
+            }
+            Circular(s, a => { LowPass(a, 1500, 0.6); HighPass(a, 120, 0.7); });
+            NormalizeLoop(s, LoopRms);
+            return s;
+        }
+

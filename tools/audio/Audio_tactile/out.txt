@@ -1,0 +1,163 @@
+ambience 64 s generation: 787 ms
+determinism (rebuild identical): True
+clip generation: 907 ms (22050 Hz loops + one-shots, 64 s ambience) 
+grain bank @48k: 32 ms, 426132 samples
+
+=== GRAINS @48k (per-variant mean; centroid flat; 2-5k share flat / A-weighted / phone-A) ===
+  detent       n=16 len    90 ms  centroid  1157 Hz (min 1118, max 1184)  2-5k  0.9% / A  1.6% / phA  2.8%  >5k  0.0%  <300  1.6%  DC max 0.00040
+               variant spread: centroid sd   17 Hz, 10ms-RMS sd 0.59 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.167
+  drag bright  n=16 len    45 ms  centroid  1445 Hz (min 1383, max 1479)  2-5k  3.5% / A  4.5% / phA  5.1%  >5k  0.0%  <300  2.1%  DC max 0.00108
+               variant spread: centroid sd   23 Hz, 10ms-RMS sd 0.49 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.159
+  drag dark    n=16 len    45 ms  centroid  1119 Hz (min 1091, max 1152)  2-5k  0.5% / A  0.7% / phA  0.8%  >5k  0.0%  <300  1.9%  DC max 0.00026
+               variant spread: centroid sd   16 Hz, 10ms-RMS sd 0.31 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.130
+  strain       n=12 len   120 ms  centroid  1012 Hz (min 992, max 1028)  2-5k  1.3% / A  2.6% / phA  4.0%  >5k  0.0%  <300 15.3%  DC max 0.00000
+               variant spread: centroid sd   11 Hz, 10ms-RMS sd 0.52 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.145
+  creak soft   n= 4 len   488 ms  centroid   873 Hz (min 869, max 880)  2-5k  0.5% / A  1.2% / phA  2.1%  >5k  0.0%  <300 18.3%  DC max 0.00000
+               variant spread: centroid sd    4 Hz, 10ms-RMS sd 0.83 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.111
+  creak hard   n= 4 len   428 ms  centroid  1173 Hz (min 1167, max 1184)  2-5k  2.9% / A  5.5% / phA  8.2%  >5k  0.0%  <300 12.5%  DC max 0.00000
+               variant spread: centroid sd    6 Hz, 10ms-RMS sd 0.87 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.143
+  rotor swish  n=12 len    75 ms  centroid  1200 Hz (min 1150, max 1246)  2-5k  2.4% / A  3.8% / phA  5.2%  >5k  0.0%  <300  2.8%  DC max 0.00002
+               variant spread: centroid sd   29 Hz, 10ms-RMS sd 0.98 dB; first-sample |x| max 0.0000, last 0.0000; max 1-sample step / peak 0.170
+  tanφ = 1/(π f τ) of repeated modes: detent 620 Hz/13 ms 0.039, 1040/8 ms 0.038, 1560/3.4 ms 0.060; drag 1250/3.8 ms 0.067, 560/5 ms 0.114  (metal < 0.005)
+
+=== LOOPS (22050 Hz) — seam = wrap step / curvature as percentile within the loop's own samples; AM = max single-bin envelope depth ===
+  spool purr   3.00 s  peak  -3.1 dBFS  DC 0.00000  centroid  1028 Hz  2-5k 0.8% (A 1.4%)  seam step 0.0373 = pct 56.6, curvature pct 2.8, 20ms-RMS at seam = pct 15 AM 2-8 Hz 2.7% @3.3, 20-150 Hz 5.0% @79
+  line hum     4.00 s  peak  -3.1 dBFS  DC 0.00000  centroid   693 Hz  2-5k 0.0% (A 0.0%)  seam step 0.0076 = pct 23.4, curvature pct 83.4, 20ms-RMS at seam = pct 39 AM 2-8 Hz 8.4% @2.2, 20-150 Hz 6.7% @20
+  ambience    64.00 s  peak  -6.0 dBFS  DC -0.00000  centroid  1543 Hz  2-5k 3.7% (A 8.8%)  seam step 0.0011 = pct 5.4, curvature pct 95.1, 20ms-RMS at seam = pct 78
+
+=== SCENES (rendered through TactileCues.Map + grain engine + loops @48k, master 0.8, inputs held at 20 Hz like FightModel) ===
+file                                 sec   peak    rms  LUFS~       DC   cent  <300  2-5k 2-5kA   phA   >5k
+01_reel_idle                        7.83   -3.0  -21.5  -21.5 -0.00020   1171   1.7   0.9   1.6   2.8   0.0  gain   +5.4 dB
+                                  layer loudness at game level: grains -27.1, purr -39.2, hum NaN LUFS~ (peak grains -8.7 dBFS)
+                                  grains: detent 77, rotor 0, drag 0, strain 0, creak 0; peak voices 2; loop starts purr 1, hum 0
+02_reel_load                        8.83   -3.0  -25.9  -26.1 -0.00005   1056   4.4   0.9   1.8   3.2   0.0  gain   +5.2 dB
+                                  layer loudness at game level: grains -31.3, purr -48.7, hum NaN LUFS~ (peak grains -8.1 dBFS)
+                                  grains: detent 21, rotor 14, drag 0, strain 71, creak 0; peak voices 5; loop starts purr 1, hum 0
+03_reel_gaining                     7.83   -3.0  -21.5  -21.5 -0.00018   1144   1.8   0.9   1.7   3.0   0.0  gain   +5.3 dB
+                                  layer loudness at game level: grains -27.0, purr -40.4, hum NaN LUFS~ (peak grains -8.5 dBFS)
+                                  grains: detent 69, rotor 44, drag 0, strain 0, creak 0; peak voices 3; loop starts purr 1, hum 0
+04_reel_pump_start_stop             8.83   -3.0  -25.1  -24.7 -0.00008   1110   1.9   0.9   1.7   3.0   0.0  gain   +5.2 dB
+                                  layer loudness at game level: grains -29.9, purr -45.3, hum NaN LUFS~ (peak grains -8.3 dBFS)
+                                  grains: detent 34, rotor 18, drag 0, strain 0, creak 0; peak voices 2; loop starts purr 1, hum 0
+05_drag_slow                        7.83   -3.0  -31.0  -30.4 -0.00011   1437   2.1   3.4   4.3   5.0   0.0  gain   +3.6 dB
+                                  layer loudness at game level: grains -34.1, purr -53.1, hum NaN LUFS~ (peak grains -6.6 dBFS)
+                                  grains: detent 0, rotor 0, drag 29, strain 0, creak 0; peak voices 2; loop starts purr 1, hum 0
+06_drag_fast                        8.83   -3.0  -24.9  -24.5 -0.00034   1324   2.1   1.9   2.5   3.0   0.0  gain   +3.7 dB
+                                  layer loudness at game level: grains -28.5, purr -39.5, hum -63.5 LUFS~ (peak grains -6.6 dBFS)
+                                  grains: detent 0, rotor 0, drag 267, strain 0, creak 0; peak voices 3; loop starts purr 1, hum 1
+07_line_tension                     9.83   -5.8  -22.4  -20.0 -0.00000    932   0.0   0.0   0.1   0.2   0.0  gain  +16.6 dB
+                                  layer loudness at game level: grains NaN, purr NaN, hum -36.6 LUFS~ (peak grains -240.0 dBFS)
+                                  grains: detent 0, rotor 0, drag 0, strain 0, creak 0; peak voices 0; loop starts purr 0, hum 1
+08_rod_creak                        8.83   -3.0  -25.8  -24.9  0.00000   1112  14.7   2.2   4.4   6.8   0.0  gain   +5.9 dB
+                                  layer loudness at game level: grains -30.8, purr NaN, hum NaN LUFS~ (peak grains -8.9 dBFS)
+                                  grains: detent 0, rotor 0, drag 0, strain 0, creak 15; peak voices 2; loop starts purr 0, hum 0
+
+=== ONE-SHOTS (22050 Hz clips as generated; exported at −20 LUFS-ish capped to −3 dBFS peak) ===
+file                                 sec   peak    rms  LUFS~       DC   cent  <300  2-5k 2-5kA   phA   >5k
+09_hookset                          1.05   -3.0  -25.1  -23.6  0.00000    870  62.0   0.1   0.6   2.2   0.0  gain   -2.1 dB
+10_tele_run                         1.15   -3.0  -22.7  -20.3  0.00000   1875   0.4   2.8   4.1   5.7   0.4  gain   -2.1 dB
+11_tele_dive                        1.20   -5.6  -22.2  -20.0 -0.00000   1128  17.3   0.3   1.4   9.6   0.0  gain   -4.7 dB
+12_tele_surge                       1.25   -3.0  -24.4  -22.6 -0.00000   1943  47.5   3.6   9.1  11.9   0.6  gain   -2.1 dB
+13_tele_jerk                        0.39   -3.0  -23.3  -24.3 -0.00003    503  76.4   0.0   0.1   0.5   0.0  gain   -2.1 dB
+14_tele_jump                        1.17   -4.8  -23.0  -20.0 -0.00000   2140   0.1   5.9   7.9   9.8   0.8  gain   -3.9 dB
+15_splash_small                     1.35   -3.0  -25.7  -23.0 -0.00000   1709   0.2   5.4   8.2  11.7   0.2  gain   -2.1 dB
+16_splash_big                       1.60   -3.0  -28.4  -26.4  0.00000   1278  41.0   2.3   6.2  10.3   0.1  gain   -2.1 dB
+17_splash_jump                      1.75   -3.0  -22.4  -20.9 -0.00000   1107  26.0   1.3   3.7   7.6   0.0  gain   -2.1 dB
+18_line_thrum_shock                 0.85   -3.0  -24.6  -25.8 -0.00002    553  87.4   0.0   0.1   0.4   0.0  gain   -2.1 dB
+19_fish_flop                        1.15   -3.0  -25.6  -24.6 -0.00000   1213   0.6   1.8   4.0   9.0   0.0  gain   -2.1 dB
+20_chime_small                      2.25   -6.6  -21.3  -19.6 -0.00001    650   0.0   0.1   0.2   0.6   0.0  gain   -5.2 dB
+21_chime                            2.65   -5.6  -22.2  -20.0 -0.00000    728   0.0   0.1   0.2   0.6   0.0  gain   -4.2 dB
+22_chime_big                        3.25   -5.7  -22.7  -20.0 -0.00000    778   0.0   0.1   0.1   0.3   0.0  gain   -4.2 dB
+23_line_snap                        1.25   -3.0  -22.3  -21.0 -0.00000   2112   0.0   3.1   5.7  10.5   0.2  gain   -2.1 dB
+24_rod_crack                        1.25   -3.0  -25.7  -26.0 -0.00001   1583  91.3   2.1  25.0  45.3   0.1  gain   -2.1 dB
+25_escape                           1.40   -3.0  -25.2  -23.6  0.00000   1319   0.2   0.3   0.4   0.6   0.0  gain   -1.6 dB
+26_cast_whoosh                      1.25   -4.8  -23.9  -20.0 -0.00000   1363   0.7   5.5   7.3   8.8   0.0  gain   -3.8 dB
+27_float_plop                       1.25   -3.0  -24.4  -22.4  0.00000    758   0.2   0.0   0.0   0.1   0.0  gain   -2.1 dB
+28_bite_bob                         0.95   -3.0  -24.8  -24.0  0.00000   1182   0.0   0.1   0.1   0.2   0.0  gain   -1.6 dB
+
+Ambience loop (exported at its exact length so it can be looped; −26 LUFS-ish for a calm preview):
+30_ambience_morning_64s            64.00   -9.1  -25.6  -26.0 -0.00000   1543  20.9   3.7   8.8  15.2   0.2  gain   -3.1 dB
+
+Grain sheets (every variant in a row, 48 kHz):
+40_grains_detent_16                 4.60   -3.0  -24.6  -24.4 -0.00009   1160   1.5   0.9   1.6   2.8   0.0  gain   +3.9 dB
+41_grains_drag_16bright_16dark      7.00   -3.0  -28.4  -27.9 -0.00010   1312   2.0   1.8   2.4   2.9   0.0  gain   +3.9 dB
+42_grains_strain_12                 4.20   -3.0  -25.2  -24.9  0.00000   1009  15.2   1.3   2.6   4.0   0.0  gain   +3.9 dB
+43_grains_rodcreak_4soft_4hard      6.20   -3.0  -23.9  -23.6 -0.00000   1039  15.9   1.5   3.1   5.1   0.0  gain   +3.9 dB
+
+
+=== DEMO 90_fight_perch300_HoldReel: 300 g, seed 3; outcome Landed after 18.7 s of fight; file 26.8 s @48k (idle 1 s, cast 0.9 s, wait 2 s, bite 0.67 s, fight, tail) ===
+  raw mix (game levels, master 0.8): LUFS~ -27.3, peak -6.5 dBFS, samples ≥ 1.0: 0
+file                                 sec   peak    rms  LUFS~       DC   cent  <300  2-5k 2-5kA   phA   >5k
+90_fight_perch300_HoldReel         26.78   -3.0  -24.2  -23.8 -0.00010   1301   5.7   0.9   1.9   3.4   0.0  gain   +3.5 dB
+90_fight_perch300_HoldReel_reel_only 26.78   -3.0  -23.9  -22.8 -0.00011   1124   1.8   0.8   1.4   2.7   0.0  gain   +1.7 dB
+  fight frames 1122: cranking 100% (ReelLoad p50 0.32, detent rate p10/p50/p90 5.5/8.2/8.2 /s), slipping 0% (slip p50/p90/max 0/0/0 cm/s), LoadShare p90 0.18, RodLoadShare max 0.16
+  one-shots: CastWhoosh:1 FloatPlop:1 BiteBob:1 Hookset:1 TeleRun:1 TeleJerk:2 SplashSmall:3 FishFlop:1 Chime:1
+  Detent : 145 grains (7.8/s of fight), variants used 16, same-variant-twice 0, gain spread sd 0.6 dB; steady IOI change p50/p90 2.2/5.8% (frame-quantised fallback would be 13.4/13.4%)
+  Rotor  : 88 grains (4.7/s of fight), variants used 12, same-variant-twice 0, gain spread sd 3.9 dB; steady IOI change p50/p90 2.3/5.7% (frame-quantised fallback would be 8.7/15.4%)
+  Drag   : none
+  Strain : 11 grains (0.6/s of fight), variants used 8, same-variant-twice 0, gain spread sd 1.5 dB
+  Creak  : none
+  peak simultaneous grain voices 4 of 16; loop starts: purr 1, hum 0
+  fight span loudness (exported gain): mix -23.9, reel layers -24.4, events -25.5, ambience -42.1 LUFS~  → ambience 17.7 dB under the reel
+  fight span spectrum: mix centroid 1305 Hz, 2-5 kHz 0.9% flat / 1.7% A / 3.1% phone-A, >5k 0.0%;  reel layers centroid 1124 Hz, 2-5 kHz 0.8% / 1.5% / 2.7%
+  grain energy split: detent 99.6%, rotor 0.1%, drag 0.0%, strain 0.3%, creak 0.0%
+  RMS per second (dBFS): -48 -24 -36 -31 -23 -21 -25 -26 -23 -24 -24 -23 -24 -24 -23 -24 -24 -24 -24 -24 -24 -24 -23 -19 -30 -35
+  stem peaks (exported gain): grains -4.7 dBFS @22.2s, purr -24.7 dBFS @5.0s, hum -240.0 dBFS @0.0s, ambience -22.5 dBFS @3.4s, fx -3.8 dBFS @4.6s, water -11.3 dBFS @1.9s
+
+=== DEMO 91_fight_bream2kg_Technique: 2000 g, seed 3; outcome InProgress after 20.9 s of fight; file 26.0 s @48k (idle 1 s, cast 0.9 s, wait 2 s, bite 0.67 s, fight, tail) ===
+  raw mix (game levels, master 0.8): LUFS~ -27.4, peak -5.1 dBFS, samples ≥ 1.0: 0
+file                                 sec   peak    rms  LUFS~       DC   cent  <300  2-5k 2-5kA   phA   >5k
+91_fight_bream2kg_Technique        26.02   -3.0  -26.4  -25.3 -0.00015   1398  12.3   1.7   3.4   4.9   0.0  gain   +2.1 dB
+91_fight_bream2kg_Technique_reel_only 26.02   -3.0  -29.6  -26.4 -0.00016   1369   2.4   2.6   3.5   4.2   0.0  gain   +0.4 dB
+  fight frames 1287: cranking 7% (ReelLoad p50 0.90, detent rate p10/p50/p90 1.2/1.2/1.2 /s), slipping 53% (slip p50/p90/max 39/60/69 cm/s), LoadShare p90 0.59, RodLoadShare max 0.69
+  one-shots: CastWhoosh:1 FloatPlop:1 BiteBob:1 Hookset:1 TeleRun:1 TeleDive:4 SplashBig:5 LineThrum:4
+  Detent : 5 grains (0.2/s of fight), variants used 4, same-variant-twice 0, gain spread sd 1.3 dB
+  Rotor  : 1 grains (0.0/s of fight), variants used 1, same-variant-twice 0, gain spread sd 0.0 dB
+  Drag   : 219 grains (10.5/s of fight), variants used 32, same-variant-twice 0, dark 21%, gain spread sd 1.4 dB; steady IOI change p50/p90 2.7/6.8% (frame-quantised fallback would be 0.0/40.5%)
+  Strain : 19 grains (0.9/s of fight), variants used 11, same-variant-twice 0, gain spread sd 3.9 dB
+  Creak  : none
+  peak simultaneous grain voices 5 of 16; loop starts: purr 5, hum 0
+  fight span loudness (exported gain): mix -25.1, reel layers -26.8, events -23.0, ambience -43.8 LUFS~  → ambience 17.0 dB under the reel
+  fight span spectrum: mix centroid 1396 Hz, 2-5 kHz 1.6% flat / 3.3% A / 4.6% phone-A, >5k 0.0%;  reel layers centroid 1374 Hz, 2-5 kHz 2.6% / 3.5% / 4.2%
+  grain energy split: detent 6.6%, rotor 0.2%, drag 91.0%, strain 2.2%, creak 0.0%
+  RMS per second (dBFS): -50 -25 -37 -33 -27 -24 -26 -27 -23 -26 -27 -45 -23 -27 -26 -28 -23 -26 -26 -28 -23 -28 -27 -28 -37 -45
+  stem peaks (exported gain): grains -3.4 dBFS @9.4s, purr -25.0 dBFS @10.7s, hum -240.0 dBFS @0.0s, ambience -23.9 dBFS @3.4s, fx -5.2 dBFS @4.6s, water -12.7 dBFS @1.9s
+
+FILES:
+  F:\fishing\.previews\audio\tactile\01_reel_idle.wav
+  F:\fishing\.previews\audio\tactile\02_reel_load.wav
+  F:\fishing\.previews\audio\tactile\03_reel_gaining.wav
+  F:\fishing\.previews\audio\tactile\04_reel_pump_start_stop.wav
+  F:\fishing\.previews\audio\tactile\05_drag_slow.wav
+  F:\fishing\.previews\audio\tactile\06_drag_fast.wav
+  F:\fishing\.previews\audio\tactile\07_line_tension.wav
+  F:\fishing\.previews\audio\tactile\08_rod_creak.wav
+  F:\fishing\.previews\audio\tactile\09_hookset.wav
+  F:\fishing\.previews\audio\tactile\10_tele_run.wav
+  F:\fishing\.previews\audio\tactile\11_tele_dive.wav
+  F:\fishing\.previews\audio\tactile\12_tele_surge.wav
+  F:\fishing\.previews\audio\tactile\13_tele_jerk.wav
+  F:\fishing\.previews\audio\tactile\14_tele_jump.wav
+  F:\fishing\.previews\audio\tactile\15_splash_small.wav
+  F:\fishing\.previews\audio\tactile\16_splash_big.wav
+  F:\fishing\.previews\audio\tactile\17_splash_jump.wav
+  F:\fishing\.previews\audio\tactile\18_line_thrum_shock.wav
+  F:\fishing\.previews\audio\tactile\19_fish_flop.wav
+  F:\fishing\.previews\audio\tactile\20_chime_small.wav
+  F:\fishing\.previews\audio\tactile\21_chime.wav
+  F:\fishing\.previews\audio\tactile\22_chime_big.wav
+  F:\fishing\.previews\audio\tactile\23_line_snap.wav
+  F:\fishing\.previews\audio\tactile\24_rod_crack.wav
+  F:\fishing\.previews\audio\tactile\25_escape.wav
+  F:\fishing\.previews\audio\tactile\26_cast_whoosh.wav
+  F:\fishing\.previews\audio\tactile\27_float_plop.wav
+  F:\fishing\.previews\audio\tactile\28_bite_bob.wav
+  F:\fishing\.previews\audio\tactile\30_ambience_morning_64s.wav
+  F:\fishing\.previews\audio\tactile\40_grains_detent_16.wav
+  F:\fishing\.previews\audio\tactile\41_grains_drag_16bright_16dark.wav
+  F:\fishing\.previews\audio\tactile\42_grains_strain_12.wav
+  F:\fishing\.previews\audio\tactile\43_grains_rodcreak_4soft_4hard.wav
+  F:\fishing\.previews\audio\tactile\90_fight_perch300_HoldReel.wav
+  F:\fishing\.previews\audio\tactile\90_fight_perch300_HoldReel_reel_only.wav
+  F:\fishing\.previews\audio\tactile\91_fight_bream2kg_Technique.wav
+  F:\fishing\.previews\audio\tactile\91_fight_bream2kg_Technique_reel_only.wav

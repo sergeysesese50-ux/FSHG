@@ -1,0 +1,878 @@
+AudioCritic run 2026-11-10 02:36; root F:\fishing\.previews\audio
+
+=== SELF-TEST (synthetic signals with known answers) ===
+  997 Hz sine, peak -20 dBFS: LUFS-I -23.01 (expect -23.0), RMS -23.01 (expect -23.01), TP -20.00 (expect -20.0)
+  same at 22050 Hz: LUFS-I -22.98 (expect -23.0)
+  2-5k noise AM 30% @50 Hz: m(2-5k,20-150) 0.363 (expect ~0.30 + noise floor)
+  band noise AM 30% @4 Hz: m(2-8) 0.287 (expect ~0.30);  unmodulated noise: m(2-8) 0.053, m(20-150) 0.298 (noise floor of the estimator)
+  buzz (harmonic contrast dB): pulse 220 Hz 20% duty 29.0 (≥8 dB in 100%); pulse 302 Hz 34.0 (≥8 dB in 100%); 3-partial hum 320 Hz 10.4 (≥8 dB in 100%); band noise 620 Hz 5.5 (≥8 dB in 0%); modal ticks over bed 5.2 (≥8 dB in 0%)
+      ticks in silence 2.0 (≥8 dB in 0%); double-click ticks (3 ms, -12 dB) 5.1 (≥8 dB in 5%); regular 100/s stick-slip 8.7 (≥8 dB in 70%); irregular 6.5-13 ms stick-slip 6.8 (≥8 dB in 15%)
+  ticks 12/s ±4% sample-accurate: detected 73 (expect ~69), rate 12.2/s, local IOI jitter p50 3.8% (theory for uniform ±4%: ~3.8%), kept 94%, Q60 10%
+      same without bed: detected 69, jitter p50 3.5%
+  ticks 18/s ±4%: detected 106 (expect ~103), rate 17.9/s, local IOI jitter p50 3.7% (theory for uniform ±4%: ~3.8%), kept 95%, Q60 0%
+      same without bed: detected 103, jitter p50 4.0%
+  ticks 18/s ±4% snapped to 60 fps: detected 105 (expect ~103), rate 18.0/s, local IOI jitter p50 0.6% (theory for uniform ±4%: ~3.8%), kept 35%, Q60 70%
+      same without bed: detected 103, jitter p50 0.5%
+  ticks 40/s ±3%: detected 230 (expect ~229), rate 38.9/s, local IOI jitter p50 3.6% (theory for uniform ±3%: ~2.8%), kept 99%, Q60 0%
+      same without bed: detected 228, jitter p50 3.4%
+  ticks 70/s ±2%: detected 374 (expect ~400), rate 65.4/s, local IOI jitter p50 3.2% (theory for uniform ±2%: ~1.9%), kept 87%, Q60 0%
+      same without bed: detected 400, jitter p50 3.0%
+  one variant: sim lag1 1.00, identical 100%, lag-k [1.00 1.00 1.00 1.00 1.00 1.00], rotation k=0
+  3 variants rotating: sim lag1 0.72, identical 0%, lag-k [0.72 0.72 1.00 0.72 0.72 1.00], rotation k=3
+  fresh random variant per tick: sim lag1 0.73, identical 0%, lag-k [0.73 0.74 0.76 0.73 0.79 0.75], rotation k=0
+  periodic AM lines, noise loop with 15% @4 Hz + 12% @40 Hz: 2-8 14.5% @4.04, 20-150 11.6% @40.0;  plain noise loop: 2-8 3.0%, 8-20 3.3%, 20-150 3.6%
+  seam, circularly filtered noise loop: @0.000s step 0.0193 (rank 25.9, 0.10x p99.9), curvature rank 11.5 (0.05x), HF-click rank 31.5 (0.14x), level jump +0.0 dB (rank 0.2)
+  seam, linearly filtered noise cut to a loop: @0.000s step 0.2755 (rank 100.0, 1.50x p99.9), curvature rank 100.0 (3.62x), HF-click rank 100.0 (2.40x), level jump -0.0 dB (rank 1.0)  <-- SEAM
+
+=== A. LEVELS (every file; fight-span rows start at the hookset) ===
+file                                                       role              fs    sec   peak     TP    RMS actRMS crest       DC  FS# LUFS-I   Mmax   LRA  x0%  xN%
+current/clip_ClickLoop_loop.wav                            loop           22050   4.00   -1.4   -1.4  -25.6  -25.6  24.2 -0.00000    0  -22.4  -22.3   0.0   86    0
+current/clip_DragClick0.wav                                grain          22050   0.01   -0.9    0.4  -15.9  -15.9  14.9  0.00000    0  -12.7  -12.7     -   21    0
+current/clip_DragClick1.wav                                grain          22050   0.01   -0.9   -0.9  -15.2  -15.2  14.3  0.00001    0  -11.9  -11.9     -  100    0
+current/clip_DragClick2.wav                                grain          22050   0.01   -0.9   -0.2  -16.7  -16.7  15.7  0.00000    0  -13.3  -13.3     -  100    0
+current/clip_DragClick_rotation_12ps.wav                   rotation       22050   2.50  -11.4  -10.1  -38.6  -37.8  26.4  0.00000    0  -34.8  -34.2     -    0    0
+current/clip_EscapePlip.wav                                oneshot        22050   0.04   -1.9   -1.9  -11.8  -11.8   9.9 -0.00043    0  -12.0  -12.0     -    0    0
+current/clip_Growl_loop.wav                                loop           22050   4.00   -1.9   -1.9  -15.1  -15.1  13.1  0.00024    0  -16.5  -16.3   0.0   34   36
+current/clip_Hookset.wav                                   oneshot        22050   0.20   -0.4   -0.2  -14.6  -14.6  14.2  0.00168    0  -15.8  -15.8     -    2    0
+current/clip_JerkThunk.wav                                 oneshot        22050   0.06   -0.4   -0.4  -11.9  -11.9  11.5  0.02152    0  -14.0  -14.0     -    0    0
+current/clip_JumpWhoosh.wav                                oneshot        22050   0.50   -1.9   -1.4  -18.2  -17.2  15.3  0.00000    0  -16.4  -14.4     -    0    0
+current/clip_LandedChime.wav                               oneshot        22050   1.20   -1.9   -1.9  -15.3  -15.3  13.3 -0.00001    0  -14.9  -11.7     -    0    0
+current/clip_LineSing_loop.wav                             loop           22050   4.00   -3.1   -3.1   -7.5   -7.5   4.4  0.00000    0   -7.9   -7.9   0.0    0   22
+current/clip_LineSnap.wav                                  oneshot        22050   0.20   -0.4   -0.4  -16.6  -16.6  16.1  0.00001    0  -14.0  -14.0     -  100    0
+current/clip_RodCrack.wav                                  oneshot        22050   0.40   -0.4    0.5  -19.1  -17.8  17.4  0.00088    0  -19.9  -19.9     -   49    0
+current/clip_RodCreak0.wav                                 oneshot        22050   0.30   -1.4   -0.6  -10.4  -10.4   9.0 -0.00187    0  -12.7  -12.7     -    0    0
+current/clip_RodCreak1.wav                                 oneshot        22050   0.30   -1.4   -0.6  -10.3  -10.3   8.8  0.00120    0  -12.4  -12.4     -    0    0
+current/clip_RodCreak2.wav                                 oneshot        22050   0.30   -1.4   -0.7  -11.0  -11.0   9.6 -0.00093    0  -13.2  -13.2     -    0    0
+current/clip_RodCreak_rotation.wav                         rotation       22050   2.50   -8.3   -7.5  -18.9  -18.1   9.8 -0.00017    0  -20.6  -18.8     -    0    0
+current/clip_Splash.wav                                    oneshot        22050   0.35   -0.9   -0.5  -17.0  -16.3  15.4 -0.00744    0  -16.5  -16.5     -    0    0
+current/clip_SplashHeavy.wav                               oneshot        22050   0.50   -0.9   -0.9  -18.2  -17.2  16.3 -0.00181    0  -21.2  -18.7     -    0    0
+current/clip_TelegraphSwirl.wav                            oneshot        22050   0.45   -1.9   -1.8  -16.8  -16.3  14.4 -0.00001    0  -15.3  -15.3     -    0    0
+current/clip_Whir_loop.wav                                 loop           22050   4.00   -1.9   -1.5  -11.2  -11.2   9.3  0.00018    0  -11.4  -11.1   0.0   39   17
+current/fightdemo_bream2kg_Technique.wav                   demo           48000  32.52   -3.8   -3.8  -27.9  -26.1  22.2 -0.00003    0  -26.8  -22.2  10.4    0    0
+current/fightdemo_bream2kg_Technique.wav [fight]           demo-fight     48000  31.72   -3.8   -3.8  -27.8  -26.0  22.2 -0.00002    0  -26.9  -22.2  10.6    2    0
+current/fightdemo_bream2kg_Technique_growl.wav             stem           48000  32.52   -9.9   -9.9  -30.4  -25.0  15.1  0.00000    0  -26.2  -24.2  11.9    0    0
+current/fightdemo_bream2kg_Technique_reelbed.wav           demoreel       48000  32.52   -8.6   -8.6  -29.0  -26.0  17.4  0.00000    0  -26.9  -22.9  12.9    0    0
+current/fightdemo_bream2kg_Technique_reelbed.wav [fight]   demoreel-fight 48000  31.72   -8.6   -8.6  -28.9  -26.0  17.4  0.00000    0  -26.9  -22.9  12.9    0    0
+current/fightdemo_bream2kg_Technique_whir.wav              stem           48000  32.52  -18.8  -18.8  -35.4  -30.0  11.2  0.00000    0  -30.5  -28.7  12.0    0    0
+current/fightdemo_perch300_HoldReel.wav                    demo           48000  22.02   -3.8   -3.8  -25.0  -24.6  20.8  0.00002    0  -25.0  -17.5   2.1    0    0
+current/fightdemo_perch300_HoldReel.wav [fight]            demo-fight     48000  21.22   -3.8   -3.8  -24.9  -24.6  20.7  0.00003    0  -25.0  -17.5   2.2    2    0
+current/fightdemo_perch300_HoldReel_growl.wav              stem           48000  22.02  -18.9  -18.9  -42.3  -35.0  16.0 -0.00001    0  -36.3  -33.5  10.6    0    0
+current/fightdemo_perch300_HoldReel_reelbed.wav            demoreel       48000  22.02  -13.1  -13.1  -26.2  -25.7  12.6  0.00002    0  -25.9  -24.5   1.1    0    0
+current/fightdemo_perch300_HoldReel_reelbed.wav [fight]    demoreel-fight 48000  21.22  -13.1  -13.1  -26.0  -25.7  12.6  0.00002    0  -25.8  -24.5   0.9    0    0
+current/fightdemo_perch300_HoldReel_whir.wav               stem           48000  22.02  -15.2  -15.1  -26.3  -25.8  10.7  0.00003    0  -25.9  -24.5   1.2    0    0
+current/fightdemo_pike4kg_Technique.wav                    demo           48000  32.52   -3.8   -3.8  -28.1  -26.8  23.0 -0.00013    0  -27.2  -20.3   7.5    0    0
+current/fightdemo_pike4kg_Technique.wav [fight]            demo-fight     48000  31.72   -3.8   -3.8  -28.0  -26.8  23.0 -0.00012    0  -27.3  -20.3   7.6    2    0
+current/fightdemo_pike4kg_Technique_growl.wav              stem           48000  32.52   -9.9   -9.9  -33.0  -27.6  17.7 -0.00007    0  -29.1  -24.4   8.8    0    0
+current/fightdemo_pike4kg_Technique_reelbed.wav            demoreel       48000  32.52   -9.1   -9.1  -29.8  -28.1  19.0 -0.00006    0  -28.9  -22.9   9.7    0    0
+current/fightdemo_pike4kg_Technique_reelbed.wav [fight]    demoreel-fight 48000  31.72   -9.1   -9.1  -29.7  -28.1  19.0 -0.00007    0  -28.9  -22.9   9.8    0    0
+current/fightdemo_pike4kg_Technique_whir.wav               stem           48000  32.52  -15.4  -15.4  -33.4  -29.7  14.3  0.00001    0  -30.1  -26.3  14.0    0    0
+current/raw:clickloop                                      rawloop        22050   0.50   -1.4   -1.4  -25.6  -25.6  24.2 -0.00000    0  -22.3  -22.3     -   86    0
+current/raw:growl                                          rawloop        22050   1.00   -1.9   -1.9  -15.1  -15.1  13.1  0.00024    0  -16.6  -16.3     -   34   36
+current/raw:linesing                                       rawloop        22050   0.50   -3.1   -3.1   -7.5   -7.5   4.4 -0.00000    0   -7.9   -7.9     -    0   22
+current/raw:whir                                           rawloop        22050   0.50   -1.9   -1.5  -11.2  -11.2   9.3  0.00018    0  -11.5  -11.5     -   39   17
+natural/01_reel_noload.wav                                 reel           48000   8.50   -5.7   -5.7  -23.6  -22.9  17.2 -0.00001    0  -22.7  -20.5   1.8    0    0
+natural/02_reel_load.wav                                   reel           48000   9.50   -6.7   -6.7  -26.8  -26.3  19.6 -0.00000    0  -26.5  -24.4   1.8    0    0
+natural/03_reel_fast.wav                                   reel           48000   7.00   -5.1   -5.1  -20.4  -19.8  14.8 -0.00001    0  -19.7  -18.8   0.9    0    0
+natural/04_drag_slow.wav                                   drag           48000   7.00   -4.5   -4.5  -29.9  -28.7  24.2 -0.00001    0  -28.4  -26.3   1.9    0    0
+natural/05_drag_fast.wav                                   drag           48000   8.00   -5.2   -5.1  -26.0  -25.0  19.8 -0.00001    0  -24.5  -22.9   2.8    0    0
+natural/06_line_tension.wav                                line           48000   9.00   -7.3   -7.3  -26.7  -26.4  19.1 -0.00000    0  -26.8  -24.3   1.0    0    0
+natural/07_rod_creak.wav                                   rod            48000   9.00   -3.0   -3.0  -24.9  -24.7  21.7 -0.00000    0  -25.0  -21.3   2.9    0    0
+natural/08_hookset.wav                                     oneshot        22050   0.70   -3.0   -3.0  -23.2  -20.7  17.7 -0.00000    0  -21.8  -21.6     -    0    0
+natural/09_tele_run.wav                                    oneshot        22050   0.92   -3.0   -3.0  -17.6  -15.7  12.7  0.00000    0  -16.6  -14.7     -    0    0
+natural/10_tele_dive.wav                                   oneshot        22050   0.90   -3.0   -3.0  -19.8  -18.1  15.1 -0.00000    0  -18.7  -17.0     -    0    0
+natural/11_tele_surge.wav                                  oneshot        22050   0.95   -3.0   -3.0  -19.2  -17.2  14.2 -0.00000    0  -17.9  -16.0     -    0    0
+natural/12_tele_jerk.wav                                   oneshot        22050   0.56   -3.0   -3.0  -23.2  -20.4  17.4 -0.00000    0  -24.3  -22.5     -    0    0
+natural/13_tele_jump.wav                                   oneshot        22050   0.85   -3.0   -3.0  -20.7  -18.4  15.4  0.00000    0  -18.6  -17.2     -    0    0
+natural/14_splash_small_x3.wav                             oneshot        22050   3.45   -3.0   -2.9  -26.0  -21.5  18.5 -0.00000    0  -22.5  -20.3   1.3    0    0
+natural/15_splash_big_x3.wav                               oneshot        22050   4.35   -3.0   -3.0  -24.2  -19.6  16.6 -0.00000    0  -20.2  -17.4   0.4    0    0
+natural/16_splash_jump_x2.wav                              oneshot        22050   3.15   -3.0   -3.0  -23.1  -16.6  13.6 -0.00000    0  -20.3  -17.6     -    0    0
+natural/17_splash_far_small_big.wav                        oneshot        22050   2.65   -3.0   -3.0  -25.2  -21.8  18.8 -0.00000    0  -22.6  -20.5     -    0    0
+natural/18_landed_small.wav                                oneshot        22050   1.40   -3.0   -3.0  -16.7  -16.1  13.1  0.00000    0  -16.1  -13.4     -    0    0
+natural/19_landed_mid.wav                                  oneshot        22050   1.80   -3.0   -2.9  -18.5  -18.0  15.0 -0.00000    0  -17.6  -14.3     -    0    0
+natural/20_landed_big.wav                                  oneshot        22050   2.70   -3.0   -3.0  -17.0  -16.7  13.7 -0.00000    0  -16.9  -13.6     -    0    0
+natural/21_line_snap.wav                                   oneshot        22050   0.90   -3.0   -3.0  -27.8  -24.3  21.3  0.00000    0  -25.3  -23.6     -    0    0
+natural/22_rod_crack.wav                                   oneshot        22050   0.85   -3.0   -2.9  -24.8  -21.5  18.5 -0.00000    0  -23.6  -21.5     -    0    0
+natural/23_escape.wav                                      oneshot        22050   1.20   -3.0   -3.0  -24.5  -23.2  20.2  0.00000    0  -26.4  -20.8     -    0    0
+natural/24_cast.wav                                        oneshot        22050   1.60   -3.0   -3.0  -25.1  -23.1  20.1  0.00000    0  -21.0  -18.4     -    0    0
+natural/25_float_plop.wav                                  oneshot        22050   0.75   -3.0   -3.0  -23.5  -20.8  17.8  0.00000    0  -24.9  -21.3     -    0    0
+natural/26_bite.wav                                        oneshot        22050   0.65   -3.0   -3.0  -23.3  -21.2  18.2 -0.00000    0  -25.9  -21.8     -    0    0
+natural/27_crank_into_slip.wav                             reel           48000   6.50   -4.3   -4.3  -25.7  -25.0  20.7 -0.00001    0  -24.9  -23.9   0.9    0    0
+natural/30_ambience_morning_64s.wav                        ambience       22050  64.00  -11.2  -11.2  -26.0  -26.0  14.8 -0.00000    0  -26.8  -23.6   2.3    2    3
+natural/31_ambience_seam_check.wav                         seamcheck      22050   6.00  -11.9  -11.8  -26.3  -26.3  14.4  0.00000    0  -27.1  -26.0   0.4   11   10
+natural/40_demo_perch300_holdreel.wav                      demo           48000  25.62   -3.0   -3.0  -22.6  -22.6  19.6 -0.00001    0  -22.0  -15.6   2.2    0    1
+natural/40_demo_perch300_holdreel.wav [fight]              demo-fight     48000  21.72   -3.0   -3.0  -22.0  -22.0  19.0 -0.00001    0  -21.9  -15.6   1.8    1    1
+natural/41_demo_bream2kg_technique.wav                     demo           48000  32.90   -4.1   -4.0  -24.4  -24.4  20.3 -0.00001    0  -23.0  -17.4   6.0    0    0
+natural/41_demo_bream2kg_technique.wav [fight]             demo-fight     48000  29.00   -4.1   -4.0  -24.0  -24.0  19.9 -0.00001    0  -22.9  -17.4   3.7    1    0
+natural/42_demo_perch300_reel_only.wav                     demoreel       48000  25.62   -3.9   -3.9  -23.9  -22.8  18.9 -0.00001    0  -22.7  -19.4   3.4    0    0
+natural/42_demo_perch300_reel_only.wav [fight]             demoreel-fight 48000  21.72   -3.9   -3.9  -23.2  -22.8  18.9 -0.00001    0  -22.7  -19.4   1.8    0    0
+natural/43_demo_bream2kg_reel_drag_only.wav                demoreel       48000  32.90   -3.9   -3.9  -27.0  -24.3  20.3 -0.00001    0  -23.9  -22.0   5.3    0    0
+natural/43_demo_bream2kg_reel_drag_only.wav [fight]        demoreel-fight 48000  29.00   -3.9   -3.9  -26.5  -24.3  20.3 -0.00001    0  -23.9  -22.0   5.1    0    0
+natural/50_variants_rotor_x16.wav                          variants       22050   4.87   -6.0   -5.9  -25.9  -23.2  17.2  0.00000    0  -26.0  -23.4   0.4    0    0
+natural/51_variants_drag_bright8_dark8.wav                 variants       22050   4.07   -6.0   -5.9  -30.8  -27.7  21.7 -0.00000    0  -30.2  -28.6   0.4    0    0
+natural/52_variants_creak_quiet6_loud6.wav                 variants       22050   9.02   -6.0   -6.0  -27.4  -25.1  19.1  0.00000    0  -26.9  -23.2   2.0    0    0
+natural/53_variants_strain_small6_big6.wav                 variants       22050   3.84   -6.0   -6.0  -30.7  -26.0  20.0  0.00000    0  -30.9  -27.9   0.6    0    0
+natural/54_variants_tock_x8.wav                            variants       22050   2.79   -6.0   -6.0  -27.4  -23.7  17.7 -0.00000    0  -27.8  -25.5     -    0    0
+natural/raw:ambience                                       rawamb         22050  64.00   -3.1   -3.1  -17.9  -17.9  14.8  0.00000    0  -18.6  -15.4   2.3    2    3
+natural/raw:laybed                                         rawloop        22050   4.00   -3.1   -3.1  -16.2  -16.2  13.1 -0.00002    0  -15.9  -15.0   0.1   10   19
+natural/raw:linehum                                        rawloop        22050   4.00   -3.1   -3.1  -17.4  -17.4  14.3 -0.00000    0  -17.7  -15.8   0.4    4    6
+cozy/01_reel_noload.wav                                    reel           48000   7.98   -3.0   -3.0  -20.4  -19.6  16.6  0.00003    0  -20.0  -18.6   1.0    0    0
+cozy/02_reel_labour.wav                                    reel           48000   7.98   -4.1   -4.1  -19.8  -19.4  15.3 -0.00004    0  -20.0  -18.7   1.0    0    0
+cozy/03_reel_fast.wav                                      reel           48000   7.98   -4.0   -4.0  -20.0  -19.6  15.6  0.00002    0  -20.0  -19.1   0.9    0    0
+cozy/04_reel_load_sweep.wav                                reel           48000  11.98   -3.0   -3.0  -19.8  -19.7  16.7 -0.00002    0  -20.3  -18.5   1.1    0    0
+cozy/05_drag_slow.wav                                      drag           48000   6.98   -3.0   -3.0  -27.8  -27.2  24.2 -0.00002    0  -27.2  -23.4   0.9    0    0
+cozy/06_drag_fast.wav                                      drag           48000   6.98   -3.0   -3.0  -22.5  -22.2  19.2 -0.00000    0  -22.4  -21.0   1.2    0    0
+cozy/07_line_tension.wav                                   line           48000   7.98   -5.3   -5.3  -21.0  -20.1  14.8 -0.00000    0  -20.0  -18.4   2.7    0    0
+cozy/08_rod_creak.wav                                      rod            48000   7.98   -3.0   -3.0  -21.4  -19.7  16.7 -0.00000    0  -21.1  -17.5   3.2    0    0
+cozy/09_hookset.wav                                        oneshot        22050   0.80   -3.0   -3.0  -23.5  -19.2  16.2 -0.00000    0  -24.4  -21.6     -    0    0
+cozy/10_tele_run.wav                                       oneshot        22050   0.90   -3.0   -3.0  -20.4  -18.6  15.6  0.00000    0  -18.9  -17.1     -    0    0
+cozy/11_tele_dive.wav                                      oneshot        22050   0.95   -3.0   -3.0  -18.8  -16.8  13.8  0.00000    0  -17.3  -15.7     -    0    0
+cozy/12_tele_surge.wav                                     oneshot        22050   0.73   -3.0   -3.0  -19.7  -17.1  14.1  0.00000    0  -17.7  -16.7     -    0    0
+cozy/13_tele_jerk.wav                                      oneshot        22050   0.67   -3.0   -3.0  -23.6  -20.1  17.1 -0.00000    0  -24.3  -22.4     -    0    0
+cozy/14_tele_jump.wav                                      oneshot        22050   0.85   -3.0   -3.0  -21.1  -18.8  15.8  0.00000    0  -18.1  -17.0     -    0    0
+cozy/15_splash_small.wav                                   oneshot        22050   1.60   -3.0   -3.0  -27.5  -20.3  17.3 -0.00000    0  -25.6  -21.3     -    0    0
+cozy/16_splash_big.wav                                     oneshot        22050   1.85   -3.0   -3.0  -24.5  -18.8  15.8 -0.00000    0  -21.9  -18.5     -    0    0
+cozy/17_splash_jump.wav                                    oneshot        22050   2.10   -3.0   -3.0  -26.0  -21.8  18.8 -0.00000    0  -25.1  -18.5     -    0    0
+cozy/18_landed_small.wav                                   oneshot        22050   2.52   -3.0   -3.0  -17.8  -16.8  13.8 -0.00000    0  -16.5  -12.5     -    0    0
+cozy/19_landed_medium.wav                                  oneshot        22050   2.97   -3.0   -3.0  -17.3  -16.4  13.4  0.00000    0  -16.3  -11.9     -    0    0
+cozy/20_landed_big.wav                                     oneshot        22050   3.42   -3.0   -3.0  -18.5  -17.7  14.7  0.00000    0  -17.3  -13.2   0.0    0    0
+cozy/21_line_snap.wav                                      oneshot        22050   1.05   -3.0   -3.0  -21.5  -18.2  15.2 -0.00000    0  -21.6  -17.7     -    0    0
+cozy/22_rod_crack.wav                                      oneshot        22050   0.85   -3.0   -3.0  -25.4  -20.9  17.9  0.00000    0  -25.9  -23.2     -    0    0
+cozy/23_escape.wav                                         oneshot        22050   1.90   -3.0   -3.0  -26.0  -21.0  18.0 -0.00000    0  -23.9  -19.8     -    0    0
+cozy/24_cast_whoosh.wav                                    oneshot        22050   1.75   -3.0   -2.9  -24.3  -21.8  18.8  0.00000    0  -21.5  -17.9     -    0    0
+cozy/25_float_plop.wav                                     oneshot        22050   1.60   -3.0   -3.0  -26.6  -19.4  16.4 -0.00000    0  -24.1  -21.2     -    0    0
+cozy/26_bite_bob.wav                                       oneshot        22050   1.55   -3.0   -2.9  -25.7  -18.5  15.5 -0.00000    0  -21.4  -20.0     -    0    0
+cozy/27_birds.wav                                          oneshot        22050  49.70   -3.0   -2.9  -17.4  -13.8  10.8 -0.00000    0  -13.8   -9.8   7.4    0    0
+cozy/28_ambience_loop_64s.wav                              ambience       22050  64.00   -4.4   -4.4  -23.2  -23.2  18.8 -0.00000    0  -23.9  -17.3   4.2    3    4
+cozy/29_ambience_morning_60s.wav                           ambience       48000  59.98   -4.5   -4.5  -23.2  -23.2  18.8  0.00000    0  -24.0  -17.4   3.9    0    0
+cozy/30_demo_perch300_holdreel.wav                         demo           48000  30.00   -3.0   -3.0  -22.5  -22.5  19.5  0.00001    0  -22.4  -17.4   9.6    0    0
+cozy/30_demo_perch300_holdreel.wav [fight]                 demo-fight     48000  24.10   -3.0   -3.0  -21.7  -21.7  18.7  0.00002    0  -22.0  -17.4   1.9    5    0
+cozy/31_demo_bream2kg_technique.wav                        demo           48000  30.00   -3.0   -3.0  -24.3  -24.3  21.3 -0.00003    0  -23.8  -20.4   4.7    0    0
+cozy/31_demo_bream2kg_technique.wav [fight]                demo-fight     48000  26.10   -3.0   -3.0  -23.9  -23.9  20.9 -0.00004    0  -23.6  -20.4   3.5    6    0
+cozy/parts/grains_drag_bright_then_dark.wav                variants       22050   8.60   -3.0   -2.9  -26.6  -23.7  20.7 -0.00001    0  -26.5  -24.8   0.7    0    0
+cozy/parts/grains_drag_purr.wav                            variants       22050   3.60   -3.0   -2.9  -25.9  -22.1  19.1  0.00000    0  -25.2  -22.8   0.8    0    0
+cozy/parts/grains_gear_heavy.wav                           variants       22050   4.20   -3.0   -3.0  -22.8  -17.3  14.3 -0.00000    0  -22.9  -20.5   0.5    0    0
+cozy/parts/grains_gear_light.wav                           variants       22050   4.20   -3.0   -3.0  -25.8  -20.3  17.3 -0.00000    0  -25.6  -23.7   0.4    0    0
+cozy/parts/grains_gear_normal.wav                          variants       22050   4.20   -3.0   -3.0  -25.3  -19.9  16.9 -0.00000    0  -25.4  -23.3   0.6    0    0
+cozy/parts/grains_handle_tock.wav                          variants       22050   3.00   -3.0   -3.0  -24.8  -17.8  14.8 -0.00000    0  -24.6  -24.3     -    0    0
+cozy/parts/grains_rod_creak.wav                            variants       22050   7.00   -3.0   -3.0  -22.2  -18.6  15.6 -0.00000    0  -21.6  -18.9   2.0    0    0
+cozy/parts/loop_line_tension_x2.wav                        loop           22050  14.00   -3.0   -3.0  -16.6  -16.6  13.6  0.00000    0  -17.1  -15.3   1.8   32   38
+cozy/parts/loop_reel_bed_x2.wav                            loop           22050  12.00   -3.0   -3.0  -12.9  -12.9   9.9  0.00010    0  -13.3  -12.2   1.0   58   54
+cozy/parts/loop_strain_x2.wav                              loop           22050  10.00   -3.0   -3.0  -13.5  -13.5  10.5 -0.00017    0  -14.1  -13.1   0.7   47   45
+cozy/raw:ambience                                          rawamb         22050  64.00   -1.2   -1.2  -20.0  -20.0  18.8  0.00000    0  -20.7  -14.1   4.2    3    4
+cozy/raw:linetension                                       rawloop        22050   7.00   -2.9   -2.9  -16.5  -16.5  13.6 -0.00000    0  -17.0  -15.2   1.5   32   38
+cozy/raw:reelbed                                           rawloop        22050   6.00   -6.6   -6.6  -16.5  -16.5   9.9  0.00007    0  -16.9  -15.7   0.5   58   54
+cozy/raw:strainbed                                         rawloop        22050   5.00   -6.0   -6.0  -16.5  -16.5  10.5 -0.00012    0  -17.1  -16.1   0.6   47   45
+tactile/01_reel_idle.wav                                   reel           48000   7.83   -3.0   -3.0  -21.5  -21.1  18.1 -0.00020    0  -21.3  -20.0   1.4    0    0
+tactile/02_reel_load.wav                                   reel           48000   8.83   -3.0   -3.0  -25.9  -25.6  22.6 -0.00005    0  -25.9  -22.9   3.5    0    0
+tactile/03_reel_gaining.wav                                reel           48000   7.83   -3.0   -3.0  -21.5  -21.1  18.1 -0.00018    0  -21.4  -20.5   0.5    0    0
+tactile/04_reel_pump_start_stop.wav                        reel           48000   8.83   -3.0   -3.0  -25.1  -23.6  20.6 -0.00008    0  -24.5  -22.2   1.6    0    0
+tactile/05_drag_slow.wav                                   drag           48000   7.83   -3.0   -3.0  -31.0  -30.3  27.3 -0.00011    0  -30.1  -27.4   1.9    0    0
+tactile/06_drag_fast.wav                                   drag           48000   8.83   -3.0   -3.0  -24.9  -24.6  21.6 -0.00034    0  -24.2  -23.1   0.4    0    0
+tactile/07_line_tension.wav                                line           48000   9.83   -5.8   -5.8  -22.4  -20.1  14.2 -0.00000    0  -19.9  -17.5  12.6    0    0
+tactile/08_rod_creak.wav                                   rod            48000   8.83   -3.0   -3.0  -25.8  -24.1  21.1  0.00000    0  -24.7  -20.6   6.8    0    0
+tactile/09_hookset.wav                                     oneshot        22050   1.05   -3.0   -3.0  -25.1  -22.6  19.6  0.00000    0  -23.4  -21.8     -    0    0
+tactile/10_tele_run.wav                                    oneshot        22050   1.15   -3.0   -3.0  -22.7  -20.6  17.6  0.00000    0  -20.0  -18.2     -    0    0
+tactile/11_tele_dive.wav                                   oneshot        22050   1.20   -5.6   -5.6  -22.2  -18.4  12.8 -0.00000    0  -19.9  -18.1     -    0    0
+tactile/12_tele_surge.wav                                  oneshot        22050   1.25   -3.0   -3.0  -24.4  -21.9  18.9 -0.00000    0  -22.3  -20.1     -    0    0
+tactile/13_tele_jerk.wav                                   oneshot        22050   0.39   -3.0   -3.0  -23.3  -20.4  17.4 -0.00003    0  -24.2  -24.2     -    0    0
+tactile/14_tele_jump.wav                                   oneshot        22050   1.17   -4.8   -4.7  -23.0  -20.1  15.3 -0.00000    0  -19.7  -17.9     -    0    0
+tactile/15_splash_small.wav                                oneshot        22050   1.35   -3.0   -3.0  -25.7  -20.4  17.4 -0.00000    0  -22.7  -20.1     -    0    0
+tactile/16_splash_big.wav                                  oneshot        22050   1.60   -3.0   -3.0  -28.4  -23.3  20.3  0.00000    0  -26.2  -22.9     -    0    0
+tactile/17_splash_jump.wav                                 oneshot        22050   1.75   -3.0   -3.0  -22.4  -18.4  15.4 -0.00000    0  -20.8  -17.3     -    0    0
+tactile/18_line_thrum_shock.wav                            oneshot        22050   0.85   -3.0   -3.0  -24.6  -22.3  19.3 -0.00002    0  -25.7  -22.3     -    0    0
+tactile/19_fish_flop.wav                                   oneshot        22050   1.15   -3.0   -2.8  -25.6  -22.0  19.0 -0.00000    0  -24.5  -21.2     -    0    0
+tactile/20_chime_small.wav                                 oneshot        22050   2.25   -6.6   -6.6  -21.3  -19.5  12.9 -0.00001    0  -19.9  -15.8     -    0    0
+tactile/21_chime.wav                                       oneshot        22050   2.65   -5.6   -5.6  -22.2  -20.5  14.9 -0.00000    0  -19.9  -15.9     -    0    0
+tactile/22_chime_big.wav                                   oneshot        22050   3.25   -5.7   -5.6  -22.7  -21.4  15.8 -0.00000    0  -19.8  -16.3   0.2    0    0
+tactile/23_line_snap.wav                                   oneshot        22050   1.25   -3.0   -2.9  -22.3  -18.4  15.4 -0.00000    0  -20.8  -17.5     -    0    0
+tactile/24_rod_crack.wav                                   oneshot        22050   1.25   -3.0   -3.0  -25.7  -20.8  17.8 -0.00001    0  -25.9  -21.9     -    0    0
+tactile/25_escape.wav                                      oneshot        22050   1.40   -3.0   -2.9  -25.2  -22.2  19.2  0.00000    0  -23.4  -20.5     -    0    0
+tactile/26_cast_whoosh.wav                                 oneshot        22050   1.25   -4.8   -4.7  -23.9  -21.4  16.6 -0.00000    0  -19.6  -18.4     -    0    0
+tactile/27_float_plop.wav                                  oneshot        22050   1.25   -3.0   -3.0  -24.4  -19.5  16.5  0.00000    0  -22.3  -20.0     -    0    0
+tactile/28_bite_bob.wav                                    oneshot        22050   0.95   -3.0   -3.0  -24.8  -21.1  18.1  0.00000    0  -23.7  -21.3     -    0    0
+tactile/30_ambience_morning_64s.wav                        ambience       22050  64.00   -9.1   -9.1  -25.6  -25.6  16.5  0.00000    0  -25.8  -21.2   2.5   45   44
+tactile/40_grains_detent_16.wav                            variants       48000   4.60   -3.0   -3.0  -24.6  -20.1  17.1 -0.00009    0  -24.3  -22.4   0.6    0    0
+tactile/41_grains_drag_16bright_16dark.wav                 variants       48000   7.00   -3.0   -3.0  -28.4  -25.0  22.0 -0.00010    0  -27.6  -26.8   0.5    0    0
+tactile/42_grains_strain_12.wav                            variants       48000   4.20   -3.0   -3.0  -25.2  -20.8  17.8 -0.00000    0  -24.8  -22.1   0.6    0    0
+tactile/43_grains_rodcreak_4soft_4hard.wav                 variants       48000   6.20   -3.0   -3.0  -23.9  -21.3  18.3  0.00000    0  -23.5  -19.8   1.9    0    0
+tactile/90_fight_perch300_HoldReel.wav                     demo           48000  26.78   -3.0   -3.0  -24.2  -24.0  21.0 -0.00010    0  -23.6  -17.7   4.0    0    0
+tactile/90_fight_perch300_HoldReel.wav [fight]             demo-fight     48000  22.20   -3.0   -3.0  -23.6  -23.5  20.5 -0.00012    0  -23.6  -17.7   2.2    1    0
+tactile/90_fight_perch300_HoldReel_reel_only.wav           demoreel       48000  26.78   -3.0   -3.0  -23.9  -22.5  19.5 -0.00011    0  -22.7  -20.9   3.7    0    0
+tactile/90_fight_perch300_HoldReel_reel_only.wav [fight]   demoreel-fight 48000  22.20   -3.0   -3.0  -23.1  -22.5  19.5 -0.00014    0  -22.6  -20.8   1.9    0    0
+tactile/91_fight_bream2kg_Technique.wav                    demo           48000  26.02   -3.0   -3.0  -26.4  -25.8  22.8 -0.00015    0  -25.1  -19.3   4.4    0    0
+tactile/91_fight_bream2kg_Technique.wav [fight]            demo-fight     48000  21.43   -3.0   -3.0  -25.9  -25.4  22.4 -0.00018    0  -24.9  -19.3   3.1    1    0
+tactile/91_fight_bream2kg_Technique_reel_only.wav          demoreel       48000  26.02   -3.0   -3.0  -29.6  -26.6  23.6 -0.00016    0  -26.1  -23.5   4.2    0    0
+tactile/91_fight_bream2kg_Technique_reel_only.wav [fight]  demoreel-fight 48000  21.43   -3.0   -3.0  -28.7  -26.6  23.6 -0.00019    0  -26.1  -23.8   3.6    0    0
+tactile/raw:ambience                                       rawamb         22050  64.00   -6.0   -6.0  -22.5  -22.5  16.5 -0.00000    0  -22.7  -18.1   2.5   45   44
+tactile/raw:linehum                                        rawloop        22050   4.00   -3.1   -3.1  -15.5  -15.5  12.4  0.00000    0  -16.1  -14.7   0.3   35   36
+tactile/raw:spoolpurr                                      rawloop        22050   3.00   -3.1   -3.1  -14.8  -14.8  11.7  0.00000    0  -14.8  -14.4     -    6   12
+
+=== B. SPECTRUM: shares % <300 | 300-2k | 2-5k | >5k  (flat / A-weighted / phone x A); centroids Hz (power, magnitude); centroid over time ===
+file                                                       flat <300 mid 2-5k >5k   A 2-5k ph 2-5k  Cpow  Cmag Ct-mean Ct-sd  Ct p10-p90   dC%
+current/clip_ClickLoop_loop.wav                              0.0   8.7  29.0  62.2    38.3    38.6  6034  5936    6024   393   5579-6661   5.2
+current/clip_DragClick0.wav                                  0.0  14.1   9.3  76.5    13.4    13.5  6698  6259       -     -         ---     -
+current/clip_DragClick1.wav                                  0.0   1.9  33.2  64.9    43.4    43.5  6666  6461       -     -         ---     -
+current/clip_DragClick2.wav                                  0.0   1.1  29.1  69.8    40.4    40.4  6815  6378       -     -         ---     -
+current/clip_DragClick_rotation_12ps.wav                     0.0   6.2  23.3  70.5    31.8    32.0  6717  6307    6720    66   6654-6821   0.6
+current/clip_EscapePlip.wav                                  0.0 100.0   0.0   0.0     0.0     0.0   880   905       -     -         ---     -
+current/clip_Growl_loop.wav                                 65.4  25.1   3.2   1.6    17.6    28.6   498  2462     506    95     410-658  16.8
+current/clip_Hookset.wav                                    94.6   5.4   0.0   0.1     0.4    12.1   159  1063     159    25     109-158  23.3
+current/clip_JerkThunk.wav                                  97.6   1.5   0.0   0.0     0.9    19.6   109   650       -     -         ---     -
+current/clip_JumpWhoosh.wav                                  0.1  33.7  46.6  19.6    52.3    53.8  3407  4401    3399   888   1334-3370  17.4
+current/clip_LandedChime.wav                                 0.0  99.5   0.5   0.0     0.9     1.7   733   942     733    49     694-788   0.9
+current/clip_LineSing_loop.wav                               0.0 100.0   0.0   0.0     0.0     0.0   650   741     650     0     650-650   0.0
+current/clip_LineSnap.wav                                    0.0   0.6  99.4   0.0    99.4    99.4  2066  2067    2065    29   2007-2063   1.7
+current/clip_RodCrack.wav                                   89.3   4.6   3.2   2.8    34.7    47.6   472  3579     461  1363    510-3801  33.7
+current/clip_RodCreak0.wav                                  89.2   9.5   0.6   0.1     8.7    18.6   171  1299     170    10     156-179   8.1
+current/clip_RodCreak1.wav                                  89.1  10.0   0.6   0.1     8.7    18.6   177  1319     176     9     162-184   6.8
+current/clip_RodCreak2.wav                                  88.9   9.7   0.6   0.1     8.7    18.6   173  1307     172    10     159-182   7.3
+current/clip_RodCreak_rotation.wav                          89.1   9.8   0.6   0.1     8.7    18.6   174  1314     173    24     141-185  11.7
+current/clip_Splash.wav                                     16.2  69.4  11.4   1.7    19.6    24.7  1157  2447    1151   200    978-1382  11.6
+current/clip_SplashHeavy.wav                                66.2  32.1   1.2   0.2     5.6     8.8   373  1461     369   262     407-970  22.2
+current/clip_TelegraphSwirl.wav                              0.2  87.0   9.5   3.3    11.6    13.2  1527  3087    1552   209   1182-1585  13.1
+current/clip_Whir_loop.wav                                  44.2  49.5   3.3   3.0    10.6    21.1   757  3902     757    11     743-771   1.5
+current/fightdemo_bream2kg_Technique.wav                    53.7  36.9   4.7   2.0    15.6    21.5   715  3431     709  2218    397-5964   6.8
+current/fightdemo_bream2kg_Technique.wav [fight]            52.3  37.9   4.8   2.1    15.6    21.4   732  3455     721  2232    404-5959   6.8
+current/fightdemo_bream2kg_Technique_growl.wav              64.6  26.4   3.1   1.0    16.3    27.2   463  2838     469    92     350-594  19.1
+current/fightdemo_bream2kg_Technique_reelbed.wav            61.0  29.6   4.1   1.7    18.9    30.4   570  3278     567  1870    403-4772   6.2
+current/fightdemo_bream2kg_Technique_reelbed.wav [fight]    61.1  29.5   4.0   1.7    18.8    30.3   568  3280     567  1871    403-4778   6.3
+current/fightdemo_bream2kg_Technique_whir.wav               60.1  37.0   2.2   0.7    11.2    24.7   429  2920     429    29     378-439   1.5
+current/fightdemo_perch300_HoldReel.wav                     43.4  51.6   3.4   1.4    10.1    19.2   672  3428     682   112     606-765   1.3
+current/fightdemo_perch300_HoldReel.wav [fight]             41.8  53.0   3.5   1.4    10.1    19.1   687  3476     686    95     599-757   1.4
+current/fightdemo_perch300_HoldReel_growl.wav               65.7  25.7   2.9   0.9    16.2    27.2   439  2734     448    82     342-574  18.9
+current/fightdemo_perch300_HoldReel_reelbed.wav             45.1  49.0   4.1   1.8    12.2    24.1   706  3893     706    58     613-736   1.3
+current/fightdemo_perch300_HoldReel_reelbed.wav [fight]     45.1  49.0   4.1   1.8    12.2    24.1   706  3893     706    58     608-736   1.4
+current/fightdemo_perch300_HoldReel_whir.wav                44.5  49.5   4.1   1.8    12.2    24.1   713  4012     712    50     621-736   1.2
+current/fightdemo_pike4kg_Technique.wav                     46.8  40.8   7.8   3.1    21.4    28.6   926  3714     925  2096    408-5480   7.0
+current/fightdemo_pike4kg_Technique.wav [fight]             45.0  42.1   8.1   3.3    21.8    29.0   957  3747     941  2105    408-5415   6.7
+current/fightdemo_pike4kg_Technique_growl.wav               64.1  27.1   3.1   1.0    16.0    26.4   470  2839     476    91     340-590  18.1
+current/fightdemo_pike4kg_Technique_reelbed.wav             53.6  36.9   4.6   2.7    17.5    28.5   711  3708     705  2123    405-5480   5.0
+current/fightdemo_pike4kg_Technique_reelbed.wav [fight]     53.3  37.3   4.7   2.7    17.5    28.5   714  3711     705  2116    405-5418   5.2
+current/fightdemo_pike4kg_Technique_whir.wav                50.9  45.1   2.8   1.1    11.1    23.5   547  3087     545   104     380-628   3.0
+current/raw:clickloop                                        0.0   7.1  31.8  61.1    41.8    42.0  6062  5954    6050   419   5694-6675   5.8
+current/raw:growl                                           65.9  25.0   3.2   1.6    17.4    28.3   498  2463     507    95     419-635  15.1
+current/raw:linesing                                         0.0 100.0   0.0   0.0     0.0     0.0   650   740     650     0     650-650   0.0
+current/raw:whir                                            44.3  49.4   3.3   2.9    10.7    21.3   755  3891     755    11     744-771   1.1
+natural/01_reel_noload.wav                                   4.5  91.8   3.6   0.1     6.0     8.3   912  1628     929    94    839-1087   9.7
+natural/02_reel_load.wav                                    13.1  85.8   1.1   0.0     2.2     3.7   701  1295     707   127     552-890   8.4
+natural/03_reel_fast.wav                                     4.8  92.2   2.9   0.0     4.9     6.9   880  1518     888    74     818-991   5.4
+natural/04_drag_slow.wav                                     3.5  93.7   2.8   0.0     3.9     4.6  1111  1567    1029   120    834-1138  20.0
+natural/05_drag_fast.wav                                     3.0  91.7   5.2   0.1     7.5     9.0  1101  1855    1101    70   1000-1167   3.9
+natural/06_line_tension.wav                                 18.6  81.0   0.3   0.0     0.8     1.6   587  1055     592    49     540-664   6.7
+natural/07_rod_creak.wav                                    18.0  81.5   0.5   0.0     1.1     1.9   654  1125     653    55     590-722   7.0
+natural/08_hookset.wav                                      84.3  15.0   0.7   0.0     6.2    11.5   266  1063     259   214     160-442   2.0
+natural/09_tele_run.wav                                     22.7  77.3   0.0   0.0     0.1     0.4   441   602     444   113     306-603   5.6
+natural/10_tele_dive.wav                                     6.6  93.4   0.0   0.0     0.0     0.1   480   591     481    89     353-580   5.5
+natural/11_tele_surge.wav                                   11.5  88.3   0.2   0.0     0.5     1.0   572   793     576   117     412-677   6.7
+natural/12_tele_jerk.wav                                    32.6  67.4   0.0   0.0     0.0     0.0   351   398     344    33     287-354   7.4
+natural/13_tele_jump.wav                                     6.6  91.0   2.4   0.0     3.7     4.9   956  1191     943   289    410-1177  12.6
+natural/14_splash_small_x3.wav                               0.9  92.3   6.5   0.2    10.6    15.2   973  1696    1006   284    784-1503  20.0
+natural/15_splash_big_x3.wav                                26.2  70.8   2.9   0.1     7.4    12.6   630  1329     662   451    534-1765  16.7
+natural/16_splash_jump_x2.wav                               45.3  53.6   1.1   0.0     4.2    10.4   435  1059     430   487    288-1409  15.3
+natural/17_splash_far_small_big.wav                         23.0  76.8   0.2   0.0     0.5     1.0   549   787     557   123     495-706   9.3
+natural/18_landed_small.wav                                  3.1  96.7   0.2   0.0     0.7     2.5   481  1008     484   156     413-776   0.7
+natural/19_landed_mid.wav                                    3.3  96.5   0.3   0.0     0.8     3.0   485   974     483    78     440-555   0.5
+natural/20_landed_big.wav                                   47.5  52.3   0.2   0.0     0.8     3.9   348   837     352   146     209-486   0.9
+natural/21_line_snap.wav                                     1.3  90.6   7.9   0.2    10.8    13.4  1207  1789    1186   306    619-1193   5.6
+natural/22_rod_crack.wav                                    38.5  56.6   4.8   0.1    10.0    13.4   794  1454     803   128    770-1097   4.4
+natural/23_escape.wav                                       21.8  75.6   2.6   0.0     5.8     9.3   682  1149     675   215     273-802  11.7
+natural/24_cast.wav                                          1.1  89.2   9.6   0.0    12.8    15.4  1209  1615    1192   196    924-1308   8.2
+natural/25_float_plop.wav                                    7.1  91.7   1.2   0.0     3.3    11.3   516  1066     517   136     292-578  16.6
+natural/26_bite.wav                                          7.5  92.5   0.0   0.0     0.1     0.2   505   647     515   101     296-530   2.0
+natural/27_crank_into_slip.wav                               5.9  92.0   2.1   0.0     3.4     4.6   919  1467     895   119    772-1072  18.2
+natural/30_ambience_morning_64s.wav                         49.5  50.0   0.5   0.0     2.2     6.2   370   863     372    43     325-414   7.8
+natural/31_ambience_seam_check.wav                          50.8  48.7   0.4   0.0     2.0     5.8   362   828     363    34     322-401   7.4
+natural/40_demo_perch300_holdreel.wav                       10.5  87.6   1.9   0.0     3.7     6.0   738  1400     747   205     374-925   7.7
+natural/40_demo_perch300_holdreel.wav [fight]               10.6  87.6   1.8   0.0     3.6     5.9   734  1397     743   167     505-929   7.4
+natural/41_demo_bream2kg_technique.wav                      13.9  84.5   1.6   0.0     3.2     4.9   735  1331     734   303    342-1077   5.8
+natural/41_demo_bream2kg_technique.wav [fight]              14.2  84.4   1.5   0.0     3.0     4.6   731  1320     728   306    343-1085   6.0
+natural/42_demo_perch300_reel_only.wav                       6.4  91.3   2.3   0.0     4.0     5.9   834  1500     850    91     759-997   8.8
+natural/42_demo_perch300_reel_only.wav [fight]               6.4  91.2   2.3   0.0     4.1     6.0   835  1503     850    89     755-995   8.4
+natural/43_demo_bream2kg_reel_drag_only.wav                  7.9  89.6   2.5   0.0     4.0     5.1   954  1542     953   213    558-1122   5.1
+natural/43_demo_bream2kg_reel_drag_only.wav [fight]          7.9  89.6   2.5   0.0     4.0     5.1   955  1543     952   215    564-1124   5.4
+natural/50_variants_rotor_x16.wav                            6.1  92.6   1.4   0.0     2.5     3.7   800  1074     785   126     663-866   9.9
+natural/51_variants_drag_bright8_dark8.wav                   3.3  94.6   2.1   0.0     3.0     3.5  1083  1315    1050   247    498-1164  22.3
+natural/52_variants_creak_quiet6_loud6.wav                  21.3  78.4   0.4   0.0     0.8     1.3   649   855     649    96     575-702   2.4
+natural/53_variants_strain_small6_big6.wav                  22.6  77.3   0.1   0.0     0.2     0.5   576   766     573   148     267-640  31.6
+natural/54_variants_tock_x8.wav                              3.7  96.3   0.0   0.0     0.0     0.0   429   537     426    12     406-437   2.9
+natural/raw:ambience                                        49.5  50.0   0.5   0.0     2.2     6.2   370   863     372    43     325-414   7.8
+natural/raw:laybed                                           3.6  91.4   4.9   0.1     7.6    10.2   979  1571     979    46    931-1047   3.9
+natural/raw:linehum                                          5.0  94.6   0.4   0.0     1.2     2.8   534   970     540    66     465-651  11.3
+cozy/01_reel_noload.wav                                     29.3  70.2   0.6   0.0     1.5     3.2   537   989     559    76     476-665  10.6
+cozy/02_reel_labour.wav                                     42.1  57.7   0.2   0.0     0.8     2.4   400   809     404    33     367-449   7.4
+cozy/03_reel_fast.wav                                       23.0  76.3   0.7   0.0     1.7     3.4   581  1043     594    76     497-687   9.2
+cozy/04_reel_load_sweep.wav                                 37.2  62.4   0.4   0.0     1.3     3.1   469   920     485    92     385-623  10.2
+cozy/05_drag_slow.wav                                        7.2  92.4   0.4   0.0     0.7     0.9   851  1181     764   161     497-894  31.2
+cozy/06_drag_fast.wav                                        9.8  89.1   1.1   0.0     2.1     3.2   738  1200     726    92     603-841   9.3
+cozy/07_line_tension.wav                                     1.0  97.9   1.1   0.0     2.6     5.9   623  1266     628    50     556-685   5.6
+cozy/08_rod_creak.wav                                       62.4  37.6   0.0   0.0     0.0     0.0   282   449     282    18     269-303   3.0
+cozy/09_hookset.wav                                         77.1  22.8   0.1   0.0     1.1     5.0   225   643     223    65     203-355  15.3
+cozy/10_tele_run.wav                                         2.2  96.4   1.5   0.0     2.7     4.6   753  1144     754   104     555-793   8.8
+cozy/11_tele_dive.wav                                        7.2  92.3   0.5   0.0     1.5     4.8   493   900     494   101     385-648   5.5
+cozy/12_tele_surge.wav                                       1.4  94.0   4.6   0.0     6.6     8.6  1039  1439    1032   195    690-1145  10.9
+cozy/13_tele_jerk.wav                                       86.8  13.2   0.0   0.0     0.0     0.0   205   272     205    14     188-221   7.0
+cozy/14_tele_jump.wav                                        0.7  90.2   9.1   0.0    11.9    14.2  1233  1631    1233   311    650-1405   8.1
+cozy/15_splash_small.wav                                     2.0  96.7   1.3   0.0     2.0     2.7   910  1196     917   230    890-1446  15.4
+cozy/16_splash_big.wav                                      16.8  82.8   0.3   0.0     0.9     2.3   499   799     505    90     455-657   8.9
+cozy/17_splash_jump.wav                                      4.7  90.3   5.0   0.0     8.0    11.1   958  1345     960   131    805-1136  13.1
+cozy/18_landed_small.wav                                     0.2  99.8   0.0   0.0     0.1     0.1   707   782     706   116     505-774   0.3
+cozy/19_landed_medium.wav                                    0.1  99.8   0.0   0.0     0.1     0.1   667   721     666   132     448-778   0.4
+cozy/20_landed_big.wav                                       9.0  90.9   0.0   0.0     0.1     0.1   627   659     626   144     417-774   0.7
+cozy/21_line_snap.wav                                        0.0  99.5   0.4   0.0     1.0     3.0   573  1320     573    99     568-725   1.9
+cozy/22_rod_crack.wav                                       67.3  32.7   0.0   0.0     0.1     0.2   308   621     311   129     340-605  11.8
+cozy/23_escape.wav                                           8.3  91.6   0.1   0.0     0.2     0.4   615   735     613    90     390-593   5.3
+cozy/24_cast_whoosh.wav                                      1.9  94.3   3.7   0.0     6.4     9.9   854  1345     848   187    840-1310   4.7
+cozy/25_float_plop.wav                                       0.0 100.0   0.0   0.0     0.0     0.0   522   668     522    50     489-588   2.0
+cozy/26_bite_bob.wav                                         0.7  99.2   0.0   0.0     0.0     0.0   784   840     809    57     741-862   2.9
+cozy/27_birds.wav                                            0.0  98.4   1.6   0.0     2.7     4.1   891  1207     889   580    434-1838   1.1
+cozy/28_ambience_loop_64s.wav                               45.7  53.4   0.8   0.0     3.0     6.1   441   872     443   109     252-528   9.4
+cozy/29_ambience_morning_60s.wav                            44.9  54.2   0.8   0.0     3.0     5.9   456   991     457   135     252-543   9.0
+cozy/30_demo_perch300_holdreel.wav                          39.1  60.5   0.4   0.0     1.4     3.1   488   936     511   125     283-613  11.7
+cozy/30_demo_perch300_holdreel.wav [fight]                  38.9  60.7   0.4   0.0     1.3     3.0   488   932     510   103     355-616  12.8
+cozy/31_demo_bream2kg_technique.wav                         22.9  76.5   0.5   0.0     1.4     2.5   569  1009     565   176     296-773   8.7
+cozy/31_demo_bream2kg_technique.wav [fight]                 22.2  77.3   0.5   0.0     1.3     2.3   575  1008     564   170     343-783   8.9
+cozy/parts/grains_drag_bright_then_dark.wav                  6.3  93.5   0.2   0.0     0.4     0.5   786   963     772   128     574-918   7.0
+cozy/parts/grains_drag_purr.wav                              4.3  93.7   2.0   0.0     3.4     5.2   829  1207     830    94     677-875   6.7
+cozy/parts/grains_gear_heavy.wav                            72.9  27.1   0.0   0.0     0.1     0.4   329   514     325    64     282-457   7.0
+cozy/parts/grains_gear_light.wav                            13.8  86.2   0.1   0.0     0.1     0.3   608   732     603    40     544-643   5.4
+cozy/parts/grains_gear_normal.wav                           35.7  64.2   0.1   0.0     0.2     0.5   468   646     457    63     325-486  10.4
+cozy/parts/grains_handle_tock.wav                           52.1  47.9   0.0   0.0     0.1     0.4   364   487     359    34     301-384   8.9
+cozy/parts/grains_rod_creak.wav                             62.0  38.0   0.0   0.0     0.0     0.0   282   421     282    19     271-308   2.6
+cozy/parts/loop_line_tension_x2.wav                          2.1  97.2   0.7   0.0     2.0     5.2   544  1017     548    36     506-599   5.7
+cozy/parts/loop_reel_bed_x2.wav                             20.0  78.8   1.2   0.0     3.0     5.5   606  1016     608    40     557-665   6.8
+cozy/parts/loop_strain_x2.wav                               35.9  63.8   0.2   0.0     0.9     2.8   415   752     419    29     384-462   6.1
+cozy/raw:ambience                                           45.7  53.4   0.8   0.0     3.0     6.1   441   871     443   109     252-528   9.4
+cozy/raw:linetension                                         2.1  97.2   0.7   0.0     2.0     5.2   545  1018     549    37     507-602   6.0
+cozy/raw:reelbed                                            20.0  78.8   1.2   0.0     3.0     5.5   607  1016     608    39     557-665   6.7
+cozy/raw:strainbed                                          35.7  64.1   0.2   0.0     0.9     2.8   416   752     420    29     385-460   5.2
+tactile/01_reel_idle.wav                                     1.6  97.6   0.9   0.0     1.6     2.8   763  1170     775    71     717-883  10.5
+tactile/02_reel_load.wav                                     4.3  94.8   0.9   0.0     1.7     3.2   719  1054     722    52     692-819   4.8
+tactile/03_reel_gaining.wav                                  1.7  97.3   1.0   0.0     1.8     3.1   765  1145     783    71     710-885  11.9
+tactile/04_reel_pump_start_stop.wav                          1.8  97.3   0.9   0.0     1.6     3.0   739  1113     743    74     681-879   8.9
+tactile/05_drag_slow.wav                                     2.1  94.5   3.4   0.0     4.4     5.1  1182  1441    1130   189    716-1194   8.9
+tactile/06_drag_fast.wav                                     2.0  96.1   1.9   0.0     2.6     3.0  1094  1327    1094    79   1006-1190   4.5
+tactile/07_line_tension.wav                                  0.0  99.9   0.1   0.0     0.1     0.3   632   933     636    67     516-679   3.8
+tactile/08_rod_creak.wav                                    14.2  83.6   2.2   0.0     4.4     6.9   740  1116     740    86     614-814   0.7
+tactile/09_hookset.wav                                      62.2  37.7   0.1   0.0     0.6     2.1   264   848     262   170     188-281   6.1
+tactile/10_tele_run.wav                                      0.4  96.1   3.0   0.4     4.5     6.2   989  1901     994   181    799-1289   5.9
+tactile/11_tele_dive.wav                                    19.3  80.3   0.3   0.0     1.6    10.2   362  1141     361   224     318-482  12.7
+tactile/12_tele_surge.wav                                   46.8  48.9   3.7   0.6     9.3    12.2   683  1937     669   347    206-1132   8.7
+tactile/13_tele_jerk.wav                                    71.9  28.0   0.0   0.0     0.1     0.7   263   541     243    33     191-255  10.9
+tactile/14_tele_jump.wav                                     0.1  93.7   5.4   0.7     7.4     9.4  1138  2094    1185   318    658-1415   9.2
+tactile/15_splash_small.wav                                  0.2  93.1   6.4   0.2     9.6    13.6  1017  1786    1003   169     827-984   4.7
+tactile/16_splash_big.wav                                   39.7  57.7   2.6   0.1     6.7    11.0   591  1292     588    90     578-787  10.7
+tactile/17_splash_jump.wav                                  24.2  74.3   1.5   0.0     4.3     8.7   527  1142     530    76     452-631  12.4
+tactile/18_line_thrum_shock.wav                             81.2  18.8   0.0   0.0     0.2     1.2   235   599     234    40     146-228   2.7
+tactile/19_fish_flop.wav                                     0.6  96.9   2.5   0.0     5.3    10.5   700  1264     670    96     522-758   5.3
+tactile/20_chime_small.wav                                   0.0  99.9   0.1   0.0     0.2     0.6   496   655     496    36     478-532   0.4
+tactile/21_chime.wav                                         0.0  99.9   0.1   0.0     0.2     0.5   573   716     572    49     498-598   0.6
+tactile/22_chime_big.wav                                     0.0  99.9   0.1   0.0     0.1     0.3   627   778     626    75     520-689   0.8
+tactile/23_line_snap.wav                                     0.0  96.3   3.4   0.3     6.1    11.2   809  2142     805    71     638-801   5.7
+tactile/24_rod_crack.wav                                    90.2   7.2   2.4   0.1    26.3    45.3   267  1583     268   222     179-747  45.0
+tactile/25_escape.wav                                        0.2  99.5   0.3   0.0     0.4     0.6   843  1326     854   253    553-1080   6.7
+tactile/26_cast_whoosh.wav                                   0.7  94.0   5.3   0.0     7.0     8.5  1149  1360    1134   120    928-1197   6.5
+tactile/27_float_plop.wav                                    0.4  99.6   0.0   0.0     0.0     0.1   545   767     554   167     506-910  11.0
+tactile/28_bite_bob.wav                                      0.0  99.9   0.1   0.0     0.1     0.2   866  1180     875    74     856-973   2.5
+tactile/30_ambience_morning_64s.wav                         20.5  75.6   3.7   0.2     8.8    15.2   682  1542     683   112     547-811   6.6
+tactile/40_grains_detent_16.wav                              1.5  97.7   0.8   0.0     1.5     2.8   758  1157     755    87     620-829  16.1
+tactile/41_grains_drag_16bright_16dark.wav                   1.9  96.2   1.8   0.0     2.5     2.9  1106  1317    1080   250    532-1218  21.8
+tactile/42_grains_strain_12.wav                             14.4  84.3   1.3   0.0     2.6     4.0   743  1012     741    95     647-795   6.5
+tactile/43_grains_rodcreak_4soft_4hard.wav                  15.4  83.1   1.5   0.0     3.2     5.1   697  1044     696    87     625-803   0.8
+tactile/90_fight_perch300_HoldReel.wav                       5.3  93.7   1.0   0.0     1.9     3.5   713  1298     719   127     552-842  10.1
+tactile/90_fight_perch300_HoldReel.wav [fight]               5.7  93.5   0.8   0.0     1.6     3.0   697  1271     709   112     563-835  10.7
+tactile/90_fight_perch300_HoldReel_reel_only.wav             1.7  97.5   0.8   0.0     1.5     2.7   733  1123     745    73     679-876  12.4
+tactile/90_fight_perch300_HoldReel_reel_only.wav [fight]     1.7  97.5   0.8   0.0     1.4     2.7   734  1123     744    73     679-870  12.0
+tactile/91_fight_bream2kg_Technique.wav                     12.4  85.9   1.7   0.0     3.5     5.0   764  1400     758   285    468-1177   6.2
+tactile/91_fight_bream2kg_Technique.wav [fight]             12.6  85.8   1.6   0.0     3.3     4.6   757  1384     744   289    427-1185   6.9
+tactile/91_fight_bream2kg_Technique_reel_only.wav            2.3  95.1   2.7   0.0     3.6     4.2  1113  1374    1094   170    759-1205   4.5
+tactile/91_fight_bream2kg_Technique_reel_only.wav [fight]    2.3  95.1   2.6   0.0     3.6     4.2  1108  1371    1090   172    756-1200   5.7
+tactile/raw:ambience                                        20.5  75.6   3.7   0.2     8.8    15.2   682  1542     683   112     547-811   6.6
+tactile/raw:linehum                                          0.1  99.9   0.0   0.0     0.0     0.0   505   691     509    33     473-554   4.7
+tactile/raw:spoolpurr                                        3.1  96.0   0.8   0.0     1.4     2.0   837  1029     838    39     786-899   5.2
+
+=== C. MODULATION / ROUGHNESS / BUZZ (sustained material) ===
+  m25 = AM index 20-150 Hz of the 2-5 kHz band (p50/p90); H = A-weighted 2-5k share x m25 (harshness proxy), Hph = phone version;
+  m2-8 / m20-150 = AM index of the whole signal (rule 14 applies to loops); buzz = harmonic contrast dB p50/p90 (harmonics vs gaps, f0 80-400 Hz), frac = energy share with contrast ≥ 8
+file                                                       m25 p50/p90      H    Hph   m2-8 m20-150      buzz frac%
+current/clip_ClickLoop_loop.wav                              2.97/2.98  1.139  1.147   0.08    2.96  7.7/10.9  42.0
+current/clip_DragClick_rotation_12ps.wav                     5.41/6.06  1.723  1.730      -    5.40   2.0/2.5   0.0
+current/clip_Growl_loop.wav                                  0.20/0.20  0.035  0.057   0.15    0.38   5.2/6.6   1.9
+current/clip_LineSing_loop.wav                               0.00/0.00  0.000  0.000   0.08    0.00   7.2/7.2   0.0
+current/clip_RodCreak_rotation.wav                           2.30/2.52  0.200  0.428      -    1.39 23.7/27.1  96.9
+current/clip_Whir_loop.wav                                   0.19/0.19  0.020  0.040   0.20    0.17 16.8/18.7 100.0
+current/fightdemo_bream2kg_Technique.wav                     0.32/3.40  0.051  0.070   0.46    0.43   5.1/6.6   1.3
+current/fightdemo_bream2kg_Technique.wav [fight]             0.31/3.44  0.048  0.065   0.28    0.43   5.2/6.4   0.1
+current/fightdemo_bream2kg_Technique_growl.wav               0.21/0.28  0.035  0.058   0.16    0.39   5.1/6.5   1.3
+current/fightdemo_bream2kg_Technique_reelbed.wav             0.22/3.61  0.041  0.066   0.16    0.43   5.1/6.4   0.8
+current/fightdemo_bream2kg_Technique_reelbed.wav [fight]     0.22/3.56  0.041  0.067   0.19    0.42   5.1/6.2   0.1
+current/fightdemo_bream2kg_Technique_whir.wav                0.35/0.44  0.040  0.087   0.20    0.70 10.4/11.6  91.2
+current/fightdemo_perch300_HoldReel.wav                      0.15/0.22  0.015  0.029   0.22    0.13 16.8/19.2  91.0
+current/fightdemo_perch300_HoldReel.wav [fight]              0.15/0.21  0.015  0.029   0.20    0.12 16.2/19.2  87.1
+current/fightdemo_perch300_HoldReel_growl.wav                0.21/0.26  0.034  0.056   0.36    0.39   5.2/6.5   0.0
+current/fightdemo_perch300_HoldReel_reelbed.wav              0.15/0.18  0.018  0.036   0.20    0.11 17.6/19.7  99.4
+current/fightdemo_perch300_HoldReel_reelbed.wav [fight]      0.15/0.18  0.018  0.036   0.20    0.11 17.7/19.6  99.5
+current/fightdemo_perch300_HoldReel_whir.wav                 0.15/0.18  0.018  0.036   0.20    0.11 17.7/19.9 100.0
+current/fightdemo_pike4kg_Technique.wav                      0.31/2.69  0.065  0.087   0.44    0.39   5.7/9.5  14.0
+current/fightdemo_pike4kg_Technique.wav [fight]              0.30/2.54  0.066  0.088   0.33    0.37   5.5/9.8  14.6
+current/fightdemo_pike4kg_Technique_growl.wav                0.23/0.29  0.037  0.061   0.40    0.45   5.0/6.6   2.6
+current/fightdemo_pike4kg_Technique_reelbed.wav              0.31/3.16  0.053  0.087   0.35    0.39  5.7/11.1  21.8
+current/fightdemo_pike4kg_Technique_reelbed.wav [fight]      0.29/3.14  0.051  0.083   0.33    0.39  5.6/11.1  21.3
+current/fightdemo_pike4kg_Technique_whir.wav                 0.24/0.38  0.026  0.055   0.44    0.44 11.1/15.3  70.7
+current/raw:clickloop                                        2.98/2.98  1.243  1.250   0.09    2.96  9.4/10.9  57.5
+current/raw:growl                                            0.20/0.20  0.035  0.057   0.15    0.38   5.0/6.6   8.3
+current/raw:linesing                                         0.00/0.00  0.000  0.000   0.08    0.00   7.2/7.2   0.0
+current/raw:whir                                             0.19/0.19  0.020  0.040   0.20    0.17 18.2/19.8 100.0
+natural/01_reel_noload.wav                                   0.40/0.44  0.024  0.034   0.45    0.45   5.3/6.8   2.3
+natural/02_reel_load.wav                                     0.47/0.66  0.011  0.017   0.51    0.53   4.9/5.9   0.0
+natural/03_reel_fast.wav                                     0.40/0.48  0.020  0.028   0.16    0.46   5.5/6.8   1.4
+natural/04_drag_slow.wav                                     2.28/4.36  0.088  0.104   0.49    1.79   4.4/6.3   0.0
+natural/05_drag_fast.wav                                     0.41/1.22  0.031  0.037   0.07    0.56   5.9/7.3   4.8
+natural/06_line_tension.wav                                  0.61/0.72  0.005  0.010   0.34    0.88   4.9/6.4   0.0
+natural/07_rod_creak.wav                                     0.74/1.02  0.008  0.014   0.40    0.83   5.0/6.6   5.2
+natural/27_crank_into_slip.wav                               1.24/1.36  0.042  0.057   0.53    0.80   5.2/6.9   2.5
+natural/30_ambience_morning_64s.wav                          0.24/0.30  0.005  0.015   0.11    0.44   5.0/6.2   0.8
+natural/31_ambience_seam_check.wav                           0.23/0.25  0.004  0.013   0.10    0.43   5.0/6.3   1.6
+natural/40_demo_perch300_holdreel.wav                        0.42/0.47  0.016  0.025   0.47    0.47   5.1/6.4   0.6
+natural/40_demo_perch300_holdreel.wav [fight]                0.42/0.47  0.015  0.025   0.49    0.47   5.1/6.1   0.6
+natural/41_demo_bream2kg_technique.wav                       0.98/1.54  0.032  0.048   0.27    0.76   4.7/6.2   1.1
+natural/41_demo_bream2kg_technique.wav [fight]               1.02/1.64  0.031  0.047   0.27    0.78   4.8/6.6   2.2
+natural/42_demo_perch300_reel_only.wav                       0.42/0.47  0.017  0.025   0.53    0.48   5.3/6.6   1.8
+natural/42_demo_perch300_reel_only.wav [fight]               0.42/0.47  0.017  0.025   0.53    0.47   5.1/6.3   0.2
+natural/43_demo_bream2kg_reel_drag_only.wav                  0.98/1.56  0.039  0.050   0.12    1.01   5.4/6.7   1.0
+natural/43_demo_bream2kg_reel_drag_only.wav [fight]          1.03/1.67  0.041  0.053   0.17    0.99   5.3/7.1   2.5
+natural/raw:ambience                                         0.26/0.26  0.006  0.016   0.11    0.44   5.0/6.2   0.8
+natural/raw:laybed                                           0.38/0.38  0.029  0.039   0.07    0.29   5.3/6.8   0.0
+natural/raw:linehum                                          0.28/0.28  0.003  0.008   0.18    0.34   6.8/8.0  10.6
+cozy/01_reel_noload.wav                                      0.28/0.30  0.004  0.009   0.16    0.73   5.1/6.3   0.0
+cozy/02_reel_labour.wav                                      0.33/0.36  0.003  0.008   0.20    0.50   4.5/5.6   0.0
+cozy/03_reel_fast.wav                                        0.26/0.28  0.005  0.009   0.15    0.72   5.2/6.5   0.9
+cozy/04_reel_load_sweep.wav                                  0.29/0.32  0.004  0.009   0.21    0.67   4.7/5.8   0.0
+cozy/05_drag_slow.wav                                        2.09/2.57  0.014  0.019   0.86    1.57   3.9/5.7   0.0
+cozy/06_drag_fast.wav                                        0.49/1.67  0.010  0.016   0.11    0.63   5.2/6.2   0.0
+cozy/07_line_tension.wav                                     0.24/0.26  0.006  0.014   0.16    0.47   5.0/6.7   0.0
+cozy/08_rod_creak.wav                                        2.05/2.69  0.000  0.000   0.73    1.05   3.6/4.3   0.0
+cozy/28_ambience_loop_64s.wav                                0.32/0.61  0.010  0.020   0.14    0.39   4.9/6.1   0.0
+cozy/29_ambience_morning_60s.wav                             0.28/0.59  0.008  0.016   0.15    0.38   4.9/6.2   0.2
+cozy/30_demo_perch300_holdreel.wav                           0.28/0.32  0.004  0.009   0.28    0.68   4.9/6.1   0.4
+cozy/30_demo_perch300_holdreel.wav [fight]                   0.29/0.31  0.004  0.009   0.24    0.67   4.8/5.9   0.0
+cozy/31_demo_bream2kg_technique.wav                          0.65/1.33  0.009  0.016   0.24    0.61   4.7/6.4   0.9
+cozy/31_demo_bream2kg_technique.wav [fight]                  0.71/1.40  0.009  0.016   0.24    0.66   4.8/6.1   0.3
+cozy/parts/loop_line_tension_x2.wav                          0.24/0.26  0.005  0.013   0.15    0.48   5.3/6.9   3.4
+cozy/parts/loop_reel_bed_x2.wav                              0.25/0.28  0.008  0.014   0.07    0.31   5.1/6.5   1.3
+cozy/parts/loop_strain_x2.wav                                0.36/0.38  0.003  0.010   0.17    0.49   4.9/6.1   1.0
+cozy/raw:ambience                                            0.49/0.49  0.015  0.030   0.15    0.44   4.9/6.1   0.0
+cozy/raw:linetension                                         0.25/0.25  0.005  0.013   0.16    0.48   5.2/7.0   3.5
+cozy/raw:reelbed                                             0.26/0.26  0.008  0.014   0.07    0.32   5.1/6.3   0.0
+cozy/raw:strainbed                                           0.36/0.36  0.003  0.010   0.19    0.49   5.1/6.2   0.0
+tactile/01_reel_idle.wav                                     1.73/1.81  0.027  0.048   0.25    1.16   3.7/5.0   0.0
+tactile/02_reel_load.wav                                     1.82/2.30  0.032  0.058   1.10    1.32   4.1/6.3   1.8
+tactile/03_reel_gaining.wav                                  1.53/1.69  0.027  0.047   0.48    1.12   4.1/5.4   0.0
+tactile/04_reel_pump_start_stop.wav                          2.27/2.71  0.037  0.068   1.40    1.49   3.4/4.8   0.0
+tactile/05_drag_slow.wav                                     4.81/6.49  0.213  0.244   1.67    3.36   2.5/3.8   0.0
+tactile/06_drag_fast.wav                                     1.75/2.41  0.045  0.053   0.05    1.31   4.4/7.0   4.3
+tactile/07_line_tension.wav                                  0.34/0.37  0.000  0.001   0.16    0.46   3.9/4.8   0.0
+tactile/08_rod_creak.wav                                     1.72/2.47  0.076  0.118   0.46    1.35  7.3/11.2  37.4
+tactile/30_ambience_morning_64s.wav                          0.24/0.29  0.021  0.036   0.14    0.34   5.3/6.6   1.2
+tactile/90_fight_perch300_HoldReel.wav                       1.68/2.06  0.032  0.058   0.80    1.25   4.2/6.1   0.0
+tactile/90_fight_perch300_HoldReel.wav [fight]               1.82/2.08  0.029  0.054   0.80    1.26   4.3/6.3   2.4
+tactile/90_fight_perch300_HoldReel_reel_only.wav             2.16/2.28  0.032  0.058   0.85    1.33   3.4/4.8   0.1
+tactile/90_fight_perch300_HoldReel_reel_only.wav [fight]     2.15/2.33  0.031  0.057   0.89    1.32   3.3/4.9   0.0
+tactile/91_fight_bream2kg_Technique.wav                      1.91/2.80  0.067  0.095   0.69    1.03   4.8/6.2   1.5
+tactile/91_fight_bream2kg_Technique.wav [fight]              2.01/2.78  0.066  0.093   0.86    1.31   4.6/6.5   1.3
+tactile/91_fight_bream2kg_Technique_reel_only.wav            2.44/3.20  0.088  0.104   0.32    1.74   3.6/6.6   3.6
+tactile/91_fight_bream2kg_Technique_reel_only.wav [fight]    2.32/2.96  0.082  0.098   0.37    1.71   3.7/6.3   2.3
+tactile/raw:ambience                                         0.26/0.26  0.023  0.040   0.14    0.35   5.3/6.6   1.2
+tactile/raw:linehum                                          0.32/0.32  0.000  0.000   0.18    0.46   3.6/4.4   0.0
+tactile/raw:spoolpurr                                        0.30/0.30  0.004  0.006   0.06    0.33   4.7/6.0   0.0
+
+=== D. TICKS / GRAINS: onsets, rate over busy stretches, local IOI change (p50/p90, pairs kept), frame-grid locking Q60/Q20 (% of IOIs on a 16.7/50 ms grid),
+       consecutive-grain similarity (p50, % identical ≥0.97), lag-k similarity k=1..6, fixed rotation; variant sets: pairwise mean/max, clusters@0.97 ===
+file                                                           n   rate jit p50/p90 kept  Q60%  Q20%   sim ident lag1..6                             rot pair m/max  cl
+current/clip_DragClick_rotation_12ps.wav                      25   12.0     0.2/0.3  100 100.0   0.0  0.35   0.0 0.35 0.35 1.00 0.35 0.35 1.00         3        -/-   -
+current/clip_RodCreak_rotation.wav                           106   51.9     1.8/1.8 63.5   0.0   0.0  1.00  92.4 1.00 1.00 1.00 1.00 1.00 1.00         0        -/-   -
+current/fightdemo_bream2kg_Technique.wav [fight]             421   16.8    1.2/10.3 72.4  19.9  13.7  0.43   0.0 0.43 0.43 0.40 0.37 0.36 0.36         0        -/-   -
+current/fightdemo_bream2kg_Technique_reelbed.wav             318   19.2     1.3/9.7 85.4   7.7   1.9  0.47   0.0 0.47 0.48 0.40 0.39 0.39 0.36         0        -/-   -
+current/fightdemo_bream2kg_Technique_reelbed.wav [fight]     318   19.2     1.3/9.7 85.4   7.7   1.9  0.47   0.0 0.47 0.48 0.40 0.39 0.39 0.36         0        -/-   -
+current/fightdemo_perch300_HoldReel.wav [fight]               12    3.6         -/-    0   0.0   0.0  0.29   0.0 0.29 0.13 0.11 0.14 0.13 0.16         0        -/-   -
+current/fightdemo_perch300_HoldReel_reelbed.wav                6    2.9         -/-    0   0.0   0.0  0.80   0.0 0.80 0.46 0.18 0.15 0.11 -            0        -/-   -
+current/fightdemo_perch300_HoldReel_reelbed.wav [fight]        6    2.9         -/-    0   0.0   0.0  0.80   0.0 0.80 0.46 0.18 0.15 0.11 -            0        -/-   -
+current/fightdemo_pike4kg_Technique.wav [fight]              442   16.3    4.4/13.9 79.4   6.4   3.2  0.45   0.0 0.45 0.45 0.39 0.39 0.38 0.37         0        -/-   -
+current/fightdemo_pike4kg_Technique_reelbed.wav              398   17.0    3.8/10.5 88.6   5.1   3.6  0.47   0.0 0.47 0.47 0.40 0.40 0.40 0.38         0        -/-   -
+current/fightdemo_pike4kg_Technique_reelbed.wav [fight]      398   17.0    3.8/10.5 88.6   5.1   3.6  0.47   0.0 0.47 0.47 0.40 0.40 0.40 0.38         0        -/-   -
+natural/01_reel_noload.wav                                    48    6.7    4.2/10.1   87   8.5   2.1  0.17   0.0 0.17 0.18 0.15 0.16 0.17 0.19         0        -/-   -
+natural/02_reel_load.wav                                     158   18.4   12.4/22.8 24.4   1.3   0.0  0.67   0.0 0.67 0.69 0.69 0.68 0.69 0.71         0        -/-   -
+natural/03_reel_fast.wav                                      99   17.0    8.1/16.2   99   0.0   0.0  0.17   0.0 0.17 0.18 0.17 0.17 0.16 0.18         0        -/-   -
+natural/04_drag_slow.wav                                      50    8.6     4.8/8.8 87.5   4.1   2.0  0.65   0.0 0.65 0.66 0.67 0.60 0.65 0.67         0        -/-   -
+natural/05_drag_fast.wav                                     167   27.1    4.8/10.4 72.1   4.2   0.0  0.49   0.0 0.49 0.48 0.51 0.54 0.50 0.50         0        -/-   -
+natural/07_rod_creak.wav                                     302   36.3   12.8/22.1 37.3   3.0   0.7  0.71  10.0 0.71 0.71 0.71 0.71 0.70 0.72         0        -/-   -
+natural/27_crank_into_slip.wav                                66   12.1    5.4/12.5 43.8   6.2   6.2  0.30   0.0 0.30 0.29 0.27 0.40 0.33 0.29         0        -/-   -
+natural/40_demo_perch300_holdreel.wav [fight]                139    6.6    5.2/15.6   57   2.2   0.0  0.19   0.0 0.19 0.16 0.16 0.16 0.18 0.17         0        -/-   -
+natural/41_demo_bream2kg_technique.wav [fight]               680   23.5    6.4/16.2 57.4   2.7   0.4  0.50   0.0 0.50 0.49 0.49 0.48 0.47 0.45         0        -/-   -
+natural/42_demo_perch300_reel_only.wav                       111    5.7    5.0/12.6   75   0.9   0.0  0.19   0.0 0.19 0.17 0.16 0.19 0.18 0.19         0        -/-   -
+natural/42_demo_perch300_reel_only.wav [fight]               111    5.7    5.0/12.6   75   0.9   0.0  0.19   0.0 0.19 0.17 0.16 0.19 0.18 0.19         0        -/-   -
+natural/43_demo_bream2kg_reel_drag_only.wav                  512   30.4    5.9/13.1 70.4   3.2   0.6  0.56   0.0 0.56 0.55 0.54 0.55 0.54 0.51         0        -/-   -
+natural/43_demo_bream2kg_reel_drag_only.wav [fight]          512   30.4    5.9/13.1 70.4   3.2   0.6  0.56   0.0 0.56 0.55 0.54 0.55 0.54 0.51         0        -/-   -
+natural/50_variants_rotor_x16.wav                             16    3.4     1.7/3.8  100   0.0   0.0  0.18   0.0 0.18 0.18 0.16 0.18 0.18 0.15         0  0.16/0.37  16
+natural/51_variants_drag_bright8_dark8.wav                    16    4.1     0.0/0.1  100   0.0   0.0  0.69   0.0 0.69 0.65 0.75 0.72 0.68 0.71         0  0.68/0.95  16
+natural/52_variants_creak_quiet6_loud6.wav                   228   26.9   13.2/22.4 43.4   5.3   0.4  1.00  99.1 1.00 1.00 1.00 1.00 1.00 1.00         0        -/-   -
+natural/53_variants_strain_small6_big6.wav                    21    5.9     0.0/5.5 31.6   5.0   0.0  0.98  65.0 0.98 0.98 0.97 0.97 0.97 0.97         0  0.95/1.00   1
+natural/54_variants_tock_x8.wav                                8    3.0     0.0/0.0  100   0.0   0.0  0.94  14.3 0.94 0.91 0.79 0.80 0.88 0.91         0  0.88/1.00   5
+cozy/01_reel_noload.wav                                       86   12.3    5.2/10.6 91.7   7.1   0.0  0.50   0.0 0.50 0.57 0.49 0.55 0.56 0.55         0        -/-   -
+cozy/02_reel_labour.wav                                      119   15.9    8.2/22.0 40.2   1.7   0.0  0.18   0.0 0.18 0.20 0.18 0.25 0.19 0.20         0        -/-   -
+cozy/03_reel_fast.wav                                        118   17.3    4.9/10.6 99.1   0.9   0.9  0.58   0.0 0.58 0.61 0.62 0.63 0.62 0.62         0        -/-   -
+cozy/04_reel_load_sweep.wav                                  151   13.0    6.8/14.5 70.5   4.7   0.0  0.28   0.0 0.28 0.25 0.28 0.28 0.30 0.25         0        -/-   -
+cozy/05_drag_slow.wav                                         43    7.1    7.3/15.7 85.4   2.4   0.0  0.84   0.0 0.84 0.84 0.91 0.80 0.85 0.82         0        -/-   -
+cozy/06_drag_fast.wav                                        148   23.1    9.3/18.7 56.8   4.8   0.0  0.33   0.0 0.33 0.28 0.29 0.29 0.30 0.28         0        -/-   -
+cozy/08_rod_creak.wav                                        278   43.3   15.5/24.6   46   4.0   0.0  0.99  83.4 0.99 0.99 0.98 0.99 0.99 0.99         0        -/-   -
+cozy/30_demo_perch300_holdreel.wav [fight]                   247   10.9    5.2/12.2   79   2.0   1.6  0.30   0.0 0.30 0.30 0.25 0.29 0.29 0.29         0        -/-   -
+cozy/31_demo_bream2kg_technique.wav [fight]                  436   16.8    8.1/19.3 56.2   3.2   0.9  0.38   0.0 0.38 0.41 0.36 0.32 0.32 0.32         0        -/-   -
+cozy/parts/grains_drag_bright_then_dark.wav                   83   10.4         -/-    0   0.0   0.0  0.48   0.0 0.48 0.53 0.84 0.45 0.59 0.66         0        -/-   -
+cozy/parts/grains_drag_purr.wav                               13    4.4     0.4/1.4 81.8  25.0  25.0  0.24   0.0 0.24 0.28 0.32 0.21 0.26 0.29         0  0.28/0.63  13
+cozy/parts/grains_gear_heavy.wav                              15    4.1     0.2/0.3 53.8  28.6  28.6  0.81   7.1 0.81 0.84 0.77 0.91 0.75 0.79         0  0.75/0.99  10
+cozy/parts/grains_gear_light.wav                              12    3.3     0.1/0.2  100  90.9  90.9  0.94  27.3 0.94 0.97 0.95 0.97 0.94 0.98         0  0.94/0.99   1
+cozy/parts/grains_gear_normal.wav                             12    3.3     0.1/0.1  100  90.9  90.9  0.94  27.3 0.94 0.94 0.93 0.92 0.88 0.94         0  0.92/0.99   6
+cozy/parts/grains_handle_tock.wav                             19    8.4         -/-    0   0.0   0.0  0.37   0.0 0.37 0.45 0.50 0.49 0.41 0.68         0  0.47/0.99  13
+cozy/parts/grains_rod_creak.wav                              159   26.6   14.0/22.2 44.6   5.7   0.0  0.99  84.8 0.99 0.99 0.98 0.99 0.98 0.99         0        -/-   -
+tactile/01_reel_idle.wav                                      81   11.0     1.5/4.5 91.1  10.0   0.0  0.78   0.0 0.78 0.79 0.74 0.73 0.74 0.79         0        -/-   -
+tactile/02_reel_load.wav                                     296   37.3   11.1/20.8 33.7   1.4   0.3  0.90  27.8 0.90 0.86 0.87 0.86 0.87 0.87         0        -/-   -
+tactile/03_reel_gaining.wav                                   96   13.7    5.0/21.8 26.6   7.4   3.2  0.27   0.0 0.27 0.37 0.30 0.51 0.32 0.31         0        -/-   -
+tactile/04_reel_pump_start_stop.wav                           54    6.6    8.0/18.3 15.4   0.0   0.0  0.22   0.0 0.22 0.20 0.22 0.23 0.20 0.24         0        -/-   -
+tactile/05_drag_slow.wav                                      34    4.5     3.8/6.6 78.1   6.1   0.0  0.67  15.2 0.67 0.79 0.73 0.77 0.70 0.75         0        -/-   -
+tactile/06_drag_fast.wav                                     268   32.1     2.1/5.0 99.2   1.1   0.0  0.78   0.0 0.78 0.79 0.79 0.79 0.79 0.78         0        -/-   -
+tactile/08_rod_creak.wav                                     424   62.1    7.1/16.8   91   1.7   0.0  1.00  89.5 1.00 1.00 1.00 1.00 1.00 1.00         0        -/-   -
+tactile/40_grains_detent_16.wav                               16    4.0     0.1/0.1  100 100.0 100.0  0.79   0.0 0.79 0.80 0.84 0.86 0.80 0.82         0  0.80/0.98  14
+tactile/41_grains_drag_16bright_16dark.wav                    32    5.0     0.1/0.1  100 100.0 100.0  0.89   9.7 0.89 0.86 0.88 0.91 0.84 0.85         0  0.77/1.00  11
+tactile/42_grains_strain_12.wav                               95   27.9   11.8/22.5   43   1.1   1.1  1.00  84.0 1.00 0.99 0.99 0.99 0.99 0.99         0        -/-   -
+tactile/43_grains_rodcreak_4soft_4hard.wav                   259   49.8    7.1/16.3 90.7   1.2   0.0  1.00  98.1 1.00 1.00 1.00 1.00 1.00 1.00         0        -/-   -
+tactile/90_fight_perch300_HoldReel.wav [fight]               172    8.4     2.3/6.7 78.6   1.8   0.0  0.71   0.6 0.71 0.77 0.72 0.72 0.72 0.76         0        -/-   -
+tactile/90_fight_perch300_HoldReel_reel_only.wav             164    8.3     2.3/7.0 85.2   1.2   0.6  0.76   0.6 0.76 0.81 0.79 0.74 0.75 0.77         0        -/-   -
+tactile/90_fight_perch300_HoldReel_reel_only.wav [fight]     164    8.3     2.3/7.0 85.2   1.2   0.6  0.76   0.6 0.76 0.81 0.79 0.74 0.75 0.77         0        -/-   -
+tactile/91_fight_bream2kg_Technique.wav [fight]              305   15.4    3.0/10.1 70.4   5.0   2.3  0.73   0.0 0.73 0.71 0.68 0.67 0.66 0.66         0        -/-   -
+tactile/91_fight_bream2kg_Technique_reel_only.wav            304   22.4    3.1/10.8 76.5   3.7   0.7  0.80   6.9 0.80 0.75 0.75 0.73 0.72 0.70         0        -/-   -
+tactile/91_fight_bream2kg_Technique_reel_only.wav [fight]    303   22.3    3.0/10.8 76.5   3.7   0.7  0.80   7.0 0.80 0.75 0.75 0.73 0.72 0.70         0        -/-   -
+
+  variant sets (whole variants segmented at silences, pairwise max xcorr ±0.5 ms; clusters = sounds ≥ 0.97 alike):
+    natural/50_variants_rotor_x16.wav                        variants  16  pairwise mean 0.16  max 0.36  nearest-sibling p50 0.30  distinct 16
+    natural/51_variants_drag_bright8_dark8.wav               variants  16  pairwise mean 0.68  max 0.95  nearest-sibling p50 0.89  distinct 16
+    natural/52_variants_creak_quiet6_loud6.wav               variants  14  pairwise mean 0.30  max 1.00  nearest-sibling p50 0.98  distinct 2
+    natural/53_variants_strain_small6_big6.wav               variants  12  pairwise mean 0.74  max 0.99  nearest-sibling p50 0.93  distinct 8
+    natural/54_variants_tock_x8.wav                          variants   8  pairwise mean 0.88  max 1.00  nearest-sibling p50 0.98  distinct 5
+    cozy/parts/grains_drag_bright_then_dark.wav              variants  32  pairwise mean 0.78  max 0.99  nearest-sibling p50 0.98  distinct 9
+    cozy/parts/grains_drag_purr.wav                          variants  12  pairwise mean 0.26  max 0.63  nearest-sibling p50 0.51  distinct 12
+    cozy/parts/grains_gear_heavy.wav                         variants  12  pairwise mean 0.86  max 0.99  nearest-sibling p50 0.97  distinct 8
+    cozy/parts/grains_gear_light.wav                         variants  12  pairwise mean 0.95  max 0.99  nearest-sibling p50 0.98  distinct 1
+    cozy/parts/grains_gear_normal.wav                        variants  12  pairwise mean 0.92  max 0.99  nearest-sibling p50 0.98  distinct 6
+    cozy/parts/grains_handle_tock.wav                        variants   6  pairwise mean 0.90  max 0.99  nearest-sibling p50 0.97  distinct 4
+    cozy/parts/grains_rod_creak.wav                          variants   8  pairwise mean 0.06  max 0.16  nearest-sibling p50 0.14  distinct 8
+    tactile/40_grains_detent_16.wav                          variants  16  pairwise mean 0.80  max 0.98  nearest-sibling p50 0.97  distinct 14
+    tactile/41_grains_drag_16bright_16dark.wav               variants  32  pairwise mean 0.78  max 1.00  nearest-sibling p50 0.98  distinct 11
+    tactile/42_grains_strain_12.wav                          variants  12  pairwise mean 0.10  max 0.33  nearest-sibling p50 0.25  distinct 12
+    tactile/43_grains_rodcreak_4soft_4hard.wav               variants   8  pairwise mean 0.06  max 0.12  nearest-sibling p50 0.10  distinct 8
+
+=== E. REPETITION AND LOOP SEAMS ===
+  wave r = max normalised waveform autocorrelation at lag ≥ 50 ms (1.0 = sample-exact repeat); feat r = 7-band level-pattern self-similarity at lag ≥ 1 s
+current/clip_ClickLoop_loop.wav                            wave r 1.00 @ 2.00 s; tiled loop period 0.500 s; periodic AM lines: 2-8 Hz 7.1% @6.00, 8-20 Hz 8.9% @12.0, 20-150 Hz 185.8% @40.0
+      seam @0.000s step 0.7346 (rank 99.7, 0.87x p99.9), curvature rank 99.9 (1.19x), HF-click rank 98.4 (0.61x), level jump +47.5 dB (rank 96.0)
+current/clip_Growl_loop.wav                                wave r 1.00 @ 1.00 s; tiled loop period 1.000 s; periodic AM lines: 2-8 Hz 7.9% @6.97, 8-20 Hz 35.6% @11.0, 20-150 Hz 6.4% @35.0
+      seam @0.000s step 0.0151 (rank 19.3, 0.12x p99.9), curvature rank 89.0 (0.53x), HF-click rank 85.0 (0.55x), level jump +0.6 dB (rank 14.9)
+current/clip_LineSing_loop.wav                             wave r 1.00 @ 0.33 s; tiled loop period 0.147 s; periodic AM lines: 2-8 Hz 8.0% @6.00, 8-20 Hz 0.2% @8.1, 20-150 Hz 0.0% @21.9
+      seam @0.000s step 0.1459 (rank 93.2, 0.87x p99.9), curvature rank 44.6 (0.26x), HF-click rank 82.7 (0.82x), level jump +0.9 dB (rank 96.7)
+current/clip_Whir_loop.wav                                 wave r 1.00 @ 1.00 s; tiled loop period 0.500 s; periodic AM lines: 2-8 Hz 19.3% @4.04, 8-20 Hz 2.2% @12.0, 20-150 Hz 0.9% @38.1
+      seam @0.000s step 0.4487 (rank 99.2, 0.72x p99.9), curvature rank 99.2 (0.73x), HF-click rank 92.6 (0.60x), level jump +0.9 dB (rank 59.4)
+current/fightdemo_bream2kg_Technique_growl.wav             wave r 0.47 @ 0.93 s; feat r 0.40 @ 4.0 s
+current/fightdemo_bream2kg_Technique_reelbed.wav [fight]   wave r 0.32 @ 0.93 s; feat r 0.32 @ 11.7 s
+current/fightdemo_bream2kg_Technique_whir.wav              wave r 0.83 @ 0.06 s; feat r 0.39 @ 4.0 s
+current/fightdemo_perch300_HoldReel_growl.wav              wave r 0.37 @ 10.92 s; feat r 0.32 @ 1.0 s
+current/fightdemo_perch300_HoldReel_reelbed.wav [fight]    wave r 0.54 @ 0.07 s; feat r 0.47 @ 1.0 s
+current/fightdemo_perch300_HoldReel_whir.wav               wave r 0.55 @ 0.07 s; feat r 0.20 @ 1.0 s
+current/fightdemo_pike4kg_Technique_growl.wav              wave r 0.19 @ 5.75 s; feat r 0.49 @ 3.7 s
+current/fightdemo_pike4kg_Technique_reelbed.wav [fight]    wave r 0.12 @ 5.75 s; feat r 0.54 @ 3.8 s
+current/fightdemo_pike4kg_Technique_whir.wav               wave r 0.22 @ 0.05 s; feat r 0.55 @ 3.8 s
+current/raw:clickloop                                      wave r 0.52 @ 0.05 s; periodic AM lines: 2-8 Hz 10.9% @6.85, 8-20 Hz 16.4% @12.7, 20-150 Hz 184.2% @40.1
+      seam @0.000s step 0.7346 (rank 99.7, 0.87x p99.9), curvature rank 99.9 (1.19x), HF-click rank 98.4 (0.61x), level jump +47.5 dB (rank 96.0)
+current/raw:growl                                          wave r 0.11 @ 0.18 s; periodic AM lines: 2-8 Hz 7.9% @7.34, 8-20 Hz 33.9% @11.3, 20-150 Hz 6.9% @34.7
+      seam @0.000s step 0.0151 (rank 19.4, 0.12x p99.9), curvature rank 89.0 (0.53x), HF-click rank 85.0 (0.55x), level jump +0.6 dB (rank 14.9)
+current/raw:linesing                                       wave r 1.00 @ 0.16 s; periodic AM lines: 2-8 Hz 8.0% @5.87, 8-20 Hz 1.4% @8.8, 20-150 Hz 0.1% @20.6
+      seam @0.000s step 0.1544 (rank 96.3, 0.92x p99.9), curvature rank 48.4 (0.27x), HF-click rank 88.5 (0.86x), level jump +0.5 dB (rank 95.0)
+current/raw:whir                                           wave r 0.98 @ 0.25 s; periodic AM lines: 2-8 Hz 19.8% @3.92, 8-20 Hz 3.6% @12.7, 20-150 Hz 1.8% @20.6
+      seam @0.000s step 0.4487 (rank 99.2, 0.72x p99.9), curvature rank 99.2 (0.73x), HF-click rank 92.6 (0.60x), level jump +0.9 dB (rank 59.4)
+natural/01_reel_noload.wav                                 wave r 0.04 @ 0.89 s
+natural/02_reel_load.wav                                   wave r 0.04 @ 3.70 s
+natural/03_reel_fast.wav                                   wave r 0.04 @ 3.14 s
+natural/04_drag_slow.wav                                   wave r 0.09 @ 1.20 s
+natural/05_drag_fast.wav                                   wave r 0.04 @ 2.17 s
+natural/06_line_tension.wav                                wave r 0.04 @ 3.71 s
+natural/07_rod_creak.wav                                   wave r 0.08 @ 1.15 s
+natural/27_crank_into_slip.wav                             wave r 0.06 @ 2.60 s
+natural/30_ambience_morning_64s.wav                        wave r 0.02 @ 7.28 s; feat r 0.17 @ 1.0 s; prominent 1-s moments (≥ +6 dB over median) 0; periodic AM lines: 2-8 Hz 1.7% @2.23, 8-20 Hz 1.3% @11.6, 20-150 Hz 1.5% @96.4
+      seam @0.000s step 0.0025 (rank 29.9, 0.10x p99.9), curvature rank 25.3 (0.07x), HF-click rank 59.3 (0.08x), level jump +5.0 dB (rank 99.7)  <-- soft level step
+natural/31_ambience_seam_check.wav                         wave r 0.05 @ 2.85 s
+      seam @3.000s step 0.0025 (rank 30.6, 0.12x p99.9), curvature rank 26.1 (0.10x), HF-click rank 69.6 (0.27x), level jump +5.0 dB (rank 99.3)
+natural/42_demo_perch300_reel_only.wav [fight]             wave r 0.14 @ 4.06 s; feat r 0.51 @ 1.0 s
+natural/43_demo_bream2kg_reel_drag_only.wav [fight]        wave r 0.02 @ 0.38 s; feat r 0.35 @ 4.1 s
+natural/raw:ambience                                       wave r 0.02 @ 7.28 s; feat r 0.17 @ 1.0 s; prominent 1-s moments (≥ +6 dB over median) 0; periodic AM lines: 2-8 Hz 1.7% @2.23, 8-20 Hz 1.3% @11.6, 20-150 Hz 1.5% @96.4
+      seam @0.000s step 0.0065 (rank 30.0, 0.10x p99.9), curvature rank 26.0 (0.07x), HF-click rank 59.5 (0.08x), level jump +5.0 dB (rank 99.7)  <-- soft level step
+natural/raw:laybed                                         wave r 0.03 @ 0.47 s; periodic AM lines: 2-8 Hz 3.1% @2.32, 8-20 Hz 2.4% @10.2, 20-150 Hz 3.3% @40.6
+      seam @0.000s step 0.0621 (rank 80.3, 0.29x p99.9), curvature rank 46.5 (0.08x), HF-click rank 39.7 (0.03x), level jump +1.7 dB (rank 91.0)
+natural/raw:linehum                                        wave r 0.11 @ 0.67 s; periodic AM lines: 2-8 Hz 7.8% @4.53, 8-20 Hz 8.4% @10.5, 20-150 Hz 6.4% @22.0
+      seam @0.000s step 0.0104 (rank 34.0, 0.13x p99.9), curvature rank 85.5 (0.44x), HF-click rank 58.7 (0.26x), level jump +0.5 dB (rank 15.7)
+cozy/01_reel_noload.wav                                    wave r 0.07 @ 3.12 s
+cozy/02_reel_labour.wav                                    wave r 0.05 @ 3.68 s
+cozy/03_reel_fast.wav                                      wave r 0.05 @ 0.42 s
+cozy/04_reel_load_sweep.wav                                wave r 0.04 @ 5.14 s
+cozy/05_drag_slow.wav                                      wave r 0.07 @ 2.96 s
+cozy/06_drag_fast.wav                                      wave r 0.05 @ 3.41 s
+cozy/07_line_tension.wav                                   wave r 0.06 @ 0.23 s
+cozy/08_rod_creak.wav                                      wave r 0.13 @ 2.73 s
+cozy/28_ambience_loop_64s.wav                              wave r 0.03 @ 0.12 s; feat r 0.24 @ 2.1 s; prominent 1-s moments (≥ +6 dB over median) 0; periodic AM lines: 2-8 Hz 2.5% @2.21, 8-20 Hz 1.3% @9.5, 20-150 Hz 1.5% @62.4
+      seam @0.000s step 0.0062 (rank 62.5, 0.09x p99.9), curvature rank 45.1 (0.05x), HF-click rank 80.4 (0.06x), level jump -1.0 dB (rank 44.4)
+cozy/29_ambience_morning_60s.wav                           wave r 0.03 @ 0.10 s; feat r 0.19 @ 2.0 s; prominent 1-s moments (≥ +6 dB over median) 0
+cozy/parts/loop_line_tension_x2.wav                        wave r 1.00 @ 7.00 s; periodic AM lines: 2-8 Hz 5.8% @6.73, 8-20 Hz 5.0% @11.7, 20-150 Hz 5.3% @49.0
+      seam @7.000s step 0.0416 (rank 89.1, 0.46x p99.9), curvature rank 77.5 (0.36x), HF-click rank 42.8 (0.23x), level jump +0.6 dB (rank 19.4)
+      seam @0.000s step 0.0416 (rank 89.1, 0.46x p99.9), curvature rank 77.5 (0.36x), HF-click rank 42.8 (0.23x), level jump +0.6 dB (rank 19.4)
+cozy/parts/loop_reel_bed_x2.wav                            wave r 1.00 @ 6.00 s; periodic AM lines: 2-8 Hz 2.4% @6.18, 8-20 Hz 3.7% @11.3, 20-150 Hz 2.8% @148.3
+      seam @6.000s step 0.0294 (rank 48.1, 0.18x p99.9), curvature rank 30.8 (0.13x), HF-click rank 44.3 (0.23x), level jump -1.1 dB (rank 63.1)
+      seam @0.000s step 0.0294 (rank 48.1, 0.18x p99.9), curvature rank 30.8 (0.13x), HF-click rank 44.3 (0.23x), level jump -1.1 dB (rank 63.1)
+cozy/parts/loop_strain_x2.wav                              wave r 1.00 @ 5.00 s; periodic AM lines: 2-8 Hz 6.2% @5.38, 8-20 Hz 15.3% @15.4, 20-150 Hz 8.0% @20.4
+      seam @5.000s step 0.0169 (rank 50.3, 0.13x p99.9), curvature rank 50.0 (0.15x), HF-click rank 37.1 (0.08x), level jump +1.0 dB (rank 15.1)
+      seam @0.000s step 0.0169 (rank 50.3, 0.13x p99.9), curvature rank 50.0 (0.15x), HF-click rank 37.1 (0.08x), level jump +1.0 dB (rank 15.1)
+cozy/raw:ambience                                          wave r 0.03 @ 0.12 s; feat r 0.25 @ 2.1 s; prominent 1-s moments (≥ +6 dB over median) 0; periodic AM lines: 2-8 Hz 2.5% @2.21, 8-20 Hz 1.3% @9.5, 20-150 Hz 1.5% @62.4
+      seam @0.000s step 0.0090 (rank 62.7, 0.09x p99.9), curvature rank 46.2 (0.05x), HF-click rank 80.5 (0.06x), level jump -1.0 dB (rank 44.4)
+cozy/raw:linetension                                       wave r 0.08 @ 3.16 s; periodic AM lines: 2-8 Hz 6.1% @6.73, 8-20 Hz 5.5% @11.7, 20-150 Hz 6.0% @33.6
+      seam @0.000s step 0.0420 (rank 89.1, 0.46x p99.9), curvature rank 77.6 (0.36x), HF-click rank 42.7 (0.23x), level jump +0.6 dB (rank 19.6)
+cozy/raw:reelbed                                           wave r 0.04 @ 2.92 s; periodic AM lines: 2-8 Hz 2.5% @6.18, 8-20 Hz 3.8% @11.3, 20-150 Hz 3.2% @61.2
+      seam @0.000s step 0.0195 (rank 48.1, 0.18x p99.9), curvature rank 31.0 (0.13x), HF-click rank 44.1 (0.24x), level jump -1.1 dB (rank 63.1)
+cozy/raw:strainbed                                         wave r 0.05 @ 0.86 s; periodic AM lines: 2-8 Hz 7.3% @5.32, 8-20 Hz 17.6% @14.3, 20-150 Hz 8.7% @20.4
+      seam @0.000s step 0.0120 (rank 50.4, 0.13x p99.9), curvature rank 50.0 (0.15x), HF-click rank 37.1 (0.08x), level jump +1.0 dB (rank 16.0)
+tactile/01_reel_idle.wav                                   wave r 0.18 @ 3.59 s
+tactile/02_reel_load.wav                                   wave r 0.10 @ 4.25 s
+tactile/03_reel_gaining.wav                                wave r 0.09 @ 2.34 s
+tactile/04_reel_pump_start_stop.wav                        wave r 0.14 @ 3.75 s
+tactile/05_drag_slow.wav                                   wave r 0.09 @ 3.43 s
+tactile/06_drag_fast.wav                                   wave r 0.05 @ 3.81 s
+tactile/07_line_tension.wav                                wave r 0.08 @ 0.30 s
+tactile/08_rod_creak.wav                                   wave r 0.08 @ 0.71 s
+tactile/30_ambience_morning_64s.wav                        wave r 0.01 @ 17.01 s; feat r 0.20 @ 7.4 s; prominent 1-s moments (≥ +6 dB over median) 0; periodic AM lines: 2-8 Hz 2.1% @3.05, 8-20 Hz 1.1% @11.3, 20-150 Hz 1.2% @129.1
+      seam @0.000s step 0.0008 (rank 5.4, 0.01x p99.9), curvature rank 95.1 (0.31x), HF-click rank 76.8 (0.04x), level jump +0.6 dB (rank 35.1)
+tactile/90_fight_perch300_HoldReel_reel_only.wav [fight]   wave r 0.08 @ 0.86 s; feat r 0.72 @ 1.0 s
+tactile/91_fight_bream2kg_Technique_reel_only.wav [fight]  wave r 0.04 @ 7.97 s; feat r 0.60 @ 8.0 s
+tactile/raw:ambience                                       wave r 0.01 @ 17.01 s; feat r 0.20 @ 7.4 s; prominent 1-s moments (≥ +6 dB over median) 0; periodic AM lines: 2-8 Hz 2.1% @3.05, 8-20 Hz 1.1% @11.3, 20-150 Hz 1.2% @129.1
+      seam @0.000s step 0.0011 (rank 5.4, 0.01x p99.9), curvature rank 95.1 (0.31x), HF-click rank 76.8 (0.04x), level jump +0.6 dB (rank 35.1)
+tactile/raw:linehum                                        wave r 0.11 @ 1.37 s; periodic AM lines: 2-8 Hz 7.9% @2.20, 8-20 Hz 8.6% @12.1, 20-150 Hz 6.8% @40.0
+      seam @0.000s step 0.0076 (rank 23.4, 0.09x p99.9), curvature rank 86.7 (0.45x), HF-click rank 55.7 (0.15x), level jump +0.2 dB (rank 4.2)
+tactile/raw:spoolpurr                                      wave r 0.05 @ 0.55 s; periodic AM lines: 2-8 Hz 3.1% @3.43, 8-20 Hz 3.5% @9.9, 20-150 Hz 5.3% @79.3
+      seam @0.000s step 0.0373 (rank 56.6, 0.25x p99.9), curvature rank 28.1 (0.12x), HF-click rank 25.0 (0.13x), level jump -0.7 dB (rank 44.7)
+
+=== F. SAME SITUATION ACROSS PALETTES (current = raw FightSynth clip where no rendered situation exists) ===
+situation       palette  file                                       LUFS  Cpow <300%  2-5k%    A%   ph%  >5k% phLoss      H buzz%  rate   jit   sim  m2-8
+reel_free       current  clip_Whir_loop.wav                        -11.4   757  44.2    3.3  10.6  21.1   3.0   -3.0  0.020 100.0     -     -     -  0.20
+reel_free       natural  01_reel_noload.wav                        -22.7   912   4.5    3.6   6.0   8.3   0.1   -1.5  0.024   2.3   6.7   4.2  0.17  0.45
+reel_free       cozy     01_reel_noload.wav                        -20.0   537  29.3    0.6   1.5   3.2   0.0   -3.3  0.004   0.0  12.3   5.2  0.50  0.16
+reel_free       tactile  01_reel_idle.wav                          -21.3   763   1.6    0.9   1.6   2.8   0.0   -2.5  0.027   0.0  11.0   1.5  0.78  0.25
+
+reel_load       current  clip_Growl_loop.wav                       -16.5   498  65.4    3.2  17.6  28.6   1.6   -2.1  0.035   1.9     -     -     -  0.15
+reel_load       natural  02_reel_load.wav                          -26.5   701  13.1    1.1   2.2   3.7   0.0   -2.2  0.011   0.0  18.4  12.4  0.67  0.51
+reel_load       cozy     02_reel_labour.wav                        -20.0   400  42.1    0.2   0.8   2.4   0.0   -5.0  0.003   0.0  15.9   8.2  0.18  0.20
+reel_load       tactile  02_reel_load.wav                          -25.9   719   4.3    0.9   1.7   3.2   0.0   -2.6  0.032   1.8  37.3  11.1  0.90  1.10
+
+reel_fast       natural  03_reel_fast.wav                          -19.7   880   4.8    2.9   4.9   6.9   0.0   -1.6  0.020   1.4  17.0   8.1  0.17  0.16
+reel_fast       cozy     03_reel_fast.wav                          -20.0   581  23.0    0.7   1.7   3.4   0.0   -3.0  0.005   0.9  17.3   4.9  0.58  0.15
+reel_fast       tactile  03_reel_gaining.wav                       -21.4   765   1.7    1.0   1.8   3.1   0.0   -2.5  0.027   0.0  13.7   5.0  0.27  0.48
+
+drag_slow       current  clip_DragClick_rotation_12ps.wav          -34.8  6717   0.0   23.3  31.8  32.0  70.5   -0.0  1.723   0.0  12.0   0.2  0.35     -
+drag_slow       natural  04_drag_slow.wav                          -28.4  1111   3.5    2.8   3.9   4.6   0.0   -0.7  0.088   0.0   8.6   4.8  0.65  0.49
+drag_slow       cozy     05_drag_slow.wav                          -27.2   851   7.2    0.4   0.7   0.9   0.0   -1.3  0.014   0.0   7.1   7.3  0.84  0.86
+drag_slow       tactile  05_drag_slow.wav                          -30.1  1182   2.1    3.4   4.4   5.1   0.0   -0.6  0.213   0.0   4.5   3.8  0.67  1.67
+
+drag_fast       current  clip_ClickLoop_loop.wav                   -22.4  6034   0.0   29.0  38.3  38.6  62.2   -0.0  1.139  42.0     -     -     -  0.08
+drag_fast       natural  05_drag_fast.wav                          -24.5  1101   3.0    5.2   7.5   9.0   0.1   -0.9  0.031   4.8  27.1   4.8  0.49  0.07
+drag_fast       cozy     06_drag_fast.wav                          -22.4   738   9.8    1.1   2.1   3.2   0.0   -2.0  0.010   0.0  23.1   9.3  0.33  0.11
+drag_fast       tactile  06_drag_fast.wav                          -24.2  1094   2.0    1.9   2.6   3.0   0.0   -0.8  0.045   4.3  32.1   2.1  0.78  0.05
+
+line            current  clip_LineSing_loop.wav                     -7.9   650   0.0    0.0   0.0   0.0   0.0   -3.7  0.000   0.0     -     -     -  0.08
+line            natural  06_line_tension.wav                       -26.8   587  18.6    0.3   0.8   1.6   0.0   -2.9  0.005   0.0     -     -     -  0.34
+line            cozy     07_line_tension.wav                       -20.0   623   1.0    1.1   2.6   5.9   0.0   -3.6  0.006   0.0     -     -     -  0.16
+line            tactile  07_line_tension.wav                       -19.9   632   0.0    0.1   0.1   0.3   0.0   -3.7  0.000   0.0     -     -     -  0.16
+
+rod             current  clip_RodCreak_rotation.wav                -20.6   174  89.1    0.6   8.7  18.6   0.1   -3.3  0.200  96.9  51.9   1.8  1.00     -
+rod             natural  07_rod_creak.wav                          -25.0   654  18.0    0.5   1.1   1.9   0.0   -2.3  0.008   5.2  36.3  12.8  0.71  0.40
+rod             cozy     08_rod_creak.wav                          -21.1   282  62.4    0.0   0.0   0.0   0.0   -6.9  0.000   0.0  43.3  15.5  0.99  0.73
+rod             tactile  08_rod_creak.wav                          -24.7   740  14.2    2.2   4.4   6.9   0.0   -1.9  0.076  37.4  62.1   7.1  1.00  0.46
+
+amb             natural  30_ambience_morning_64s.wav               -26.8   370  49.5    0.5   2.2   6.2   0.0   -4.6  0.005   0.8     -     -     -  0.11
+amb             cozy     28_ambience_loop_64s.wav                  -23.9   441  45.7    0.8   3.0   6.1   0.0   -3.1  0.010   0.0     -     -     -  0.14
+amb             tactile  30_ambience_morning_64s.wav               -25.8   682  20.5    3.7   8.8  15.2   0.2   -2.4  0.021   1.2     -     -     -  0.14
+
+demo_perch      current  fightdemo_perch300_HoldReel.wav [fight]   -25.0   687  41.8    3.5  10.1  19.1   1.4   -2.8  0.015  87.1   3.6     -  0.29  0.20
+demo_perch      natural  40_demo_perch300_holdreel.wav [fight]     -21.9   734  10.6    1.8   3.6   5.9   0.0   -2.1  0.015   0.6   6.6   5.2  0.19  0.49
+demo_perch      cozy     30_demo_perch300_holdreel.wav [fight]     -22.0   488  38.9    0.4   1.3   3.0   0.0   -3.6  0.004   0.0  10.9   5.2  0.30  0.24
+demo_perch      tactile  90_fight_perch300_HoldReel.wav [fight]    -23.6   697   5.7    0.8   1.6   3.0   0.0   -2.8  0.029   2.4   8.4   2.3  0.71  0.80
+
+demo_bream      current  fightdemo_bream2kg_Technique.wav [fight]  -26.9   732  52.3    4.8  15.6  21.4   2.1   -1.4  0.048   0.1  16.8   1.2  0.43  0.28
+demo_bream      natural  41_demo_bream2kg_technique.wav [fight]    -22.9   731  14.2    1.5   3.0   4.6   0.0   -1.9  0.031   2.2  23.5   6.4  0.50  0.27
+demo_bream      cozy     31_demo_bream2kg_technique.wav [fight]    -23.6   575  22.2    0.5   1.3   2.3   0.0   -2.7  0.009   0.3  16.8   8.1  0.38  0.24
+demo_bream      tactile  91_fight_bream2kg_Technique.wav [fight]   -24.9   757  12.6    1.6   3.3   4.6   0.0   -1.6  0.066   1.3  15.4   3.0  0.73  0.86
+
+demoreel_perch  current  fightdemo_perch300_HoldReel_reelbed.wa..  -25.8   706  45.1    4.1  12.2  24.1   1.8   -3.0  0.018  99.5   2.9     -  0.80  0.20
+demoreel_perch  natural  42_demo_perch300_reel_only.wav [fight]    -22.7   835   6.4    2.3   4.1   6.0   0.0   -1.7  0.017   0.2   5.7   5.0  0.19  0.53
+demoreel_perch  tactile  90_fight_perch300_HoldReel_reel_only.w..  -22.6   734   1.7    0.8   1.4   2.7   0.0   -2.7  0.031   0.0   8.3   2.3  0.76  0.89
+
+demoreel_bream  current  fightdemo_bream2kg_Technique_reelbed.w..  -26.9   568  61.1    4.0  18.8  30.3   1.7   -2.1  0.041   0.1  19.2   1.3  0.47  0.19
+demoreel_bream  natural  43_demo_bream2kg_reel_drag_only.wav [f..  -23.9   955   7.9    2.5   4.0   5.1   0.0   -1.1  0.041   2.5  30.4   5.9  0.56  0.17
+demoreel_bream  tactile  91_fight_bream2kg_Technique_reel_only...  -26.1  1108   2.3    2.6   3.6   4.2   0.0   -0.8  0.082   2.3  22.3   3.0  0.80  0.37
+
+=== G. AMBIENCE + EVENTS UNDER THE REEL (full demo minus reel-only demo, sample-aligned; 400 ms blocks in the fight span where the reel is active) ===
+  natural/40_demo_perch300_holdreel.wav: reel-only fight LUFS -22.7, (ambience+events) fight LUFS -28.7; reel minus bed per block p10/p50/p90 = 5.1/15.1/16.2 dB
+  natural/41_demo_bream2kg_technique.wav: reel-only fight LUFS -23.9, (ambience+events) fight LUFS -26.9; reel minus bed per block p10/p50/p90 = 6.5/14.2/16.0 dB
+  tactile/90_fight_perch300_HoldReel.wav: reel-only fight LUFS -22.6, (ambience+events) fight LUFS -30.1; reel minus bed per block p10/p50/p90 = 6.0/13.8/14.5 dB
+  tactile/91_fight_bream2kg_Technique.wav: reel-only fight LUFS -26.1, (ambience+events) fight LUFS -23.2; reel minus bed per block p10/p50/p90 = 9.7/17.2/19.6 dB
+
+=== H. LEVEL CONSISTENCY ===
+  demo_perch: current -25.0 LUFS (TP -3.8); natural -21.9 LUFS (TP -3.0) = +3.2 LU vs current; cozy -22.0 LUFS (TP -3.0) = +3.0 LU vs current; tactile -23.6 LUFS (TP -3.0) = +1.5 LU vs current
+  demo_bream: current -26.9 LUFS (TP -3.8); natural -22.9 LUFS (TP -4.0) = +4.0 LU vs current; cozy -23.6 LUFS (TP -3.0) = +3.3 LU vs current; tactile -24.9 LUFS (TP -3.0) = +1.9 LU vs current
+  demoreel_perch: current -25.8 LUFS (TP -13.1); natural -22.7 LUFS (TP -3.9) = +3.2 LU vs current; tactile -22.6 LUFS (TP -3.0) = +3.2 LU vs current
+  demoreel_bream: current -26.9 LUFS (TP -8.6); natural -23.9 LUFS (TP -3.9) = +3.0 LU vs current; tactile -26.1 LUFS (TP -3.0) = +0.8 LU vs current
+  current one-shots max-momentary LUFS: median -14.0, range -19.9..-11.7; >6 LU from median: 
+  natural situation files LUFS: 01 -22.7, 02 -26.5, 03 -19.7, 04 -28.4, 05 -24.5, 06 -26.8, 07 -25.0, 27 -24.9
+  natural one-shots max-momentary LUFS: median -18.4, range -23.6..-13.4; >6 LU from median: 
+  cozy situation files LUFS: 01 -20.0, 02 -20.0, 03 -20.0, 04 -20.3, 05 -27.2, 06 -22.4, 07 -20.0, 08 -21.1
+  cozy one-shots max-momentary LUFS: median -17.9, range -23.2..-9.8; >6 LU from median: 27_birds.wav -9.8
+  tactile situation files LUFS: 01 -21.3, 02 -25.9, 03 -21.4, 04 -24.5, 05 -30.1, 06 -24.2, 07 -19.9, 08 -24.7
+  tactile one-shots max-momentary LUFS: median -20.0, range -24.2..-15.8; >6 LU from median: 
+
+=== I. FLAGS (DEFECT = breaks a research rule or is audible; WARN = check by ear; NOTE = informational) ===
+  [DEFECT] current/clip_ClickLoop_loop.wav: 2-5 kHz holds 29% of energy (rule 13: ≤10% for repeated layers)
+  [DEFECT] current/clip_ClickLoop_loop.wav: periodic AM 186% at 40.0 Hz (rule 14: ≤10% at 20-150 Hz)
+  [DEFECT] current/clip_ClickLoop_loop.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 42% of active energy (p50 7.7 dB)
+  [WARN  ] current/clip_ClickLoop_loop.wav: >5 kHz holds 62.2% of energy (rule 13)
+  [WARN  ] current/clip_ClickLoop_loop.wav: on a phone speaker 2-5 kHz is 39% of what is heard
+  [WARN  ] current/clip_ClickLoop_loop.wav: harsh/rough: A-weighted 2-5 kHz share 38% x AM(20-150) 2.97 = 1.139
+  [NOTE  ] current/clip_ClickLoop_loop.wav: centroid 6034 Hz outside 400-1300 (rule 13)
+  [WARN  ] current/clip_DragClick0.wav: true peak 0.4 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_DragClick0.wav: starts on a jump: first sample 21% of peak
+  [WARN  ] current/clip_DragClick0.wav: >5 kHz holds 76.5% of energy (rule 13)
+  [NOTE  ] current/clip_DragClick0.wav: centroid 6698 Hz outside 400-1300 (rule 13)
+  [DEFECT] current/clip_DragClick1.wav: 2-5 kHz holds 33% of energy (rule 13: ≤10% for repeated layers)
+  [WARN  ] current/clip_DragClick1.wav: true peak -0.9 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_DragClick1.wav: starts on a jump: first sample 100% of peak
+  [WARN  ] current/clip_DragClick1.wav: >5 kHz holds 64.9% of energy (rule 13)
+  [WARN  ] current/clip_DragClick1.wav: on a phone speaker 2-5 kHz is 43% of what is heard
+  [NOTE  ] current/clip_DragClick1.wav: centroid 6666 Hz outside 400-1300 (rule 13)
+  [DEFECT] current/clip_DragClick2.wav: 2-5 kHz holds 29% of energy (rule 13: ≤10% for repeated layers)
+  [WARN  ] current/clip_DragClick2.wav: true peak -0.2 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_DragClick2.wav: starts on a jump: first sample 100% of peak
+  [WARN  ] current/clip_DragClick2.wav: >5 kHz holds 69.8% of energy (rule 13)
+  [WARN  ] current/clip_DragClick2.wav: on a phone speaker 2-5 kHz is 40% of what is heard
+  [NOTE  ] current/clip_DragClick2.wav: centroid 6815 Hz outside 400-1300 (rule 13)
+  [DEFECT] current/clip_DragClick_rotation_12ps.wav: 2-5 kHz holds 23% of energy (rule 13: ≤10% for repeated layers)
+  [DEFECT] current/clip_DragClick_rotation_12ps.wav: fixed rotation of 3 variants (lag-3 similarity 1.00 vs lag-1 0.35)
+  [WARN  ] current/clip_DragClick_rotation_12ps.wav: >5 kHz holds 70.5% of energy (rule 13)
+  [WARN  ] current/clip_DragClick_rotation_12ps.wav: on a phone speaker 2-5 kHz is 32% of what is heard
+  [WARN  ] current/clip_DragClick_rotation_12ps.wav: metronomic: local IOI change only 0.2% (rule 1 asks +-4%, i.e. about 3.8%)
+  [NOTE  ] current/clip_DragClick_rotation_12ps.wav: centroid 6717 Hz outside 400-1300 (rule 13)
+  [WARN  ] current/clip_Growl_loop.wav: on a phone speaker 2-5 kHz is 29% of what is heard
+  [WARN  ] current/clip_Growl_loop.wav: periodic AM 36% at 11.0 Hz (8-20 Hz flutter, between the rule-14 bands)
+  [WARN  ] current/clip_Hookset.wav: true peak -0.2 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_Hookset.wav: starts on a jump: first sample 2% of peak
+  [WARN  ] current/clip_JerkThunk.wav: true peak -0.4 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_JerkThunk.wav: DC offset 0.0215
+  [WARN  ] current/clip_LineSnap.wav: true peak -0.4 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_LineSnap.wav: starts on a jump: first sample 100% of peak
+  [WARN  ] current/clip_RodCrack.wav: true peak 0.5 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_RodCrack.wav: starts on a jump: first sample 49% of peak
+  [WARN  ] current/clip_RodCreak0.wav: true peak -0.6 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_RodCreak1.wav: true peak -0.6 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_RodCreak2.wav: true peak -0.7 dBTP > -1 (rule 18)
+  [DEFECT] current/clip_RodCreak_rotation.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 97% of active energy (p50 23.7 dB)
+  [WARN  ] current/clip_RodCreak_rotation.wav: on a phone speaker 2-5 kHz is 19% of what is heard
+  [WARN  ] current/clip_RodCreak_rotation.wav: harsh/rough: A-weighted 2-5 kHz share 9% x AM(20-150) 2.30 = 0.200
+  [NOTE  ] current/clip_RodCreak_rotation.wav: centroid 174 Hz outside 400-1300 (rule 13)
+  [NOTE  ] current/clip_RodCreak_rotation.wav: 92% of consecutive micro-pulses identical at 70/s: a stick-slip texture (pitch/roughness), not separate grains
+  [WARN  ] current/clip_Splash.wav: true peak -0.5 dBTP > -1 (rule 18)
+  [WARN  ] current/clip_Splash.wav: DC offset -0.0074
+  [WARN  ] current/clip_SplashHeavy.wav: true peak -0.9 dBTP > -1 (rule 18)
+  [DEFECT] current/clip_Whir_loop.wav: periodic AM 19% at 4.04 Hz (rule 14: ≤10% at 2-8 Hz on sustained layers)
+  [DEFECT] current/clip_Whir_loop.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 100% of active energy (p50 16.8 dB)
+  [WARN  ] current/clip_Whir_loop.wav: >5 kHz holds 3.0% of energy (rule 13)
+  [WARN  ] current/clip_Whir_loop.wav: on a phone speaker 2-5 kHz is 21% of what is heard
+  [NOTE  ] current/fightdemo_bream2kg_Technique.wav [fight]: very steady rhythm: local IOI change 1.2% (rule 1 target about 3.8%)
+  [WARN  ] current/fightdemo_bream2kg_Technique_growl.wav: on a phone speaker 2-5 kHz is 27% of what is heard
+  [WARN  ] current/fightdemo_bream2kg_Technique_reelbed.wav: on a phone speaker 2-5 kHz is 30% of what is heard
+  [NOTE  ] current/fightdemo_bream2kg_Technique_reelbed.wav: very steady rhythm: local IOI change 1.3% (rule 1 target about 3.8%)
+  [WARN  ] current/fightdemo_bream2kg_Technique_reelbed.wav [fight]: on a phone speaker 2-5 kHz is 30% of what is heard
+  [NOTE  ] current/fightdemo_bream2kg_Technique_reelbed.wav [fight]: very steady rhythm: local IOI change 1.3% (rule 1 target about 3.8%)
+  [DEFECT] current/fightdemo_bream2kg_Technique_whir.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 91% of active energy (p50 10.4 dB)
+  [WARN  ] current/fightdemo_bream2kg_Technique_whir.wav: on a phone speaker 2-5 kHz is 25% of what is heard
+  [DEFECT] current/fightdemo_perch300_HoldReel.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 91% of active energy (p50 16.8 dB)
+  [DEFECT] current/fightdemo_perch300_HoldReel.wav [fight]: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 87% of active energy (p50 16.2 dB)
+  [WARN  ] current/fightdemo_perch300_HoldReel_growl.wav: on a phone speaker 2-5 kHz is 27% of what is heard
+  [DEFECT] current/fightdemo_perch300_HoldReel_reelbed.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 99% of active energy (p50 17.6 dB)
+  [WARN  ] current/fightdemo_perch300_HoldReel_reelbed.wav: on a phone speaker 2-5 kHz is 24% of what is heard
+  [DEFECT] current/fightdemo_perch300_HoldReel_reelbed.wav [fight]: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 99% of active energy (p50 17.7 dB)
+  [WARN  ] current/fightdemo_perch300_HoldReel_reelbed.wav [fight]: on a phone speaker 2-5 kHz is 24% of what is heard
+  [DEFECT] current/fightdemo_perch300_HoldReel_whir.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 100% of active energy (p50 17.7 dB)
+  [WARN  ] current/fightdemo_perch300_HoldReel_whir.wav: on a phone speaker 2-5 kHz is 24% of what is heard
+  [WARN  ] current/fightdemo_pike4kg_Technique_growl.wav: on a phone speaker 2-5 kHz is 26% of what is heard
+  [DEFECT] current/fightdemo_pike4kg_Technique_reelbed.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 22% of active energy (p50 5.7 dB)
+  [WARN  ] current/fightdemo_pike4kg_Technique_reelbed.wav: >5 kHz holds 2.7% of energy (rule 13)
+  [WARN  ] current/fightdemo_pike4kg_Technique_reelbed.wav: on a phone speaker 2-5 kHz is 28% of what is heard
+  [DEFECT] current/fightdemo_pike4kg_Technique_reelbed.wav [fight]: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 21% of active energy (p50 5.6 dB)
+  [WARN  ] current/fightdemo_pike4kg_Technique_reelbed.wav [fight]: >5 kHz holds 2.7% of energy (rule 13)
+  [WARN  ] current/fightdemo_pike4kg_Technique_reelbed.wav [fight]: on a phone speaker 2-5 kHz is 29% of what is heard
+  [DEFECT] current/fightdemo_pike4kg_Technique_whir.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 71% of active energy (p50 11.1 dB)
+  [WARN  ] current/fightdemo_pike4kg_Technique_whir.wav: on a phone speaker 2-5 kHz is 23% of what is heard
+  [DEFECT] current/raw:clickloop: 2-5 kHz holds 32% of energy (rule 13: ≤10% for repeated layers)
+  [DEFECT] current/raw:clickloop: periodic AM 11% at 6.85 Hz (rule 14: ≤10% at 2-8 Hz on sustained layers)
+  [DEFECT] current/raw:clickloop: periodic AM 184% at 40.1 Hz (rule 14: ≤10% at 20-150 Hz)
+  [DEFECT] current/raw:clickloop: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 58% of active energy (p50 9.4 dB)
+  [WARN  ] current/raw:clickloop: >5 kHz holds 61.1% of energy (rule 13)
+  [WARN  ] current/raw:clickloop: on a phone speaker 2-5 kHz is 42% of what is heard
+  [WARN  ] current/raw:clickloop: periodic AM 16% at 12.7 Hz (8-20 Hz flutter, between the rule-14 bands)
+  [WARN  ] current/raw:clickloop: harsh/rough: A-weighted 2-5 kHz share 42% x AM(20-150) 2.98 = 1.243
+  [NOTE  ] current/raw:clickloop: centroid 6062 Hz outside 400-1300 (rule 13)
+  [WARN  ] current/raw:growl: on a phone speaker 2-5 kHz is 28% of what is heard
+  [WARN  ] current/raw:growl: periodic AM 34% at 11.3 Hz (8-20 Hz flutter, between the rule-14 bands)
+  [DEFECT] current/raw:whir: periodic AM 20% at 3.92 Hz (rule 14: ≤10% at 2-8 Hz on sustained layers)
+  [DEFECT] current/raw:whir: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 100% of active energy (p50 18.2 dB)
+  [WARN  ] current/raw:whir: >5 kHz holds 2.9% of energy (rule 13)
+  [WARN  ] current/raw:whir: on a phone speaker 2-5 kHz is 21% of what is heard
+  [NOTE  ] natural/31_ambience_seam_check.wav: centroid 362 Hz outside 400-1300 (rule 13)
+  [WARN  ] natural/52_variants_creak_quiet6_loud6.wav: variants nearly identical: 2 distinct sounds among 14 at 0.97, nearest-sibling similarity p50 0.98, pairwise mean 0.30; variation rests on gain/timing
+  [WARN  ] natural/54_variants_tock_x8.wav: variants nearly identical: 5 distinct sounds among 8 at 0.97, nearest-sibling similarity p50 0.98, pairwise mean 0.88; variation rests on gain/timing
+  [NOTE  ] cozy/02_reel_labour.wav: centroid 400 Hz outside 400-1300 (rule 13)
+  [NOTE  ] cozy/08_rod_creak.wav: centroid 282 Hz outside 400-1300 (rule 13)
+  [NOTE  ] cozy/08_rod_creak.wav: 83% of consecutive micro-pulses identical at 63/s: a stick-slip texture (pitch/roughness), not separate grains
+  [WARN  ] cozy/parts/grains_drag_bright_then_dark.wav: variants nearly identical: 9 distinct sounds among 32 at 0.97, nearest-sibling similarity p50 0.98, pairwise mean 0.78; variation rests on gain/timing
+  [WARN  ] cozy/parts/grains_gear_heavy.wav: variants nearly identical: 8 distinct sounds among 12 at 0.97, nearest-sibling similarity p50 0.97, pairwise mean 0.86; variation rests on gain/timing
+  [NOTE  ] cozy/parts/grains_gear_heavy.wav: centroid 329 Hz outside 400-1300 (rule 13)
+  [WARN  ] cozy/parts/grains_gear_light.wav: variants nearly identical: 1 distinct sounds among 12 at 0.97, nearest-sibling similarity p50 0.98, pairwise mean 0.95; variation rests on gain/timing
+  [WARN  ] cozy/parts/grains_gear_normal.wav: variants nearly identical: 6 distinct sounds among 12 at 0.97, nearest-sibling similarity p50 0.98, pairwise mean 0.92; variation rests on gain/timing
+  [WARN  ] cozy/parts/grains_handle_tock.wav: variants nearly identical: 4 distinct sounds among 6 at 0.97, nearest-sibling similarity p50 0.97, pairwise mean 0.90; variation rests on gain/timing
+  [NOTE  ] cozy/parts/grains_handle_tock.wav: centroid 364 Hz outside 400-1300 (rule 13)
+  [NOTE  ] cozy/parts/grains_rod_creak.wav: centroid 282 Hz outside 400-1300 (rule 13)
+  [WARN  ] cozy/parts/loop_strain_x2.wav: periodic AM 15% at 15.4 Hz (8-20 Hz flutter, between the rule-14 bands)
+  [WARN  ] cozy/raw:strainbed: periodic AM 18% at 14.3 Hz (8-20 Hz flutter, between the rule-14 bands)
+  [NOTE  ] tactile/01_reel_idle.wav: very steady rhythm: local IOI change 1.5% (rule 1 target about 3.8%)
+  [WARN  ] tactile/05_drag_slow.wav: 15% of consecutive grains identical (sim >= 0.97): near-duplicate variants
+  [NOTE  ] tactile/06_drag_fast.wav: very steady rhythm: local IOI change 2.1% (rule 1 target about 3.8%)
+  [WARN  ] tactile/08_rod_creak.wav: buzzer-like harmonic comb (harmonics ≥ 8 dB over the gaps) in 37% of active energy (p50 7.3 dB)
+  [WARN  ] tactile/08_rod_creak.wav: harsh/rough: A-weighted 2-5 kHz share 4% x AM(20-150) 1.72 = 0.076
+  [NOTE  ] tactile/08_rod_creak.wav: 90% of consecutive micro-pulses identical at 84/s: a stick-slip texture (pitch/roughness), not separate grains
+  [NOTE  ] tactile/40_grains_detent_16.wav: variants close: nearest-sibling similarity p50 0.97, 14 distinct among 16
+  [WARN  ] tactile/41_grains_drag_16bright_16dark.wav: variants nearly identical: 11 distinct sounds among 32 at 0.97, nearest-sibling similarity p50 0.98, pairwise mean 0.78; variation rests on gain/timing
+  [NOTE  ] tactile/90_fight_perch300_HoldReel.wav [fight]: very steady rhythm: local IOI change 2.3% (rule 1 target about 3.8%)
+  [NOTE  ] tactile/90_fight_perch300_HoldReel_reel_only.wav: very steady rhythm: local IOI change 2.3% (rule 1 target about 3.8%)
+  [NOTE  ] tactile/90_fight_perch300_HoldReel_reel_only.wav [fight]: very steady rhythm: local IOI change 2.3% (rule 1 target about 3.8%)
+  [WARN  ] tactile/91_fight_bream2kg_Technique_reel_only.wav: harsh/rough: A-weighted 2-5 kHz share 4% x AM(20-150) 2.44 = 0.088
+  [WARN  ] tactile/91_fight_bream2kg_Technique_reel_only.wav [fight]: harsh/rough: A-weighted 2-5 kHz share 4% x AM(20-150) 2.32 = 0.082
+
+  flag counts per palette (DEFECT/WARN/NOTE): current 25/59/11; natural 0/2/1; cozy 0/7/6; tactile 0/6/7
+
+=== J. LEVEL-MATCHED A/B FILES (fight span from the hookset, equal integrated loudness, 1.2 s silence between palettes) ===
+  F:\fishing\.previews\audio\critic\ab_perch_fight_4palettes.wav: each segment -23.0 LUFS, 20.0 s of fight: 0.0-20.2 s current (gain +2.0 dB); 21.4-41.7 s natural (gain -1.2 dB); 42.9-63.2 s cozy (gain -1.3 dB); 64.4-84.6 s tactile (gain +0.5 dB)
+  F:\fishing\.previews\audio\critic\ab_bream_fight_4palettes.wav: each segment -26.9 LUFS, 20.0 s of fight: 0.0-20.2 s current (gain +2.3 dB); 21.4-41.7 s natural (gain -4.2 dB); 42.9-63.2 s cozy (gain -3.0 dB); 64.4-84.6 s tactile (gain -1.9 dB)
+  F:\fishing\.previews\audio\critic\ab_perch_reel_only_3palettes.wav: each segment -23.0 LUFS, 20.0 s of fight: 0.0-20.2 s current (gain +2.9 dB); 21.4-41.7 s natural (gain -0.3 dB); 42.9-63.2 s tactile (gain -0.4 dB)
+  F:\fishing\.previews\audio\critic\ab_reel_situations_3palettes.wav: each excerpt -25.0 LUFS (6 s from 0.5 s): 0.0s reel_free/natural (-2.3 dB); 6.8s reel_free/cozy (-5.3 dB); 13.6s reel_free/tactile (-3.7 dB); 21.6s reel_load/natural (+1.6 dB); 28.4s reel_load/cozy (-5.3 dB); 35.2s reel_load/tactile (+1.5 dB); 43.2s reel_fast/natural (-5.4 dB); 50.0s reel_fast/cozy (-5.3 dB); 56.8s reel_fast/tactile (-3.8 dB)
+  F:\fishing\.previews\audio\critic\ab_drag_situations_3palettes.wav: each excerpt -28.1 LUFS (6 s from 0.5 s): 0.0s drag_slow/natural (+0.3 dB); 6.8s drag_slow/cozy (-0.9 dB); 13.6s drag_slow/tactile (+2.1 dB); 21.6s drag_fast/natural (-3.8 dB); 28.4s drag_fast/cozy (-5.9 dB); 35.2s drag_fast/tactile (-4.0 dB)
+
+runtime 7.6 s

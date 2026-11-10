@@ -1,0 +1,295 @@
+=== BANK: generated in 745 ms on this PC (first call includes JIT) ===
+  gear ticks 3x12                   35 ms     261954 samples (11.9 s, 1.0 MB float)
+  drag ticks 2x16 + purr 12         24 ms     223168 samples (10.1 s, 0.9 MB float)
+  rod creak 8                       12 ms     124768 samples (5.7 s, 0.5 MB float)
+  loops bed+strain+line             82 ms     396900 samples (18.0 s, 1.5 MB float)
+  ambience bed 64 s                419 ms    1411200 samples (64.0 s, 5.4 MB float)
+  one-shots                        172 ms    1593327 samples (72.3 s, 6.1 MB float)
+  total 4011317 samples = 181.9 s of audio, 15.3 MB as float (x0.5 as 16-bit)
+
+=== CLIPS (raw, 22050 Hz). cent = spectral centroid; bands = % energy <300 | 300-2k | 2-5k | >5k (FLAT / A-weighted / PHONE-A) ===
+clip               n    ms   peak    rms       DC  cent centA  FLAT                  A-WEIGHTED            PHONE-A               
+GearLight         12   280   -0.9  -22.7  0.00000   712   878  14.5 85.4  0.1  0.0    2.9 96.9  0.1  0.0    0.1 99.6  0.3  0.0   
+Gear              12   280   -0.9  -22.3  0.00000   621   816  40.2 59.8  0.1  0.0   14.4 85.5  0.2  0.0    0.9 98.6  0.5  0.0   
+GearHeavy         12   280   -0.9  -19.7  0.00000   505   722  72.4 27.6  0.0  0.0   37.8 62.1  0.1  0.0    3.1 96.5  0.4  0.0   
+HandleTock         6   300   -0.9  -20.5  0.00000   475   646  51.8 48.1  0.0  0.0   19.8 80.1  0.1  0.0    1.4 98.3  0.3  0.0   
+DragTick          16   230   -0.9  -24.5  0.00004  1095  1247   3.6 96.0  0.4  0.0    0.5 98.9  0.6  0.0    0.0 99.1  0.8  0.0   
+DragTickDark      16   230   -0.9  -23.3  0.00001   766   911   8.8 91.1  0.0  0.0    1.5 98.4  0.1  0.0    0.0 99.8  0.1  0.0   
+DragPurr          12   230   -0.9  -22.8  0.00000  1192  1349   3.8 94.4  1.8  0.0    0.6 96.2  3.1  0.0    0.0 95.2  4.8  0.0   
+RodCreak           8   707   -0.7  -18.9  0.00000   421   581  62.5 37.5  0.0  0.0   23.9 76.1  0.0  0.0    1.5 98.5  0.0  0.0   
+Hookset            1   800   -0.9  -21.4  0.00000   534   880  73.6 26.3  0.0  0.0   24.6 75.1  0.4  0.0    1.4 95.9  2.7  0.0   
+TeleRun            1   900   -0.9  -18.3  0.00000  1142  1300   2.2 96.3  1.5  0.0    0.4 96.8  2.8  0.0    0.0 95.2  4.8  0.0   
+TeleDive           1   950   -0.9  -16.7  0.00000   898  1118   7.2 92.3  0.5  0.0    2.2 96.2  1.6  0.0    0.1 94.9  4.9  0.0   
+TeleSurge          1   730   -0.9  -17.6  0.00000  1435  1567   1.4 94.1  4.5  0.0    0.2 93.2  6.6  0.0    0.0 91.4  8.6  0.0   
+TeleJerk           1   670   -0.9  -21.6  0.00000   279   359  85.9 14.1  0.0  0.0   54.1 45.9  0.0  0.0   12.0 88.0  0.0  0.0   
+TeleJump           1   850   -0.9  -19.0  0.00000  1614  1731   0.7 90.6  8.6  0.0    0.1 88.4 11.5  0.0    0.0 86.1 13.9  0.1   
+SplashSmall        1  1600   -0.9  -25.4  0.00000  1176  1252   0.5 99.2  0.3  0.0    0.1 99.5  0.4  0.0    0.0 99.5  0.5  0.0   
+SplashBig          1  1850   -0.9  -22.4  0.00000   714   825   2.9 97.0  0.1  0.0    0.6 99.2  0.2  0.0    0.0 99.6  0.4  0.0   
+SplashJump         1  2100   -0.9  -23.9  0.00000  1208  1354   1.7 96.0  2.3  0.0    0.2 95.7  4.0  0.0    0.0 93.5  6.4  0.0   
+LandedSmall        1  2520   -0.9  -15.7  0.00000   799   897   0.2 99.8  0.0  0.0    0.0 99.9  0.1  0.0    0.0 99.9  0.1  0.0   
+LandedMedium       1  2970   -0.9  -15.2  0.00000   729   831   0.1 99.8  0.0  0.0    0.0 99.9  0.1  0.0    0.0 99.9  0.1  0.0   
+LandedBig          1  3420   -0.9  -16.5  0.00000   683   813  12.2 87.8  0.0  0.0    3.3 96.7  0.1  0.0    0.2 99.7  0.1  0.0   
+LineSnap           1  1050   -0.9  -19.4  0.00000  1511  1692   0.1 99.1  0.8  0.0    0.0 97.9  2.1  0.0    0.0 93.4  6.5  0.1   
+RodCrack           1   850   -0.9  -23.3  0.00000   677   853  34.4 65.6  0.0  0.0    2.3 97.6  0.0  0.0    0.0 99.9  0.1  0.0   
+Escape             1  1900   -0.9  -23.9  0.00000   734   921  19.8 80.1  0.1  0.0    3.2 96.4  0.4  0.0    0.1 99.2  0.7  0.0   
+CastWhoosh         1  1750   -0.9  -22.2  0.00000  1361  1517   1.2 95.2  3.6  0.0    0.2 93.7  6.1  0.0    0.0 90.7  9.3  0.0   
+FloatPlop          1  1600   -0.9  -24.6  0.00000   706   772   0.3 99.7  0.0  0.0    0.1 99.9  0.0  0.0    0.0 100.0  0.0  0.0  
+BiteBob            1  1550   -0.9  -23.6  0.00000   785   820   0.1 99.9  0.0  0.0    0.0 100.0  0.0  0.0   0.0 100.0  0.0  0.0  
+BirdCuckoo         2  5750   -0.9  -12.1  0.00000   729   762   0.0 100.0  0.0  0.0   0.0 100.0  0.0  0.0   0.0 99.9  0.1  0.0   
+BirdPigeon         3  4300   -0.9  -15.7  0.00000   625   723   0.1 99.9  0.0  0.0    0.0 99.9  0.0  0.0    0.0 99.9  0.1  0.0   
+BirdBlackbird      6  3300   -0.9  -16.7  0.00000  1735  1740   0.0 95.3  4.7  0.0    0.0 95.1  4.9  0.0    0.0 95.0  5.0  0.0   
+loop ReelBed       1  6000   -6.6  -16.5  0.00007  1015  1251  20.6 78.2  1.2  0.0    4.4 92.7  2.9  0.0    0.1 94.4  5.5  0.0   
+loop Strain        1  5000   -6.0  -16.5  0.00012   750   987  36.8 63.0  0.2  0.0   13.4 85.7  0.9  0.0    0.7 96.5  2.7  0.0   
+loop Line          1  7000   -2.9  -16.5  0.00000  1016  1215   2.2 97.1  0.7  0.0    0.6 97.4  2.0  0.0    0.0 94.8  5.2  0.0   
+loop Ambience      1 64000   -1.2  -20.0  0.00000   871  1201  46.6 52.6  0.8  0.0    9.2 87.8  3.0  0.0    0.3 93.7  6.1  0.0   
+
+Loops: seam (wrap point: |jump| and curvature as percentile of the loop's own sample-to-sample values; <99 = invisible),
+       periodic AM (exact DFT of the circular envelope): largest single-component depth per band. Rule: <10% at 2-8 Hz and 20-150 Hz.
+  ReelBed   6.0 s  seam step 0.0195 (pct 48.1), curvature pct 9.0 | AM max: 0.1-2 Hz 9.7%  2-8 Hz 2.6%  8-20 Hz 3.9%  20-150 Hz 2.7% | top: 0.17 Hz 9.7%, 0.33 Hz 5.5%, 11.33 Hz 3.9%
+  Strain    5.0 s  seam step 0.0120 (pct 50.4), curvature pct 46.1 | AM max: 0.1-2 Hz 8.3%  2-8 Hz 6.0%  8-20 Hz 15.4%  20-150 Hz 8.5% | top: 15.40 Hz 15.4%, 14.20 Hz 14.7%, 14.00 Hz 11.4%
+  Line      7.0 s  seam step 0.0420 (pct 89.1), curvature pct 77.6 | AM max: 0.1-2 Hz 15.8%  2-8 Hz 6.1%  8-20 Hz 5.0%  20-150 Hz 5.5% | top: 0.14 Hz 15.8%, 0.43 Hz 6.8%, 6.71 Hz 6.1%
+  Ambience  64.0 s  seam step 0.0090 (pct 62.7), curvature pct 46.2 | AM max: 0.1-2 Hz 17.7%  2-8 Hz 2.2%  8-20 Hz 1.3%  20-150 Hz 1.5% | top: 0.38 Hz 17.7%, 0.36 Hz 16.2%, 0.31 Hz 15.9%
+
+Variant sets: centroid spread and how alike variants are (max normalized x-corr between any two, lag +-2 ms; 1 = identical).
+  GearLight     12 variants: centroid 675-779 Hz (mean 712); x-corr mean 0.95, max 0.99; >5 kHz share 0.0%
+  Gear          12 variants: centroid 558-709 Hz (mean 621); x-corr mean 0.93, max 0.99; >5 kHz share 0.0%
+  GearHeavy     12 variants: centroid 453-560 Hz (mean 505); x-corr mean 0.89, max 1.00; >5 kHz share 0.0%
+  HandleTock     6 variants: centroid 459-490 Hz (mean 475); x-corr mean 0.92, max 0.99; >5 kHz share 0.0%
+  DragTick      16 variants: centroid 1039-1146 Hz (mean 1095); x-corr mean 0.87, max 0.99; >5 kHz share 0.0%
+  DragTickDark  16 variants: centroid 721-814 Hz (mean 766); x-corr mean 0.94, max 0.99; >5 kHz share 0.0%
+  DragPurr      12 variants: centroid 1110-1236 Hz (mean 1192); x-corr mean 0.38, max 0.62; >5 kHz share 0.0%
+  RodCreak       8 variants: centroid 417-425 Hz (mean 421); x-corr mean 0.32, max 0.60; >5 kHz share 0.0%
+
+=== SCENARIOS (synthetic frames at 60 fps, float tackle C0 = 110 cm/s; files normalised to -20 LUFS, peak <= -3 dBFS) ===
+-- 01_reel_noload: free retrieve ~0.72 C0 (11-12 ticks/s), release-and-restart at 3.4-3.9 s, stop at 6.6 s
+   game level: -22.5 LUFS (max short-term -22.0, LRA 1.1 LU), peak -5.5 dBFS, DC 0.00002, clipped 0
+   centroid 991 Hz (A 1172); FLAT 30.6 68.9  0.6  0.0 | A  8.4 90.0  1.5  0.0 | PHONE-A  0.4 96.4  3.2  0.0
+   envelope AM peaks: 2-8 Hz 5.0 Hz 9%, 8-20 Hz 15.1 Hz 48%, 20-150 Hz 30.1 Hz 30%
+   grains: Gear:51 HandleTock:10 GearLight:21; same variant twice in a row: 0; peak grain voices 5
+   gear onset jitter (local CV of gaps): scheduled 3.9%, PlayOneShot@60fps 9.8%, @30fps 16.2%
+   -> 01_reel_noload.wav: gain +2.5 dB -> -20.0 LUFS, peak -3.0 dBFS
+-- 02_reel_labour: labouring: ReelLoad 0.78-0.94 (handle 7-24 cm/s -> 1-3.5 heavy ticks/s), strain loop on
+   game level: -23.3 LUFS (max short-term -22.7, LRA 1.1 LU), peak -7.4 dBFS, DC -0.00003, clipped 0
+   centroid 809 Hz (A 1002); FLAT 43.5 56.4  0.2  0.0 | A 16.2 83.1  0.8  0.0 | PHONE-A  0.9 96.7  2.4  0.0
+   envelope AM peaks: 2-8 Hz 7.8 Hz 12%, 8-20 Hz 13.4 Hz 23%, 20-150 Hz 20.6 Hz 12%
+   grains: GearHeavy:11 HandleTock:2; same variant twice in a row: 0; peak grain voices 1
+   gear onset jitter (local CV of gaps): scheduled -, PlayOneShot@60fps -, @30fps -
+   -> 02_reel_labour.wav: gain +3.3 dB -> -20.0 LUFS, peak -4.1 dBFS
+-- 03_reel_fast: gaining fast: fish swims in, no load, 0.9 -> 1.2 C0 (14 -> 19 light ticks/s)
+   game level: -21.9 LUFS (max short-term -21.5, LRA 1.0 LU), peak -5.9 dBFS, DC 0.00001, clipped 0
+   centroid 1043 Hz (A 1216); FLAT 23.9 75.4  0.7  0.0 | A  5.4 92.8  1.7  0.0 | PHONE-A  0.2 96.4  3.4  0.0
+   envelope AM peaks: 2-8 Hz 4.5 Hz 8%, 8-20 Hz 16.2 Hz 33%, 20-150 Hz 31.8 Hz 21%
+   grains: Gear:13 GearLight:89 HandleTock:15; same variant twice in a row: 0; peak grain voices 6
+   gear onset jitter (local CV of gaps): scheduled 3.6%, PlayOneShot@60fps 12.4%, @30fps 26.1%
+   -> 03_reel_fast.wav: gain +1.9 dB -> -20.0 LUFS, peak -4.0 dBFS
+-- 04_reel_load_sweep: one continuous crank, ReelLoad 0.05 -> 0.95 -> 0.05: light -> normal -> heavy ticks and the strain layer fading in/out
+   game level: -22.9 LUFS (max short-term -22.4, LRA 1.1 LU), peak -5.6 dBFS, DC -0.00001, clipped 0
+   centroid 918 Hz (A 1107); FLAT 37.6 62.0  0.4  0.0 | A 11.6 87.1  1.3  0.0 | PHONE-A  0.5 96.4  3.1  0.0
+   envelope AM peaks: 2-8 Hz 7.3 Hz 12%, 8-20 Hz 14.5 Hz 23%, 20-150 Hz 29.6 Hz 13%
+   grains: Gear:47 HandleTock:11 GearLight:12 GearHeavy:20; same variant twice in a row: 0; peak grain voices 5
+   gear onset jitter (local CV of gaps): scheduled 3.8%, PlayOneShot@60fps 9.0%, @30fps 14.6%
+   -> 04_reel_load_sweep.wav: gain +2.6 dB -> -20.3 LUFS, peak -3.0 dBFS
+-- 05_drag_slow: slow slip 10-18 cm/s (6-11 ticks/s, countable), two runs (accent on the first 3 ticks of each)
+   game level: -29.2 LUFS (max short-term -29.0, LRA 1.0 LU), peak -4.9 dBFS, DC -0.00002, clipped 0
+   centroid 1177 Hz (A 1264); FLAT  7.5 92.1  0.4  0.0 | A  1.0 98.3  0.6  0.0 | PHONE-A  0.0 99.1  0.9  0.0
+   envelope AM peaks: 2-8 Hz 7.8 Hz 36%, 8-20 Hz 8.4 Hz 46%, 20-150 Hz 35.2 Hz 32%
+   grains: DragTick:39; same variant twice in a row: 0; peak grain voices 3
+   drag onset jitter (local CV of gaps): scheduled 6.0%, PlayOneShot@60fps 7.9%, @30fps 12.4%
+   -> 05_drag_slow.wav: gain +1.9 dB -> -27.3 LUFS, peak -3.0 dBFS
+-- 06_drag_fast: run: slip 25 -> 100 -> 40 cm/s (16 -> 62 -> 25 grains/s; darker ticks + purr grains + spool whirr)
+   game level: -24.7 LUFS (max short-term -23.8, LRA 1.3 LU), peak -5.3 dBFS, DC -0.00000, clipped 0
+   centroid 1205 Hz (A 1313); FLAT 10.1 88.8  1.1  0.0 | A  1.7 96.2  2.1  0.0 | PHONE-A  0.0 96.7  3.3  0.0
+   envelope AM peaks: 2-8 Hz 2.8 Hz 6%, 8-20 Hz 12.3 Hz 16%, 20-150 Hz 24.6 Hz 15%
+   grains: DragTick:25 DragTickDark:57 DragPurr:110; same variant twice in a row: 0; peak grain voices 12
+   drag onset jitter (local CV of gaps): scheduled 8.7%, PlayOneShot@60fps 31.4%, @30fps 23.8%
+   -> 06_drag_fast.wav: gain +2.3 dB -> -22.5 LUFS, peak -3.0 dBFS
+-- 07_line_tension: line only: LoadShare 0.6 -> 1.0 -> 0.6, tight, nothing else playing
+   game level: -31.0 LUFS (max short-term -30.1, LRA 2.7 LU), peak -16.3 dBFS, DC -0.00000, clipped 0
+   centroid 1267 Hz (A 1372); FLAT  1.0 97.8  1.1  0.0 | A  0.3 97.1  2.6  0.0 | PHONE-A  0.0 94.0  5.9  0.0
+   envelope AM peaks: 2-8 Hz 7.8 Hz 11%, 8-20 Hz 18.4 Hz 9%, 20-150 Hz 39.1 Hz 11%
+   -> 07_line_tension.wav: gain +11.0 dB -> -20.0 LUFS, peak -5.3 dBFS
+-- 08_rod_creak: rod only: RodLoadShare 0.74 -> 1.0 -> 0.74 (creaks from 0.78, 1 -> 3.5 per second)
+   game level: -29.4 LUFS (max short-term -27.7, LRA 3.3 LU), peak -11.3 dBFS, DC -0.00000, clipped 0
+   centroid 448 Hz (A 597); FLAT 63.5 36.5  0.0  0.0 | A 25.0 75.0  0.0  0.0 | PHONE-A  1.6 98.4  0.0  0.0
+   envelope AM peaks: 2-8 Hz 2.2 Hz 73%, 8-20 Hz 19.5 Hz 11%, 20-150 Hz 54.1 Hz 26%
+   grains: RodCreak:15; same variant twice in a row: 0; peak grain voices 3
+   -> 08_rod_creak.wav: gain +8.3 dB -> -21.1 LUFS, peak -3.0 dBFS
+
+=== ONE-SHOTS (files: the raw clip, peak -3 dBFS) ===
+file                  ms   peak   LUFS  cent  FLAT                  A-WEIGHTED            PHONE-A                >5k%  start/end |x|
+09_hookset           800   -0.9  -22.4   534  73.6 26.3  0.0  0.0   24.6 75.1  0.4  0.0    1.4 95.9  2.7  0.0     0.0  0.0000/0.0000   hookset: rod swish + soft thump 125->80 Hz w/ harmonics + line 'tunn' + small bloop
+10_tele_run          900   -0.9  -16.9  1142   2.2 96.3  1.5  0.0    0.4 96.8  2.8  0.0    0.0 95.2  4.8  0.0     0.0  0.0000/0.0000   telegraph Run: sideways swirl 300->750->450 Hz + bubbles
+11_tele_dive         950   -0.9  -15.3   898   7.2 92.3  0.5  0.0    2.2 96.2  1.6  0.0    0.1 94.9  4.9  0.0     0.0  0.0000/0.0000   telegraph Dive: downward 'gloop' 600->260 Hz + big low bubbles
+12_tele_surge        730   -0.9  -15.7  1435   1.4 94.1  4.5  0.0    0.2 93.2  6.6  0.0    0.0 91.4  8.6  0.0     0.0  0.0000/0.0000   telegraph Surge: quick rush 350->1100 Hz + bubble burst
+13_tele_jerk         670   -0.9  -22.3   279  85.9 14.1  0.0  0.0   54.1 45.9  0.0  0.0   12.0 88.0  0.0  0.0     0.0  0.0000/0.0000   telegraph Jerk: heartbeat 'tu-dum' 150 Hz knocks
+14_tele_jump         850   -0.9  -16.1  1614   0.7 90.6  8.6  0.0    0.1 88.4 11.5  0.0    0.0 86.1 13.9  0.1     0.0  0.0000/0.0000   telegraph Jump: airy rise 280->1500 Hz
+15_splash_small     1600   -0.9  -23.6  1176   0.5 99.2  0.3  0.0    0.1 99.5  0.4  0.0    0.0 99.5  0.5  0.0     0.0  0.0000/0.0000   splash, small fish
+16_splash_big       1850   -0.9  -20.0   714   2.9 97.0  0.1  0.0    0.6 99.2  0.2  0.0    0.0 99.6  0.4  0.0     0.0  0.0000/0.0000   splash, big fish / jump re-entry
+17_splash_jump      2100   -0.9  -23.1  1208   1.7 96.0  2.3  0.0    0.2 95.7  4.0  0.0    0.0 93.5  6.4  0.0     0.0  0.0000/0.0000   jump apex: airy spray + droplets falling back
+18_landed_small     2520   -0.9  -14.5   799   0.2 99.8  0.0  0.0    0.0 99.9  0.1  0.0    0.0 99.9  0.1  0.0     0.0  0.0000/0.0000   landed < 500 g: 3 flops + B-D-G
+19_landed_medium    2970   -0.9  -14.3   729   0.1 99.8  0.0  0.0    0.0 99.9  0.1  0.0    0.0 99.9  0.1  0.0     0.0  0.0000/0.0000   landed 0.5-1.5 kg: 4 flops + G-B-D-G
+20_landed_big       3420   -0.9  -15.3   683  12.2 87.8  0.0  0.0    3.3 96.7  0.1  0.0    0.2 99.7  0.1  0.0     0.0  0.0000/0.0000   landed >= 1.5 kg: 5 flops + D-G-B-D-G + low G bloom
+21_line_snap        1050   -0.9  -19.6  1511   0.1 99.1  0.8  0.0    0.0 97.9  2.1  0.0    0.0 93.4  6.5  0.1     0.0  0.0000/0.0000   line snap: muffled snap + slack string 'tunn' + falling line whisper
+22_rod_crack         850   -0.9  -23.9   677  34.4 65.6  0.0  0.0    2.3 97.6  0.0  0.0    0.0 99.9  0.1  0.0     0.0  0.0000/0.0000   rod broke: muffled wood crack
+23_escape           1900   -0.9  -21.9   734  19.8 80.1  0.1  0.0    3.2 96.4  0.4  0.0    0.1 99.2  0.7  0.0     0.0  0.0000/0.0000   fish escaped: quiet bloop + ripple
+24_cast_whoosh      1750   -0.9  -19.5  1361   1.2 95.2  3.6  0.0    0.2 93.7  6.1  0.0    0.0 90.7  9.3  0.0     0.0  0.0000/0.0000   cast: rod swish + line paying off the spool
+25_float_plop       1600   -0.9  -22.1   706   0.3 99.7  0.0  0.0    0.1 99.9  0.0  0.0    0.0 100.0  0.0  0.0    0.0  0.0000/0.0000   float lands: plop
+26_bite_bob         1550   -0.9  -19.4   785   0.1 99.9  0.0  0.0    0.0 100.0  0.0  0.0   0.0 100.0  0.0  0.0    0.0  0.0000/0.0000   bite: float bob plip-plip
+27_birds           49700   -0.9         1224   0.0 98.7  1.3  0.0    0.0 97.8  2.2  0.0    0.0 96.6  3.4  0.0          all 11 bird variants: cuckoo x2, wood pigeon x3, blackbird x6 (0.5 s gaps)
+
+=== AMBIENCE ===
+  28_ambience_loop_64s: 64.0 s, -20.8 LUFS raw (file normalised to -24 LUFS), LRA 4.2 LU, peak -1.2 dBFS
+   -> 28_ambience_loop_64s.wav: gain -3.2 dB -> -24.0 LUFS, peak -4.4 dBFS
+  seam: RMS last 5 ms -15.6 dB vs first 5 ms -15.6 dB; jump 0.0090 (median step 0.0065)
+  29_ambience_morning_60s (loop + scheduled birds, Waiting state, master 0.8):
+    game level: -32.9 LUFS (max short-term -30.0, LRA 3.9 LU), peak -13.3 dBFS, DC -0.00000, clipped 0
+    centroid 989 Hz (A 1252); FLAT 45.5 53.7  0.8  0.0 | A  8.8 88.2  2.9  0.0 | PHONE-A  0.3 94.0  5.8  0.0
+    envelope AM peaks: 2-8 Hz 2.2 Hz 11%, 8-20 Hz 9.5 Hz 5%, 20-150 Hz 34.6 Hz 4%
+    birds: 6.3s BirdBlackbird#2 17.5s BirdPigeon#0 32.5s BirdBlackbird#3 56.2s BirdPigeon#1
+   -> 29_ambience_morning_60s.wav: gain +8.9 dB -> -24.0 LUFS, peak -4.5 dBFS
+
+=== SPECTATOR CHECK (bream fight, 25 s, 60 fps vs 37 fps) === grains 227 vs 227
+  gear: 7 vs 7 grains; same sound+variant at the same index 7/7 (100.0%); onset difference p50 0.00 ms, max 0.00 ms
+  drag: 220 vs 220 grains; same sound+variant at the same index 220/220 (100.0%); onset difference p50 0.00 ms, max 6.31 ms
+  creak: none
+
+=== DEMO 30_demo_perch300_holdreel: perch 300 g, seed 3, outcome Landed after 18.7 s of fight (fight starts at 5.9 s); 30.0 s @48k, master 0.8 ===
+  fight frames 1122: cranking 100%, slipping 0%, LoadShare max 0.22, RodLoadShare max 0.16
+  gear tick rate while cranking p10/p50/p90 = 7.3/10.9/10.9 per s; ReelLoad p50 0.32
+  game level: -23.4 LUFS (max short-term -22.2, LRA 9.6 LU), peak -3.9 dBFS, DC 0.00001, clipped 0
+  centroid 938 Hz (A 1137); FLAT 39.8 59.7  0.4  0.0 | A 11.1 87.6  1.4  0.0 | PHONE-A  0.4 96.5  3.1  0.0
+  envelope AM peaks: 2-8 Hz 7.3 Hz 13%, 8-20 Hz 11.2 Hz 36%, 20-150 Hz 21.8 Hz 30%
+  grains: Gear:118 HandleTock:24 GearLight:5 GearHeavy:46; same variant twice in a row: 0; peak grain voices 5
+  gear onset jitter (local CV of gaps): scheduled 5.3%, PlayOneShot@60fps 10.0%, @30fps 16.7%
+  one-shots: Hookset:1 TeleRun:1 TeleJerk:2 SplashSmall:3 LandedSmall:1 CastWhoosh:1 FloatPlop:1 BiteBob:1 BirdPigeon:1 BirdBlackbird:1
+  loop starts: bed 1, strain 2, line 0
+  stem share of A-weighted energy (headphones/phone): bed 33/40%  strain 1/1%  line 0/0%  lake 6/7%  gear 42/30%  drag 0/0%  fx 19/23%
+  stem peaks dBFS: bed -17.0  strain -20.6  line -240.0  lake -15.1  gear -6.3  drag -240.0  fx -8.6
+  mix peak at 12.73 s; events in the 0.3 s before: GearHeavy@12.44 GearHeavy@12.53 Gear@12.62 GearHeavy@12.71 TeleJerk@12.72
+  REEL while cranking (18.7 s): RMS -22.4 dBFS, centroid 931 Hz (A 1125) | FLAT 43.6 56.0  0.4  0.0 | A 13.7 84.9  1.3  0.0 | PHONE-A  0.6 96.2  3.2  0.0
+       envelope AM: 2-8 Hz peak 7.3 Hz 14%, 20-150 Hz peak 21.8 Hz 32%
+  gear inter-onset (gaps < 0.2 s): n 192, mean 96 ms, CV 16.8% (from +-4% jitter plus speed changes)
+  timeline (1 s): t | state/phase | crank% slip% | bed strain line lake gear drag fx (RMS dBFS) | mix
+    0 Casting     0    0 |     .     .     .   -36     .     .   -30 |   -29
+    1 Waiting     0    0 |     .     .     .   -36     .     .   -35 |   -33
+    2 Waiting     0    0 |     .     .     .   -36     .     .     . |   -36
+    3 Waiting     0    0 |     .     .     .   -29     .     .     . |   -29
+    4 Waiting     0    0 |     .     .     .   -34     .     .     . |   -34
+    5 Bite        2    0 |   -63     .     .   -36     .     .   -32 |   -31
+    6 Fight     100    0 |   -27     .     .   -32   -24     .   -26 |   -20
+    7 Fight     100    0 |   -28   -34     .   -38   -25     .   -46 |   -23
+    8 Fight     100    0 |   -29   -33     .   -32   -26     .     . |   -23
+    9 Fight     100    0 |   -27   -40     .   -38   -26     .     . |   -23
+   10 Fight     100    0 |   -27   -35     .   -34   -24     .   -31 |   -21
+   11 Fight     100    0 |   -28   -48     .   -37   -24     .     . |   -22
+   12 Fight     100    0 |   -28     .     .   -35   -24     .   -31 |   -22
+   13 Fight     100    0 |   -28   -39     .   -37   -25     .   -46 |   -23
+   14 Fight     100    0 |   -27   -66     .   -40   -25     .     . |   -23
+   15 Fight     100    0 |   -26     .     .   -33   -23     .     . |   -21
+   16 Fight     100    0 |   -26     .     .   -40   -23     .     . |   -22
+   17 Fight     100    0 |   -28     .     .   -42   -23     .   -45 |   -22
+   18 Fight     100    0 |   -28     .     .   -35   -24     .   -42 |   -22
+   19 Fight     100    0 |   -27     .     .   -41   -24     .   -43 |   -22
+   20 Fight     100    0 |   -27     .     .   -42   -24     .     . |   -22
+   21 Fight     100    0 |   -26     .     .   -38   -24     .     . |   -22
+   22 Fight     100    0 |   -27     .     .   -35   -25     .     . |   -22
+   23 Fight     100    0 |   -28     .     .   -35   -23     .     . |   -22
+   24 Fight      63    0 |   -28     .     .   -37   -27     .   -42 |   -24
+   25 Caught      0    0 |   -40     .     .   -35     .     .   -20 |   -20
+   26 Caught      0    0 |   -57     .     .   -35     .     .   -28 |   -27
+   27 Caught      0    0 |   -76     .     .   -30     .     .     . |   -30
+   28 Caught      0    0 |     .     .     .   -35     .     .     . |   -35
+   29 Caught      0    0 |     .     .     .   -30     .     .     . |   -30
+   -> 30_demo_perch300_holdreel.wav: gain +0.9 dB -> -22.5 LUFS, peak -3.0 dBFS
+
+=== DEMO 31_demo_bream2kg_technique: bream 2000 g, seed 3, outcome InProgress after 25.9 s of fight (fight starts at 3.9 s); 30.0 s @48k, master 0.8 ===
+  fight frames 1564: cranking 17%, slipping 43%, LoadShare max 0.70, RodLoadShare max 0.69
+  gear tick rate while cranking p10/p50/p90 = 1.6/1.6/1.6 per s; ReelLoad p50 0.90
+  drag grain rate while slipping p10/p50/p90/max = 11/20/30/34 per s
+  game level: -24.7 LUFS (max short-term -22.6, LRA 4.6 LU), peak -3.8 dBFS, DC -0.00003, clipped 0
+  centroid 1011 Hz (A 1179); FLAT 23.3 76.2  0.5  0.0 | A  5.0 93.7  1.3  0.0 | PHONE-A  0.2 97.4  2.5  0.0
+  envelope AM peaks: 2-8 Hz 2.2 Hz 23%, 8-20 Hz 13.4 Hz 17%, 20-150 Hz 21.8 Hz 13%
+  grains: DragTick:89 DragTickDark:104 DragPurr:27 GearHeavy:6 HandleTock:1; same variant twice in a row: 0; peak grain voices 8
+  drag onset jitter (local CV of gaps): scheduled 6.2%, PlayOneShot@60fps 19.1%, @30fps 28.9%
+  one-shots: Hookset:1 TeleRun:2 TeleDive:5 SplashBig:6 CastWhoosh:1 FloatPlop:1 BiteBob:1 BirdPigeon:1 BirdBlackbird:1
+  loop starts: bed 6, strain 6, line 5
+  stem share of A-weighted energy (headphones/phone): bed 12/11%  strain 15/8%  line 0/0%  lake 6/5%  gear 1/0%  drag 42/56%  fx 24/19%
+  stem peaks dBFS: bed -18.4  strain -12.4  line -61.7  lake -16.3  gear -9.4  drag -5.1  fx -8.9
+  mix peak at 12.87 s; events in the 0.3 s before: DragTick@12.77 GearHeavy@12.79 DragTick@12.87
+  REEL while cranking (4.4 s): RMS -22.5 dBFS, centroid 955 Hz (A 1127) | FLAT 42.9 56.9  0.2  0.0 | A 16.8 82.4  0.7  0.0 | PHONE-A  1.0 96.6  2.4  0.0
+       envelope AM: 2-8 Hz peak 2.2 Hz 15%, 20-150 Hz peak 20.1 Hz 11%
+  timeline (1 s): t | state/phase | crank% slip% | bed strain line lake gear drag fx (RMS dBFS) | mix
+    0 Casting     0    0 |     .     .     .   -36     .     .   -30 |   -29
+    1 Waiting     0    0 |     .     .     .   -36     .     .   -35 |   -33
+    2 Waiting     0    0 |     .     .     .   -36     .     .     . |   -36
+    3 Bite        0    0 |     .     .     .   -29     .     .   -32 |   -27
+    4 Fight      22    2 |   -46   -31     .   -36     .     .   -26 |   -24
+    5 Fight       3  100 |   -31   -33     .   -39     .   -26   -45 |   -24
+    6 Fight       0  100 |   -30     .     .   -34     .   -26   -42 |   -24
+    7 Fight       0   33 |   -36     .     .   -39     .   -31   -46 |   -29
+    8 Fight      20   32 |   -37   -30     .   -32     .   -30   -25 |   -22
+    9 Fight       0  100 |   -28   -48     .   -38     .   -26   -75 |   -23
+   10 Fight       0   38 |   -32     .     .   -34     .   -30     . |   -27
+   11 Fight       0    0 |   -74     .     .   -37     .     .     . |   -37
+   12 Fight      20   27 |   -38   -30     .   -35   -36   -31   -25 |   -22
+   13 Fight       0  100 |   -30   -45     .   -37     .   -26   -71 |   -24
+   14 Fight       0  100 |   -30     .     .   -40     .   -26     . |   -24
+   15 Fight       0   13 |   -39     .     .   -33     .   -35   -64 |   -30
+   16 Fight      30   27 |   -38   -28     .   -40     .   -32   -25 |   -22
+   17 Fight       0  100 |   -30   -46     .   -42     .   -27   -45 |   -25
+   18 Fight       0  100 |   -31     .     .   -35     .   -26   -42 |   -24
+   19 Fight       0   18 |   -40     .     .   -41     .   -37   -43 |   -34
+   20 Fight      42    0 |   -40   -28     .   -42   -34     .   -25 |   -23
+   21 Fight      18   87 |   -35   -28     .   -38   -61   -27   -72 |   -24
+   22 Fight       0  100 |   -34   -74     .   -35     .   -28     . |   -26
+   23 Fight       0   53 |   -37     .     .   -35     .   -30     . |   -28
+   24 Fight       0    0 |   -72     .     .   -38     .     .   -67 |   -38
+   25 Fight      52    0 |   -38   -26     .   -39   -35     .   -27 |   -23
+   26 Fight     100    0 |   -34   -22     .   -39   -37     .   -75 |   -22
+   27 Fight     100    0 |   -35   -23     .   -34   -32     .     . |   -22
+   28 Fight      28    0 |   -40   -27     .   -39   -36     .     . |   -27
+   29 Fight       0    0 |     .   -70     .   -34     .     .   -25 |   -41
+   -> 31_demo_bream2kg_technique.wav: gain +0.8 dB -> -23.9 LUFS, peak -3.0 dBFS
+
+FILES:
+  F:\fishing\.previews\audio\cozy\parts\loop_reel_bed_x2.wav
+  F:\fishing\.previews\audio\cozy\parts\loop_strain_x2.wav
+  F:\fishing\.previews\audio\cozy\parts\loop_line_tension_x2.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_gear_light.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_gear_normal.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_gear_heavy.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_handle_tock.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_drag_bright_then_dark.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_drag_purr.wav
+  F:\fishing\.previews\audio\cozy\parts\grains_rod_creak.wav
+  F:\fishing\.previews\audio\cozy\01_reel_noload.wav
+  F:\fishing\.previews\audio\cozy\02_reel_labour.wav
+  F:\fishing\.previews\audio\cozy\03_reel_fast.wav
+  F:\fishing\.previews\audio\cozy\04_reel_load_sweep.wav
+  F:\fishing\.previews\audio\cozy\05_drag_slow.wav
+  F:\fishing\.previews\audio\cozy\06_drag_fast.wav
+  F:\fishing\.previews\audio\cozy\07_line_tension.wav
+  F:\fishing\.previews\audio\cozy\08_rod_creak.wav
+  F:\fishing\.previews\audio\cozy\09_hookset.wav
+  F:\fishing\.previews\audio\cozy\10_tele_run.wav
+  F:\fishing\.previews\audio\cozy\11_tele_dive.wav
+  F:\fishing\.previews\audio\cozy\12_tele_surge.wav
+  F:\fishing\.previews\audio\cozy\13_tele_jerk.wav
+  F:\fishing\.previews\audio\cozy\14_tele_jump.wav
+  F:\fishing\.previews\audio\cozy\15_splash_small.wav
+  F:\fishing\.previews\audio\cozy\16_splash_big.wav
+  F:\fishing\.previews\audio\cozy\17_splash_jump.wav
+  F:\fishing\.previews\audio\cozy\18_landed_small.wav
+  F:\fishing\.previews\audio\cozy\19_landed_medium.wav
+  F:\fishing\.previews\audio\cozy\20_landed_big.wav
+  F:\fishing\.previews\audio\cozy\21_line_snap.wav
+  F:\fishing\.previews\audio\cozy\22_rod_crack.wav
+  F:\fishing\.previews\audio\cozy\23_escape.wav
+  F:\fishing\.previews\audio\cozy\24_cast_whoosh.wav
+  F:\fishing\.previews\audio\cozy\25_float_plop.wav
+  F:\fishing\.previews\audio\cozy\26_bite_bob.wav
+  F:\fishing\.previews\audio\cozy\27_birds.wav
+  F:\fishing\.previews\audio\cozy\28_ambience_loop_64s.wav
+  F:\fishing\.previews\audio\cozy\29_ambience_morning_60s.wav
+  F:\fishing\.previews\audio\cozy\30_demo_perch300_holdreel.wav
+  F:\fishing\.previews\audio\cozy\31_demo_bream2kg_technique.wav

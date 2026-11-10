@@ -1,0 +1,78 @@
+{
+  "version": 4,
+  "locations": [
+    {
+      "id": "lake_start",
+      "unlockPrice": 0,
+      "spots": [
+        {
+          "id": "maple",
+          "minLevel": 1,
+          "shoreDepthCm": 40,
+          "slopeCmPerM": 8,
+          "maxDepthCm": 250,
+          "fish": ["roach", "crucian", "perch"]
+        },
+        {
+          "id": "reeds",
+          "minLevel": 1,
+          "shoreDepthCm": 50,
+          "slopeCmPerM": 11,
+          "maxDepthCm": 320,
+          "fish": ["crucian", "roach", "pike"]
+        },
+        {
+          "id": "old_pier",
+          "minLevel": 2,
+          "shoreDepthCm": 90,
+          "slopeCmPerM": 15,
+          "maxDepthCm": 450,
+          "fish": ["perch", "roach", "bream"]
+        },
+        {
+          "id": "pit",
+          "minLevel": 5,
+          "shoreDepthCm": 120,
+          "slopeCmPerM": 24,
+          "maxDepthCm": 650,
+          "fish": ["bream", "zander", "perch", "pike"]
+        },
+        {
+          "id": "stream",
+          "minLevel": 3,
+          "shoreDepthCm": 60,
+          "slopeCmPerM": 13,
+          "maxDepthCm": 400,
+          "fish": ["perch", "roach", "zander"]
+        },
+        {
+          "id": "island",
+          "minLevel": 6,
+          "needsBoat": true,
+          "shoreDepthCm": 70,
+          "slopeCmPerM": 14,
+          "maxDepthCm": 500,
+          "fish": ["perch", "roach", "bream", "pike"]
+        },
+        {
+          "id": "center",
+          "minLevel": 8,
+          "needsBoat": true,
+          "shoreDepthCm": 450,
+          "slopeCmPerM": 8,
+          "maxDepthCm": 800,
+          "fish": ["bream", "zander", "pike"]
+        },
+        {
+          "id": "backwater",
+          "minLevel": 10,
+          "needsBoat": true,
+          "shoreDepthCm": 40,
+          "slopeCmPerM": 6,
+          "maxDepthCm": 220,
+          "fish": ["crucian", "roach", "pike"]
+        }
+      ]
+    }
+  ]
+}
